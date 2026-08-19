@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Welcher Agententyp sind Sie — Test von Pulse Call</title>
+<meta name="description" content="Sechs Fragen dazu, wie Sie sich im Gespräch verhalten. Am Ende — Ihr Arbeitstyp und worin seine Stärke liegt.">
+<link rel="canonical" href="https://pulse-call.com/de/tests/operator-type/">
+<link rel="alternate" hreflang="ru" href="https://pulse-call.com/tests/operator-type/">
+<link rel="alternate" hreflang="en" href="https://pulse-call.com/en/tests/operator-type/">
+<link rel="alternate" hreflang="de" href="https://pulse-call.com/de/tests/operator-type/">
+<link rel="alternate" hreflang="es" href="https://pulse-call.com/es/tests/operator-type/">
+<link rel="alternate" hreflang="cs" href="https://pulse-call.com/cs/tests/operator-type/">
+<link rel="alternate" hreflang="sk" href="https://pulse-call.com/sk/tests/operator-type/">
+<link rel="alternate" hreflang="ro" href="https://pulse-call.com/ro/tests/operator-type/">
+<link rel="alternate" hreflang="hu" href="https://pulse-call.com/hu/tests/operator-type/">
+<link rel="alternate" hreflang="x-default" href="https://pulse-call.com/tests/operator-type/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --deep:#0A1730;--ink:#0A1A33;--card:rgba(255,255,255,.05);--hair:rgba(255,255,255,.15);
+  --blue:#4C8DF6;--orange:#FF7A1A;--muted:#93A9C6;
+}
+*{box-sizing:border-box}
+body{
+  margin:0;background:var(--deep);color:#EAF1FB;min-height:100vh;
+  font-family:'Inter',system-ui,sans-serif;font-size:17px;line-height:1.6;
+  -webkit-font-smoothing:antialiased;display:flex;flex-direction:column;overflow-x:hidden;
+}
+body::before{
+  content:"";position:fixed;inset:0;z-index:0;pointer-events:none;
+  background:radial-gradient(820px 520px at 82% -12%, rgba(76,141,246,.16), transparent 62%),
+             radial-gradient(680px 460px at 8% 106%, rgba(255,122,26,.12), transparent 64%);
+}
+.wrap{position:relative;z-index:1;width:100%;max-width:720px;margin:0 auto;padding:0 20px}
+h1,h2,h3{font-family:'Manrope',sans-serif;margin:0;letter-spacing:-.03em;line-height:1.1}
+p{margin:0}
+a{color:inherit}
+
+header{position:relative;z-index:1;border-bottom:1px solid var(--hair);padding:15px 0}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:14px}
+.logo{font-family:'Manrope';font-weight:800;font-size:19px;color:#fff;display:flex;align-items:center;gap:9px;text-decoration:none;letter-spacing:-.03em}
+.logo i{width:8px;height:8px;border-radius:50%;background:var(--orange)}
+.nav a.back{color:#8FA6C4;font-size:14px;text-decoration:none}
+.nav a.back:hover{color:#fff}
+
+main{position:relative;z-index:1;flex:1;display:flex;align-items:center;padding:40px 0 56px}
+.stage{width:100%}
+.screen{display:none}
+.screen.on{display:block;animation:in .32s ease both}
+@keyframes in{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:9px;border:0;cursor:pointer;
+  font-family:'Inter',sans-serif;font-weight:600;font-size:16.5px;padding:16px 32px;border-radius:999px;
+  text-decoration:none;transition:.18s;
+}
+.btn-p{background:var(--orange);color:#12203A;box-shadow:0 10px 26px rgba(255,122,26,.26)}
+.btn-p:hover{background:#EE6C0D;transform:translateY(-2px)}
+.btn-g{background:transparent;color:#EAF1FB;border:1.5px solid var(--hair)}
+.btn-g:hover{border-color:var(--blue);color:#fff}
+
+.kicker{
+  display:inline-flex;gap:8px;font-family:'Manrope';font-weight:700;font-size:12px;
+  letter-spacing:.16em;text-transform:uppercase;color:var(--blue);
+  border:1px solid var(--hair);padding:7px 14px;border-radius:999px;margin-bottom:22px;
+}
+.start h1{font-size:clamp(33px,5.8vw,52px);font-weight:800;max-width:14ch}
+.start h1 em{font-style:normal;color:var(--orange)}
+.start .sub{margin-top:18px;font-size:18px;color:#B7C7DD;max-width:45ch}
+.start .go{margin-top:30px;display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.tiny{font-size:13.5px;color:var(--muted)}
+
+.pips{display:flex;gap:8px;margin-bottom:26px}
+.pips i{width:9px;height:9px;border-radius:50%;background:rgba(255,255,255,.16);transition:.25s}
+.pips i.done{background:var(--blue)}
+.pips i.now{background:var(--orange);transform:scale(1.35)}
+
+.qn{font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--muted);letter-spacing:.05em;margin-bottom:12px}
+.q h2{font-size:clamp(22px,3.6vw,31px);font-weight:800;max-width:20ch}
+.opts{display:grid;gap:11px;margin-top:26px}
+.opt{
+  cursor:pointer;text-align:left;background:var(--card);border:1.5px solid var(--hair);
+  border-radius:15px;padding:18px 20px;font:inherit;color:#EAF1FB;transition:.16s;
+}
+.opt:hover{border-color:var(--blue);background:rgba(76,141,246,.14);transform:translateX(4px)}
+
+/* результат */
+.res{text-align:center}
+.emblem{width:96px;height:96px;margin:0 auto 20px;border-radius:26px;display:grid;place-items:center;border:1px solid var(--hair)}
+.emblem svg{width:46px;height:46px;stroke-width:1.8;fill:none}
+.res .role{font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
+.res h2{font-size:clamp(30px,6vw,46px);font-weight:800;margin-top:10px}
+.res .lead{color:#BCCBE0;margin-top:14px;max-width:46ch;margin-inline:auto;font-size:17.5px}
+
+.pair{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:28px;text-align:left}
+@media(max-width:600px){.pair{grid-template-columns:1fr}}
+.pane{background:var(--card);border:1px solid var(--hair);border-radius:16px;padding:20px 22px}
+.pane b{display:block;font-family:'Manrope';font-weight:800;font-size:14px;margin-bottom:9px}
+.pane p{font-size:15.5px;color:#BCCBE0}
+.pane.up b{color:#6FE0A0}
+.pane.watch b{color:var(--orange)}
+
+.share{margin-top:22px;background:var(--card);border:1px solid var(--hair);border-radius:16px;padding:18px 20px;display:flex;gap:12px;align-items:center;justify-content:space-between;flex-wrap:wrap;text-align:left}
+.share span{font-size:15px;color:#BCCBE0}
+.share button{background:transparent;border:1.5px solid var(--hair);color:#EAF1FB;font:inherit;font-size:15px;font-weight:600;padding:11px 20px;border-radius:999px;cursor:pointer;transition:.16s}
+.share button:hover{border-color:var(--blue);color:#fff}
+
+.cta{margin-top:26px;display:flex;flex-wrap:wrap;gap:12px;justify-content:center}
+.foot-note{margin-top:18px;font-size:13.5px;color:var(--muted)}
+
+footer{position:relative;z-index:1;border-top:1px solid var(--hair);padding:26px 0;color:var(--muted);font-size:13.5px}
+.foot{display:flex;flex-wrap:wrap;gap:8px 18px;justify-content:space-between}
+.foot a{color:var(--muted);text-decoration:none}
+.foot a:hover{color:#fff}
+
+*:focus-visible{outline:2px solid var(--orange);outline-offset:3px;border-radius:8px}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+@media(max-width:560px){.btn{width:100%}.start .go{flex-direction:column;align-items:stretch}}
+
+.lang-sw{position:relative;flex:none;margin-left:auto}
+.lang-btn{display:inline-flex;align-items:center;gap:8px;cursor:pointer;
+  background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.22);color:#EAF1FB;
+  font:inherit;font-size:14px;font-weight:600;padding:8px 12px;border-radius:999px;transition:.16s;line-height:1}
+.lang-btn:hover{border-color:rgba(255,122,26,.7)}
+.lang-btn svg{width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:2}
+.lang-btn .car{width:10px;height:10px;opacity:.75;transition:transform .18s}
+.lang-sw.open .lang-btn .car{transform:rotate(180deg)}
+.lang-menu{position:absolute;top:calc(100% + 8px);right:0;min-width:200px;z-index:80;
+  background:#0E1E3C;border:1px solid rgba(255,255,255,.2);border-radius:14px;padding:6px;
+  box-shadow:0 18px 44px rgba(0,0,0,.45)}
+.lang-menu[hidden]{display:none}
+.lang-menu a{display:flex;align-items:center;justify-content:space-between;gap:10px;
+  padding:10px 12px;border-radius:10px;text-decoration:none;color:#DCE7F6;font-size:14px;transition:.14s}
+.lang-menu a:hover{background:rgba(76,141,246,.18);color:#fff}
+.lang-menu a[aria-current="true"]{background:rgba(255,122,26,.16);color:#fff}
+.lang-menu b.code{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.1em;font-weight:700}
+@media(max-width:600px){.lang-btn span.lbl{display:none}}
+</style>
+</head>
+<body>
+
+<header><div class="wrap nav">
+  <a class="logo" href="/de/"><i></i>Pulse Call</a>
+  <a class="back" href="/de/tests/">← Alle Tests</a>
+  <div class="lang-sw" data-lang="de">
+    <button type="button" class="lang-btn" aria-haspopup="true" aria-expanded="false" aria-label="Sprache wählen">
+      <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a15 15 0 0 1 0 18 15 15 0 0 1 0-18z"/></svg>
+      <span class="lbl">Deutsch</span>
+      <svg class="car" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg>
+    </button>
+    <div class="lang-menu" role="menu" hidden>
+      <a href="/tests/operator-type/" data-lang="ru" hreflang="ru">Русский<b class="code">RU</b></a>
+      <a href="/en/tests/operator-type/" data-lang="en" hreflang="en">English<b class="code">EN</b></a>
+      <a href="/de/tests/operator-type/" data-lang="de" aria-current="true">Deutsch<b class="code">DE</b></a>
+      <a href="/es/tests/operator-type/" data-lang="es" hreflang="es">Español<b class="code">ES</b></a>
+      <a href="/cs/tests/operator-type/" data-lang="cs" hreflang="cs">Čeština<b class="code">CS</b></a>
+      <a href="/sk/tests/operator-type/" data-lang="sk" hreflang="sk">Slovenčina<b class="code">SK</b></a>
+      <a href="/ro/tests/operator-type/" data-lang="ro" hreflang="ro">Română<b class="code">RO</b></a>
+      <a href="/hu/tests/operator-type/" data-lang="hu" hreflang="hu">Magyar<b class="code">HU</b></a>
+    </div>
+  </div>
+</div></header>
+
+<main><div class="wrap stage">
+
+  <section class="screen on start" id="s-start">
+    <span class="kicker">6 Fragen · 1 Minute</span>
+    <h1>Welcher Typ sind Sie <em>Agentin</em>?</h1>
+    <p class="sub">Es geht nicht um Erfahrung und nicht um Fertigkeiten — sondern darum, wie Sie sich im Gespräch verhalten. Am Ende erhalten Sie Ihren Arbeitstyp. Schlechte gibt es darunter nicht.</p>
+    <div class="go">
+      <button class="btn btn-p" id="begin">Typ herausfinden</button>
+      <span class="tiny">Ohne Registrierung</span>
+    </div>
+  </section>
+
+  <section class="screen q" id="s-quiz" aria-live="polite">
+    <div class="pips" id="pips"></div>
+    <p class="qn" id="qn"></p>
+    <h2 id="qtext"></h2>
+    <div class="opts" id="opts"></div>
+  </section>
+
+  <section class="screen res" id="s-res">
+    <div class="emblem" id="emblem"></div>
+    <p class="role">Ihr Typ</p>
+    <h2 id="tname"></h2>
+    <p class="lead" id="tlead"></p>
+    <div class="pair">
+      <div class="pane up"><b>Stärke</b><p id="tup"></p></div>
+      <div class="pane watch"><b>Worauf zu achten ist</b><p id="twatch"></p></div>
+    </div>
+    <div class="share">
+      <span id="sharetext"></span>
+      <button id="copy">Kopieren</button>
+    </div>
+    <div class="cta">
+      <a class="btn btn-p" href="/de/jobs/operators/#form">Live ausprobieren</a>
+      <button class="btn btn-g" id="again">Erneut versuchen</button>
+    </div>
+    <p class="foot-note">Der Test ist unterhaltsam: Er beeinflusst die Auswahl nicht und entscheidet nichts über Sie.</p>
+  </section>
+
+</div></main>
+
+<footer><div class="wrap foot">
+  <span>© 2026 Pulse Call</span>
+  <span>
+    <a href="/de/tests/">Alle Tests</a> ·
+    <a href="/de/about/">Über uns</a> ·
+    <a href="/de/jobs/operators/">Stelle</a> ·
+    <a href="/de/legal/privacy-policy/">Datenschutzrichtlinie</a>
+  </span>
+</div></footer>
+
+<script>
+(function(){
+  "use strict";
+
+  var TYPES = {
+    diplomat:{
+      n:"Der Diplomat", c:"#4C8DF6",
+      l:"Sie nehmen Spannung mit der Stimme heraus. Wo ein anderer Agent streiten würde, lassen Sie den Menschen ausreden — und das Gespräch kehrt in friedliche Bahnen zurück.",
+      up:"Schwierige und verärgerte Kunden explodieren bei Ihnen nicht, sondern bleiben bis zum Ende des Gesprächs dran.",
+      w:"Manchmal geben Sie dort nach, wo Sie sanft hätten bestehen sollen. Eine Vereinbarung sollte man doch zu Ende bringen.",
+      i:'<svg viewBox="0 0 24 24" stroke="currentColor"><path d="M21 11.5a8.4 8.4 0 0 1-9 8.4 8.5 8.5 0 0 1-3.9-.9L3 21l1.9-5.1A8.4 8.4 0 0 1 12 3a8.4 8.4 0 0 1 9 8.5z"/></svg>'
+    },
+    analyst:{
+      n:"Der Analytiker", c:"#7C9CF0",
+      l:"Sie hören nicht die Worte, sondern den Sinn. Während der Kunde „zu teuer“ sagt, verstehen Sie bereits, womit er vergleicht und wovor er tatsächlich Angst hat.",
+      up:"Ein Einwand ist für Sie Information, keine Absage. Deshalb antworten Sie sachlich und nicht mit einer auswendig gelernten Floskel.",
+      w:"Verlieren Sie sich nicht in der Analyse: Manchmal ist der Mensch schon bereit zuzustimmen, und eine überflüssige Frage verkompliziert alles.",
+      i:'<svg viewBox="0 0 24 24" stroke="currentColor"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.6-3.6"/></svg>'
+    },
+    sprinter:{
+      n:"Der Sprinter", c:"#FF7A1A",
+      l:"Sie arbeiten mit Tempo: Sie erkennen schnell, ob Interesse besteht, und verschwenden keine Zeit, wo keines ist. Ihr Tag besteht aus vielen kurzen, präzisen Gesprächen.",
+      up:"Hohes Tempo und viele abgeschlossene Geschäfte. Für Sie ist die Umsatzbeteiligung kein Bonus, sondern der Hauptteil des Verdienstes.",
+      w:"Bei hohem Tempo übersieht man leicht einen zögernden Kunden, der eine Minute mehr braucht.",
+      i:'<svg viewBox="0 0 24 24" stroke="currentColor"><path d="M13 2 4.5 13.5H11l-1 8.5 8.5-11.5H12z"/></svg>'
+    },
+    marathon:{
+      n:"Der Langstreckenläufer", c:"#3FD07F",
+      l:"Ihre Stärke ist das gleichmäßige Tempo. Sie brennen nicht zur Schichtmitte aus und sehen am Monatsende genauso aus wie am Anfang.",
+      up:"Stabilität: Schichten werden besetzt, Kennzahlen schwanken nicht, auf Sie ist Verlass.",
+      w:"Das gleichmäßige Tempo hindert manchmal daran, dort zu riskieren, wo ein Sprint nötig wäre. Versuchen Sie, gelegentlich zu beschleunigen.",
+      i:'<svg viewBox="0 0 24 24" stroke="currentColor"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg>'
+    },
+    mentor:{
+      n:"Mentor", c:"#B48CF2",
+      l:"Sie erklären so, dass alle es verstehen — Kunden wie die Neueinsteiger neben Ihnen. Schon in der zweiten Woche kommt man mit Fragen zu Ihnen.",
+      up:"Sie eignen sich das Produkt schnell an und können Wissen weitergeben. Das ist ein direkter Weg zum Aufstieg im Team.",
+      w:"Wer anderen hilft, kann bei den eigenen Kennzahlen leicht nachlassen. Die eigene Schicht bleibt doch das Erste.",
+      i:'<svg viewBox="0 0 24 24" stroke="currentColor"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="m17 11 2 2 4-4"/></svg>'
+    }
+  };
+
+  var Q = [
+    { q:"Der Kunde sagt gleich „ich habe keine Zeit“",
+      a:[ {t:"Ich biete ruhig an, zu einem passenden Zeitpunkt zurückzurufen", k:"diplomat"},
+          {t:"Ich frage nach, was genau gerade nicht passt — vielleicht liegt es nicht an der Zeit", k:"analyst"},
+          {t:"In zehn Sekunden nenne ich das Wesentliche: bei Interesse machen wir weiter", k:"sprinter"},
+          {t:"Ich vermerke es in der Datenbank und komme später planmäßig darauf zurück", k:"marathon"} ] },
+    { q:"Was ist für Sie eine gelungene Schicht?",
+      a:[ {t:"Viele Gespräche und hohes Tempo", k:"sprinter"},
+          {t:"Kein einziger Konflikt, alle waren zufrieden", k:"diplomat"},
+          {t:"Den Plan gleichmäßig erfüllt, ohne Einbrüche", k:"marathon"},
+          {t:"Einem Neueinsteiger geholfen, ohne selbst nachzulassen", k:"mentor"} ] },
+    { q:"Ein Neueinsteiger neben Ihnen kommt mit einem Anruf nicht zurecht",
+      a:[ {t:"Ich souffliere ihm einen Satz mitten im Gespräch", k:"mentor"},
+          {t:"Ich gehe die Aufzeichnung nach der Schicht mit ihm durch", k:"analyst"},
+          {t:"Ich beruhige ihn: Die ersten Tage sind für alle schwer", k:"diplomat"},
+          {t:"Ich lasse ihn die Schicht beenden und bespreche es in Ruhe", k:"marathon"} ] },
+    { q:"Wie stehen Sie zum Leitfaden?",
+      a:[ {t:"Ich halte die Struktur, die Worte wähle ich nach Situation", k:"marathon"},
+          {t:"Ich suche darin Schwachstellen und schlage Korrekturen vor", k:"analyst"},
+          {t:"Ich nehme nur, was das Gespräch beschleunigt", k:"sprinter"},
+          {t:"Ich erkläre Neueinsteigern, wozu jeder Block da ist", k:"mentor"} ] },
+    { q:"Der Kunde wird offen unhöflich",
+      a:[ {t:"Ich nehme es nicht persönlich und mache ruhig weiter", k:"diplomat"},
+          {t:"Ich beende das Gespräch höflich und arbeite die Datenbank weiter ab", k:"sprinter"},
+          {t:"Ich versuche zu verstehen, was die Reaktion ausgelöst hat", k:"analyst"},
+          {t:"Später erzähle ich dem Team, wie ich aus der Situation herausgekommen bin", k:"mentor"} ] },
+    { q:"Was erwarten Sie in einem halben Jahr von der Arbeit?",
+      a:[ {t:"Ein stabiles Einkommen ohne Stress", k:"marathon"},
+          {t:"Das Maximum bei der Umsatzbeteiligung", k:"sprinter"},
+          {t:"Den Ruf eines Menschen, mit dem man leicht sprechen kann", k:"diplomat"},
+          {t:"Das Produkt besser zu kennen als alle anderen im Team", k:"analyst"} ] }
+  ];
+
+  var i = 0, tally = {}, order = [];
+  var $ = function(id){ return document.getElementById(id); };
+  var screens = { start:$("s-start"), quiz:$("s-quiz"), res:$("s-res") };
+
+  function show(n){
+    for (var k in screens) screens[k].classList.toggle("on", k === n);
+    window.scrollTo({top:0, behavior:"smooth"});
+  }
+
+  function pips(){
+    var box = $("pips"); box.innerHTML = "";
+    for (var k = 0; k < Q.length; k++){
+      var d = document.createElement("i");
+      if (k < i) d.className = "done"; else if (k === i) d.className = "now";
+      box.appendChild(d);
+    }
+  }
+
+  function render(){
+    pips();
+    $("qn").textContent = "Frage " + (i+1) + " von " + Q.length;
+    $("qtext").textContent = Q[i].q;
+    var box = $("opts"); box.innerHTML = "";
+    Q[i].a.forEach(function(o){
+      var b = document.createElement("button");
+      b.className = "opt"; b.type = "button"; b.textContent = o.t;
+      b.addEventListener("click", function(){ pick(o.k); });
+      box.appendChild(b);
+    });
+  }
+
+  function pick(key){
+    tally[key] = (tally[key] || 0) + 1;
+    order.push(key);
+    if (i < Q.length - 1){ i++; render(); } else { finish(); }
+  }
+
+  function finish(){
+    // побеждает тип с максимумом; при равенстве — тот, что выбран раньше
+    var best = null, max = -1;
+    Object.keys(tally).forEach(function(k){
+      var v = tally[k];
+      if (v > max || (v === max && order.indexOf(k) < order.indexOf(best))){ max = v; best = k; }
+    });
+    var t = TYPES[best];
+
+    $("emblem").innerHTML = t.i;
+    $("emblem").style.background = "linear-gradient(150deg," + t.c + "33, transparent)";
+    $("emblem").style.color = t.c;
+    $("tname").textContent = t.n;
+    $("tname").style.color = t.c;
+    $("tlead").textContent = t.l;
+    $("tup").textContent = t.up;
+    $("twatch").textContent = t.w;
+    $("sharetext").textContent = "Mein Agententyp ist „" + t.n + "“. Und Ihrer?";
+    show("res");
+  }
+
+  $("begin").addEventListener("click", function(){ i=0; tally={}; order=[]; render(); show("quiz"); });
+  $("again").addEventListener("click", function(){ i=0; tally={}; order=[]; show("start"); });
+
+  $("copy").addEventListener("click", function(){
+    var txt = $("sharetext").textContent + " " + location.href;
+    var done = function(){ $("copy").textContent = "Kopiert"; setTimeout(function(){ $("copy").textContent = "Kopieren"; }, 1800); };
+    if (navigator.clipboard && navigator.clipboard.writeText){
+      navigator.clipboard.writeText(txt).then(done, function(){ fallback(txt, done); });
+    } else { fallback(txt, done); }
+  });
+
+  function fallback(txt, done){
+    var ta = document.createElement("textarea");
+    ta.value = txt; ta.setAttribute("readonly",""); ta.style.position = "fixed"; ta.style.opacity = "0";
+    document.body.appendChild(ta); ta.select();
+    try { document.execCommand("copy"); done(); } catch(e){}
+    document.body.removeChild(ta);
+  }
+})();
+</script>
+
+
+<script>
+(function(){
+  var sw=document.querySelector('.lang-sw'); if(!sw) return;
+  var btn=sw.querySelector('.lang-btn'), menu=sw.querySelector('.lang-menu');
+  function close(){menu.hidden=true;sw.classList.remove('open');btn.setAttribute('aria-expanded','false');}
+  btn.addEventListener('click',function(e){e.stopPropagation();
+    if(menu.hidden){menu.hidden=false;sw.classList.add('open');btn.setAttribute('aria-expanded','true');}else close();});
+  document.addEventListener('click',function(e){if(!sw.contains(e.target))close();});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')close();});
+  menu.addEventListener('click',function(e){var a=e.target.closest('a[data-lang]');if(a){close();}});
+})();
+</script>
+</body>
+</html>

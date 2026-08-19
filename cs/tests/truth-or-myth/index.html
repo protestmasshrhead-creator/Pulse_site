@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pravda, nebo mýtus o práci v call centru — Pulse Call</title>
+<meta name="description" content="Osm rozšířených tvrzení o práci operátora na dálku. Ověřte, kde je pravda a kde mýtus — s poctivým vysvětlením.">
+<link rel="canonical" href="https://pulse-call.com/cs/tests/truth-or-myth/">
+<link rel="alternate" hreflang="ru" href="https://pulse-call.com/tests/truth-or-myth/">
+<link rel="alternate" hreflang="en" href="https://pulse-call.com/en/tests/truth-or-myth/">
+<link rel="alternate" hreflang="de" href="https://pulse-call.com/de/tests/truth-or-myth/">
+<link rel="alternate" hreflang="es" href="https://pulse-call.com/es/tests/truth-or-myth/">
+<link rel="alternate" hreflang="cs" href="https://pulse-call.com/cs/tests/truth-or-myth/">
+<link rel="alternate" hreflang="sk" href="https://pulse-call.com/sk/tests/truth-or-myth/">
+<link rel="alternate" hreflang="ro" href="https://pulse-call.com/ro/tests/truth-or-myth/">
+<link rel="alternate" hreflang="hu" href="https://pulse-call.com/hu/tests/truth-or-myth/">
+<link rel="alternate" hreflang="x-default" href="https://pulse-call.com/tests/truth-or-myth/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --deep:#071229;--ink:#0A1A33;--panel:#0E1E3C;--hair:rgba(255,255,255,.14);
+  --blue:#4C8DF6;--orange:#FF7A1A;--muted:#8FA6C4;
+  --ok:#3FD07F;--no:#FF6B6B;
+}
+*{box-sizing:border-box}
+body{
+  margin:0;background:var(--deep);color:#EAF1FB;min-height:100vh;
+  font-family:'Inter',system-ui,sans-serif;font-size:17px;line-height:1.6;
+  -webkit-font-smoothing:antialiased;display:flex;flex-direction:column;
+}
+.wrap{width:100%;max-width:720px;margin:0 auto;padding:0 20px}
+h1,h2,h3{font-family:'Manrope',sans-serif;margin:0;letter-spacing:-.03em;line-height:1.1}
+p{margin:0}
+a{color:inherit}
+.mono{font-family:'JetBrains Mono',ui-monospace,monospace}
+
+header{border-bottom:1px solid var(--hair);padding:15px 0}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:14px}
+.logo{font-family:'Manrope';font-weight:800;font-size:19px;color:#fff;display:flex;align-items:center;gap:9px;text-decoration:none;letter-spacing:-.03em}
+.logo i{width:8px;height:8px;border-radius:50%;background:var(--orange)}
+.nav a.back{color:#8FA6C4;font-size:14px;text-decoration:none}
+.nav a.back:hover{color:#fff}
+
+main{flex:1;display:flex;align-items:center;padding:38px 0 54px}
+.stage{width:100%}
+.screen{display:none}
+.screen.on{display:block;animation:in .3s ease both}
+@keyframes in{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:9px;border:0;cursor:pointer;
+  font-family:'Inter',sans-serif;font-weight:600;font-size:16.5px;padding:16px 32px;border-radius:999px;
+  text-decoration:none;transition:.18s;
+}
+.btn-p{background:var(--orange);color:#12203A;box-shadow:0 10px 26px rgba(255,122,26,.26)}
+.btn-p:hover{background:#EE6C0D;transform:translateY(-2px)}
+.btn-g{background:transparent;color:#EAF1FB;border:1.5px solid var(--hair)}
+.btn-g:hover{border-color:var(--blue);color:#fff}
+
+.kicker{
+  display:inline-flex;align-items:center;gap:8px;font-family:'Manrope';font-weight:700;font-size:12px;
+  letter-spacing:.16em;text-transform:uppercase;color:var(--blue);
+  border:1px solid var(--hair);padding:7px 14px;border-radius:999px;margin-bottom:22px;
+}
+.start h1{font-size:clamp(32px,5.6vw,50px);font-weight:800;max-width:15ch}
+.start h1 em{font-style:normal;color:var(--orange)}
+.start .sub{margin-top:18px;font-size:18px;color:#B7C7DD;max-width:46ch}
+.start .go{margin-top:30px;display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.tiny{font-size:13.5px;color:var(--muted)}
+
+/* прогресс точками — колода карт */
+.dots{display:flex;gap:7px;margin-bottom:24px}
+.dots i{height:4px;flex:1;border-radius:999px;background:rgba(255,255,255,.14);transition:background .25s}
+.dots i.done{background:var(--blue)}
+.dots i.now{background:var(--orange)}
+
+.count{font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--muted);letter-spacing:.06em;margin-bottom:14px}
+
+/* карта с утверждением */
+.card{
+  background:linear-gradient(150deg,#12295A 0%,#0C1F3F 60%,#0A1A33 100%);
+  border:1px solid var(--hair);border-radius:22px;padding:38px 34px;position:relative;overflow:hidden;
+  box-shadow:0 20px 50px rgba(0,0,0,.30);
+}
+.card::before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--blue)}
+.card q{font-family:'Manrope',sans-serif;font-weight:800;font-size:clamp(21px,3.4vw,29px);
+  letter-spacing:-.02em;line-height:1.24;display:block;quotes:"«" "»"}
+
+.choose{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:22px}
+@media(max-width:520px){.choose{grid-template-columns:1fr}}
+.pick{
+  cursor:pointer;border:1.5px solid var(--hair);background:rgba(255,255,255,.04);color:#EAF1FB;
+  font-family:'Manrope',sans-serif;font-weight:800;font-size:18px;letter-spacing:-.01em;
+  padding:20px;border-radius:16px;transition:.16s;
+}
+.pick:hover{border-color:var(--blue);background:rgba(76,141,246,.12);transform:translateY(-2px)}
+.pick.t:hover{border-color:var(--ok);background:rgba(63,208,127,.12)}
+.pick.f:hover{border-color:var(--no);background:rgba(255,107,107,.12)}
+
+/* разбор */
+.rev{margin-top:18px;border-radius:18px;padding:24px 26px;border:1px solid var(--hair);background:var(--panel)}
+.verdict{display:flex;align-items:center;gap:11px;font-family:'Manrope';font-weight:800;font-size:17px;margin-bottom:10px}
+.verdict .b{
+  font-size:12px;letter-spacing:.14em;text-transform:uppercase;padding:5px 11px;border-radius:999px;
+}
+.verdict.win .b{background:rgba(63,208,127,.18);color:var(--ok);border:1px solid rgba(63,208,127,.4)}
+.verdict.lose .b{background:rgba(255,107,107,.15);color:var(--no);border:1px solid rgba(255,107,107,.38)}
+.rev p{color:#C4D3E7;font-size:16px}
+.rev .next{margin-top:20px;display:flex;justify-content:flex-end}
+
+/* итог */
+.res{text-align:center}
+.score{font-family:'Manrope';font-weight:800;font-size:clamp(52px,12vw,86px);letter-spacing:-.04em;line-height:1}
+.score span{color:var(--orange)}
+.score small{display:block;font-family:'Inter';font-weight:400;font-size:15px;color:var(--muted);letter-spacing:0;margin-top:8px}
+.res h2{font-size:clamp(23px,3.4vw,30px);font-weight:800;margin-top:26px}
+.res .lead{color:#B7C7DD;margin-top:12px;max-width:48ch;margin-inline:auto}
+.cta{margin-top:30px;display:flex;flex-wrap:wrap;gap:12px;justify-content:center}
+
+footer{border-top:1px solid var(--hair);padding:26px 0;color:var(--muted);font-size:13.5px}
+.foot{display:flex;flex-wrap:wrap;gap:8px 18px;justify-content:space-between}
+.foot a{color:var(--muted);text-decoration:none}
+.foot a:hover{color:#fff}
+
+*:focus-visible{outline:2px solid var(--orange);outline-offset:3px;border-radius:8px}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+@media(max-width:560px){.btn{width:100%}.start .go{flex-direction:column;align-items:stretch}.card{padding:30px 24px}}
+
+.lang-sw{position:relative;flex:none;margin-left:auto}
+.lang-btn{display:inline-flex;align-items:center;gap:8px;cursor:pointer;
+  background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.22);color:#EAF1FB;
+  font:inherit;font-size:14px;font-weight:600;padding:8px 12px;border-radius:999px;transition:.16s;line-height:1}
+.lang-btn:hover{border-color:rgba(255,122,26,.7)}
+.lang-btn svg{width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:2}
+.lang-btn .car{width:10px;height:10px;opacity:.75;transition:transform .18s}
+.lang-sw.open .lang-btn .car{transform:rotate(180deg)}
+.lang-menu{position:absolute;top:calc(100% + 8px);right:0;min-width:200px;z-index:80;
+  background:#0E1E3C;border:1px solid rgba(255,255,255,.2);border-radius:14px;padding:6px;
+  box-shadow:0 18px 44px rgba(0,0,0,.45)}
+.lang-menu[hidden]{display:none}
+.lang-menu a{display:flex;align-items:center;justify-content:space-between;gap:10px;
+  padding:10px 12px;border-radius:10px;text-decoration:none;color:#DCE7F6;font-size:14px;transition:.14s}
+.lang-menu a:hover{background:rgba(76,141,246,.18);color:#fff}
+.lang-menu a[aria-current="true"]{background:rgba(255,122,26,.16);color:#fff}
+.lang-menu b.code{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.1em;font-weight:700}
+@media(max-width:600px){.lang-btn span.lbl{display:none}}
+</style>
+</head>
+<body>
+
+<header><div class="wrap nav">
+  <a class="logo" href="/cs/"><i></i>Pulse Call</a>
+  <a class="back" href="/cs/tests/">← Všechny testy</a>
+  <div class="lang-sw" data-lang="cs">
+    <button type="button" class="lang-btn" aria-haspopup="true" aria-expanded="false" aria-label="Vybrat jazyk">
+      <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a15 15 0 0 1 0 18 15 15 0 0 1 0-18z"/></svg>
+      <span class="lbl">Čeština</span>
+      <svg class="car" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg>
+    </button>
+    <div class="lang-menu" role="menu" hidden>
+      <a href="/tests/truth-or-myth/" data-lang="ru" hreflang="ru">Русский<b class="code">RU</b></a>
+      <a href="/en/tests/truth-or-myth/" data-lang="en" hreflang="en">English<b class="code">EN</b></a>
+      <a href="/de/tests/truth-or-myth/" data-lang="de" hreflang="de">Deutsch<b class="code">DE</b></a>
+      <a href="/es/tests/truth-or-myth/" data-lang="es" hreflang="es">Español<b class="code">ES</b></a>
+      <a href="/cs/tests/truth-or-myth/" data-lang="cs" aria-current="true">Čeština<b class="code">CS</b></a>
+      <a href="/sk/tests/truth-or-myth/" data-lang="sk" hreflang="sk">Slovenčina<b class="code">SK</b></a>
+      <a href="/ro/tests/truth-or-myth/" data-lang="ro" hreflang="ro">Română<b class="code">RO</b></a>
+      <a href="/hu/tests/truth-or-myth/" data-lang="hu" hreflang="hu">Magyar<b class="code">HU</b></a>
+    </div>
+  </div>
+</div></header>
+
+<main><div class="wrap stage">
+
+  <section class="screen on start" id="s-start">
+    <span class="kicker">8 karet · 2 minuty</span>
+    <h1>Pravda, nebo <em>mýtus</em>?</h1>
+    <p class="sub">O práci v call centru koluje spousta pověstí. Ověřte si, co z toho je pravda — a kde vás uvádějí v omyl. Rozbor je poctivý: tam, kde se mýtus ukáže jako pravda, to tak napíšeme.</p>
+    <div class="go">
+      <button class="btn btn-p" id="begin">Začít</button>
+      <span class="tiny">Bez registrace</span>
+    </div>
+  </section>
+
+  <section class="screen" id="s-game" aria-live="polite">
+    <div class="dots" id="dots"></div>
+    <p class="count" id="count"></p>
+    <div class="card"><q id="claim"></q></div>
+    <div class="choose" id="choose">
+      <button class="pick t" id="pTrue">Pravda</button>
+      <button class="pick f" id="pFalse">Mýtus</button>
+    </div>
+    <div id="reveal"></div>
+  </section>
+
+  <section class="screen res" id="s-res">
+    <p class="score"><span id="sc">0</span>/8<small>správných odpovědí</small></p>
+    <h2 id="title"></h2>
+    <p class="lead" id="lead"></p>
+    <div class="cta">
+      <a class="btn btn-p" href="/cs/jobs/operators/#form">Podat přihlášku</a>
+      <button class="btn btn-g" id="again">Zkusit znovu</button>
+    </div>
+  </section>
+
+</div></main>
+
+<footer><div class="wrap foot">
+  <span>© 2026 Pulse Call</span>
+  <span>
+    <a href="/cs/tests/">Všechny testy</a> ·
+    <a href="/cs/about/">O společnosti</a> ·
+    <a href="/cs/jobs/operators/">Pozice</a> ·
+    <a href="/cs/legal/privacy-policy/">Zásady ochrany údajů</a>
+  </span>
+</div></footer>
+
+<script>
+(function(){
+  "use strict";
+
+  // Каждый разбор опирается на то, что компания заявляет на странице вакансии.
+  var CARDS = [
+    { c:"Klienty si operátor hledá sám",
+      t:false,
+      e:"Databázi dodává společnost. Operátor volá na hotové kontakty a pracuje podle skriptů — klienty hledat sám nemusí." },
+    { c:"Bez zkušeností s prodejem vás nevezmou",
+      t:false,
+      e:"Zkušenosti nejsou podmínkou. Zaškolení probíhá od nuly a trvá 3 až 7 dní, skripty dostanete před prvními hovory. Zkušenost bude výhodou, ale ne podmínkou." },
+    { c:"Na mzdu se čeká do konce měsíce",
+      t:false,
+      e:"Cyklus výplat je každých 10 dní. První výplata přijde, aniž byste čekali na konec měsíce." },
+    { c:"2000 € dostává každý operátor",
+      t:false,
+      e:"Je to horní hranice, ne zaručená částka. Výdělek se skládá z hodinové sazby a procenta z prodeje a závisí na odpracovaných hodinách a výsledku." },
+    { c:"Pracovat lze odkudkoli na světě",
+      t:true,
+      e:"Ano. Formát je na dálku: potřebujete notebook nebo počítač a stabilní internet. Stěhování do jiné země práci nebrání." },
+    { c:"Po zaškolení nechají nováčka samotného",
+      t:false,
+      e:"Při prvních hovorech je vedle vás mentor, zaškolení vede školitel, za směnu a výsledky odpovídá supervizor. Na koho se obrátit je v každé fázi." },
+    { c:"Základní rozvrh je 2 dny práce, 2 dny volno",
+      t:true,
+      e:"Ano, 2/2 je základní rozvrh. Přejít na 5/2 lze, ale domlouvá se to s vedoucím, nevybírá se to automaticky." },
+    { c:"Čeština je potřeba na úrovni rodilého mluvčího",
+      t:false,
+      e:"Stačí úroveň B2+ — jistá ústně i písemně. Rodilým mluvčím být nemusíte." }
+  ];
+
+  var i = 0, score = 0, locked = false;
+  var $ = function(id){ return document.getElementById(id); };
+  var screens = { start:$("s-start"), game:$("s-game"), res:$("s-res") };
+
+  function show(n){
+    for (var k in screens) screens[k].classList.toggle("on", k === n);
+    window.scrollTo({top:0, behavior:"smooth"});
+  }
+
+  function dots(){
+    var box = $("dots");
+    box.innerHTML = "";
+    for (var k = 0; k < CARDS.length; k++){
+      var d = document.createElement("i");
+      if (k < i) d.className = "done";
+      else if (k === i) d.className = "now";
+      box.appendChild(d);
+    }
+  }
+
+  function render(){
+    locked = false;
+    dots();
+    $("count").textContent = "Karta " + (i+1) + " z " + CARDS.length;
+    $("claim").textContent = CARDS[i].c;
+    $("choose").style.display = "";
+    $("reveal").innerHTML = "";
+  }
+
+  function answer(said){
+    if (locked) return;
+    locked = true;
+    var card = CARDS[i];
+    var right = (said === card.t);
+    if (right) score++;
+
+    $("choose").style.display = "none";
+    var box = $("reveal");
+    box.innerHTML =
+      '<div class="rev">' +
+        '<div class="verdict ' + (right ? "win" : "lose") + '">' +
+          '<span class="b">' + (right ? "Přesně tak" : "Vedle") + '</span>' +
+          '<span>' + (card.t ? "Je to pravda" : "Je to mýtus") + '</span>' +
+        '</div>' +
+        '<p>' + card.e + '</p>' +
+        '<div class="next"><button class="btn btn-p" id="next">' +
+          (i === CARDS.length - 1 ? "Zobrazit výsledek" : "Dál") +
+        '</button></div>' +
+      '</div>';
+
+    $("next").addEventListener("click", function(){
+      if (i < CARDS.length - 1){ i++; render(); }
+      else { finish(); }
+    });
+    $("next").focus();
+  }
+
+  function finish(){
+    $("sc").textContent = String(score);
+    var t, l;
+    if (score >= 7){
+      t = "Vás neoklamou";
+      l = "Dobře si představujete, jak práce operátora funguje. Zbývá si to ověřit v praxi.";
+    } else if (score >= 4){
+      t = "Polovinu pověstí jste prohlédli";
+      l = "Část představ o call centrech je zastaralá. Jak to funguje dnes, je stručně popsáno na stránce pozice.";
+    } else {
+      t = "Pověsti byly silnější";
+      l = "Většina obav z práce operátora se nepotvrzuje. Podívejte se na podmínky — je tam všechno bez drobného písma.";
+    }
+    $("title").textContent = t;
+    $("lead").textContent = l;
+    show("res");
+  }
+
+  $("begin").addEventListener("click", function(){ i = 0; score = 0; render(); show("game"); });
+  $("pTrue").addEventListener("click", function(){ answer(true); });
+  $("pFalse").addEventListener("click", function(){ answer(false); });
+  $("again").addEventListener("click", function(){ i = 0; score = 0; show("start"); });
+})();
+</script>
+
+
+<script>
+(function(){
+  var sw=document.querySelector('.lang-sw'); if(!sw) return;
+  var btn=sw.querySelector('.lang-btn'), menu=sw.querySelector('.lang-menu');
+  function close(){menu.hidden=true;sw.classList.remove('open');btn.setAttribute('aria-expanded','false');}
+  btn.addEventListener('click',function(e){e.stopPropagation();
+    if(menu.hidden){menu.hidden=false;sw.classList.add('open');btn.setAttribute('aria-expanded','true');}else close();});
+  document.addEventListener('click',function(e){if(!sw.contains(e.target))close();});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')close();});
+  menu.addEventListener('click',function(e){var a=e.target.closest('a[data-lang]');if(a){close();}});
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Értesz az értékesítéshez? Teszt — Pulse Call</title>
+<meta name="description" content="Hét kérdés a telefonos értékesítésről és a kifogások kezeléséről. Minden válasz elemzésével — akkor is, ha nincs tapasztalatod.">
+<link rel="canonical" href="https://pulse-call.com/hu/tests/knowledge-test/">
+<link rel="alternate" hreflang="ru" href="https://pulse-call.com/tests/knowledge-test/">
+<link rel="alternate" hreflang="en" href="https://pulse-call.com/en/tests/knowledge-test/">
+<link rel="alternate" hreflang="de" href="https://pulse-call.com/de/tests/knowledge-test/">
+<link rel="alternate" hreflang="es" href="https://pulse-call.com/es/tests/knowledge-test/">
+<link rel="alternate" hreflang="cs" href="https://pulse-call.com/cs/tests/knowledge-test/">
+<link rel="alternate" hreflang="sk" href="https://pulse-call.com/sk/tests/knowledge-test/">
+<link rel="alternate" hreflang="ro" href="https://pulse-call.com/ro/tests/knowledge-test/">
+<link rel="alternate" hreflang="hu" href="https://pulse-call.com/hu/tests/knowledge-test/">
+<link rel="alternate" hreflang="x-default" href="https://pulse-call.com/tests/knowledge-test/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#0A1A33;--paper:#EEF2F8;--card:#fff;--line:#D8E2EF;
+  --blue:#1155CC;--blue-soft:#E7EFFD;--orange:#FF7A1A;--muted:#5C6470;
+  --ok:#0E9A57;--ok-soft:#E4F6EC;--no:#D64545;--no-soft:#FDECEC;
+}
+*{box-sizing:border-box}
+body{
+  margin:0;background:var(--paper);color:var(--ink);min-height:100vh;
+  font-family:'Inter',system-ui,sans-serif;font-size:17px;line-height:1.6;
+  -webkit-font-smoothing:antialiased;display:flex;flex-direction:column;
+}
+.wrap{width:100%;max-width:700px;margin:0 auto;padding:0 20px}
+h1,h2,h3{font-family:'Manrope',sans-serif;margin:0;letter-spacing:-.03em;line-height:1.12}
+p{margin:0}
+a{color:inherit}
+.mono{font-family:'JetBrains Mono',ui-monospace,monospace}
+
+header{background:var(--ink);padding:15px 0}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:14px}
+.logo{font-family:'Manrope';font-weight:800;font-size:19px;color:#fff;display:flex;align-items:center;gap:9px;text-decoration:none;letter-spacing:-.03em}
+.logo i{width:8px;height:8px;border-radius:50%;background:var(--orange)}
+.nav a.back{color:#8FA6C4;font-size:14px;text-decoration:none}
+.nav a.back:hover{color:#fff}
+
+main{flex:1;display:flex;align-items:center;padding:40px 0 56px}
+.stage{width:100%}
+.screen{display:none}
+.screen.on{display:block;animation:in .3s ease both}
+@keyframes in{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:9px;border:0;cursor:pointer;
+  font-family:'Inter',sans-serif;font-weight:600;font-size:16.5px;padding:16px 32px;border-radius:999px;
+  text-decoration:none;transition:.18s;
+}
+.btn-p{background:var(--orange);color:#12203A;box-shadow:0 10px 26px rgba(255,122,26,.24)}
+.btn-p:hover{background:#EE6C0D;transform:translateY(-2px)}
+.btn-g{background:transparent;color:var(--ink);border:1.5px solid var(--line)}
+.btn-g:hover{border-color:var(--blue);color:var(--blue)}
+
+.kicker{
+  display:inline-flex;align-items:center;gap:8px;font-family:'Manrope';font-weight:700;font-size:12px;
+  letter-spacing:.16em;text-transform:uppercase;color:var(--blue);
+  background:var(--blue-soft);padding:7px 14px;border-radius:999px;margin-bottom:22px;
+}
+.start h1{font-size:clamp(31px,5.4vw,48px);font-weight:800;max-width:17ch}
+.start h1 em{font-style:normal;color:var(--orange)}
+.start .sub{margin-top:18px;font-size:18px;color:var(--muted);max-width:47ch}
+.start .go{margin-top:30px;display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.tiny{font-size:13.5px;color:var(--muted)}
+.calm{
+  margin-top:26px;background:var(--blue-soft);border-radius:14px;padding:15px 18px;
+  font-size:15px;color:#1B3B70;
+}
+
+/* шкала-сегменты вместо полоски */
+.segs{display:flex;gap:5px;margin-bottom:8px}
+.segs i{height:5px;flex:1;border-radius:999px;background:#DCE4EF;transition:background .25s}
+.segs i.ok{background:var(--ok)}
+.segs i.bad{background:var(--no)}
+.segs i.now{background:var(--orange)}
+.topline{display:flex;justify-content:space-between;align-items:center;margin:0 0 22px}
+.topline .n{font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--muted);letter-spacing:.05em}
+.chip{
+  font-family:'JetBrains Mono',monospace;font-weight:700;font-size:13px;color:var(--ok);
+  background:var(--ok-soft);padding:5px 11px;border-radius:999px;
+}
+
+.q h2{font-size:clamp(21px,3.2vw,28px);font-weight:800;max-width:26ch}
+.situ{
+  background:var(--card);border:1px solid var(--line);border-left:3px solid var(--blue);
+  border-radius:0 14px 14px 0;padding:16px 20px;margin-top:18px;color:#33445E;font-size:16px;
+}
+.opts{display:grid;gap:10px;margin-top:22px}
+.opt{
+  display:flex;gap:14px;align-items:flex-start;width:100%;text-align:left;cursor:pointer;
+  background:var(--card);border:1.5px solid var(--line);border-radius:14px;padding:17px 19px;
+  font:inherit;color:var(--ink);transition:.15s;
+}
+.opt:hover:not(:disabled){border-color:var(--blue);transform:translateX(3px)}
+.opt:disabled{cursor:default;opacity:.75}
+.opt .ltr{
+  flex:none;width:27px;height:27px;border-radius:9px;background:#EDF2FA;color:var(--muted);
+  display:grid;place-items:center;font-family:'Manrope';font-weight:800;font-size:13px;transition:.15s;
+}
+.opt.right{border-color:var(--ok);background:var(--ok-soft);opacity:1}
+.opt.right .ltr{background:var(--ok);color:#fff}
+.opt.wrong{border-color:var(--no);background:var(--no-soft);opacity:1}
+.opt.wrong .ltr{background:var(--no);color:#fff}
+
+.why{
+  margin-top:14px;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:19px 21px;
+}
+.why b{display:block;font-family:'Manrope';font-weight:800;font-size:15px;margin-bottom:7px}
+.why p{color:#33445E;font-size:15.5px}
+.why .next{margin-top:18px;display:flex;justify-content:flex-end}
+
+/* результат */
+.res{text-align:center}
+.ring{margin:0 auto;display:block;width:190px;height:190px}
+.ring circle{fill:none;stroke-width:14}
+.ring .bg{stroke:#DCE4EF}
+.ring .fg{stroke:var(--orange);stroke-linecap:round;transform:rotate(-90deg);transform-origin:50% 50%;
+  transition:stroke-dashoffset 1s cubic-bezier(.2,.8,.2,1)}
+.ring text{font-family:'Manrope',sans-serif;font-weight:800;font-size:40px;fill:var(--ink)}
+.res h2{font-size:clamp(23px,3.4vw,30px);font-weight:800;margin-top:20px}
+.res .lead{color:var(--muted);margin-top:12px;max-width:48ch;margin-inline:auto}
+.res .hint{
+  margin-top:22px;background:var(--card);border:1px solid var(--line);border-radius:14px;
+  padding:18px 20px;font-size:15.5px;color:#33445E;text-align:left;
+}
+.cta{margin-top:28px;display:flex;flex-wrap:wrap;gap:12px;justify-content:center}
+
+footer{background:var(--ink);color:#8FA6C4;padding:26px 0;font-size:13.5px}
+.foot{display:flex;flex-wrap:wrap;gap:8px 18px;justify-content:space-between}
+.foot a{color:#8FA6C4;text-decoration:none}
+.foot a:hover{color:#fff}
+
+*:focus-visible{outline:2px solid var(--orange);outline-offset:3px;border-radius:8px}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+@media(max-width:560px){.btn{width:100%}.start .go{flex-direction:column;align-items:stretch}}
+
+.lang-sw{position:relative;flex:none;margin-left:auto}
+.lang-btn{display:inline-flex;align-items:center;gap:8px;cursor:pointer;
+  background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.22);color:#EAF1FB;
+  font:inherit;font-size:14px;font-weight:600;padding:8px 12px;border-radius:999px;transition:.16s;line-height:1}
+.lang-btn:hover{border-color:rgba(255,122,26,.7)}
+.lang-btn svg{width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:2}
+.lang-btn .car{width:10px;height:10px;opacity:.75;transition:transform .18s}
+.lang-sw.open .lang-btn .car{transform:rotate(180deg)}
+.lang-menu{position:absolute;top:calc(100% + 8px);right:0;min-width:200px;z-index:80;
+  background:#0E1E3C;border:1px solid rgba(255,255,255,.2);border-radius:14px;padding:6px;
+  box-shadow:0 18px 44px rgba(0,0,0,.45)}
+.lang-menu[hidden]{display:none}
+.lang-menu a{display:flex;align-items:center;justify-content:space-between;gap:10px;
+  padding:10px 12px;border-radius:10px;text-decoration:none;color:#DCE7F6;font-size:14px;transition:.14s}
+.lang-menu a:hover{background:rgba(76,141,246,.18);color:#fff}
+.lang-menu a[aria-current="true"]{background:rgba(255,122,26,.16);color:#fff}
+.lang-menu b.code{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.1em;font-weight:700}
+@media(max-width:600px){.lang-btn span.lbl{display:none}}
+</style>
+</head>
+<body>
+
+<header><div class="wrap nav">
+  <a class="logo" href="/hu/"><i></i>Pulse Call</a>
+  <a class="back" href="/hu/tests/">← Minden teszt</a>
+  <div class="lang-sw" data-lang="hu">
+    <button type="button" class="lang-btn" aria-haspopup="true" aria-expanded="false" aria-label="Nyelv választása">
+      <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a15 15 0 0 1 0 18 15 15 0 0 1 0-18z"/></svg>
+      <span class="lbl">Magyar</span>
+      <svg class="car" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg>
+    </button>
+    <div class="lang-menu" role="menu" hidden>
+      <a href="/tests/knowledge-test/" data-lang="ru" hreflang="ru">Русский<b class="code">RU</b></a>
+      <a href="/en/tests/knowledge-test/" data-lang="en" hreflang="en">English<b class="code">EN</b></a>
+      <a href="/de/tests/knowledge-test/" data-lang="de" hreflang="de">Deutsch<b class="code">DE</b></a>
+      <a href="/es/tests/knowledge-test/" data-lang="es" hreflang="es">Español<b class="code">ES</b></a>
+      <a href="/cs/tests/knowledge-test/" data-lang="cs" hreflang="cs">Čeština<b class="code">CS</b></a>
+      <a href="/sk/tests/knowledge-test/" data-lang="sk" hreflang="sk">Slovenčina<b class="code">SK</b></a>
+      <a href="/ro/tests/knowledge-test/" data-lang="ro" hreflang="ro">Română<b class="code">RO</b></a>
+      <a href="/hu/tests/knowledge-test/" data-lang="hu" aria-current="true">Magyar<b class="code">HU</b></a>
+    </div>
+  </div>
+</div></header>
+
+<main><div class="wrap stage">
+
+  <section class="screen on start" id="s-start">
+    <span class="kicker">7 kérdés · 3 perc</span>
+    <h1>Értesz a <em>telefonos értékesítéshez</em>?</h1>
+    <p class="sub">Hét helyzet, amellyel az operátor nap mint nap találkozik. Minden válasz után rövid magyarázat következik, miért éppen az a helyes.</p>
+    <div class="calm">Az alacsony eredmény semmit sem dönt el: a Pulse Callnál nulláról képzünk, és az értékesítési tapasztalat nem szerepel a követelmények között. A teszt arra való, hogy kipróbáld a munkát, nem arra, hogy kiszűrjön.</div>
+    <div class="go">
+      <button class="btn btn-p" id="begin">Teszt indítása</button>
+      <span class="tiny">Regisztráció nélkül</span>
+    </div>
+  </section>
+
+  <section class="screen q" id="s-quiz" aria-live="polite">
+    <div class="segs" id="segs"></div>
+    <div class="topline">
+      <span class="n" id="qn"></span>
+      <span class="chip" id="chip">0 helyes</span>
+    </div>
+    <h2 id="qtext"></h2>
+    <div class="situ" id="situ"></div>
+    <div class="opts" id="opts"></div>
+    <div id="why"></div>
+  </section>
+
+  <section class="screen res" id="s-res">
+    <svg class="ring" viewBox="0 0 120 120" role="img" aria-label="A teszt eredménye">
+      <circle class="bg" cx="60" cy="60" r="52"/>
+      <circle class="fg" id="fg" cx="60" cy="60" r="52" stroke-dasharray="327" stroke-dashoffset="327"/>
+      <text id="pct" x="60" y="74" text-anchor="middle">0</text>
+    </svg>
+    <h2 id="title"></h2>
+    <p class="lead" id="lead"></p>
+    <div class="hint" id="hint"></div>
+    <div class="cta">
+      <a class="btn btn-p" href="/hu/jobs/operators/#form">Jelentkezem</a>
+      <button class="btn btn-g" id="again">Újra próbálom</button>
+    </div>
+  </section>
+
+</div></main>
+
+<footer><div class="wrap foot">
+  <span>© 2026 Pulse Call</span>
+  <span>
+    <a href="/hu/tests/">Minden teszt</a> ·
+    <a href="/hu/about/">A cégről</a> ·
+    <a href="/hu/jobs/operators/">Álláshirdetés</a> ·
+    <a href="/hu/legal/privacy-policy/">Adatvédelmi szabályzat</a>
+  </span>
+</div></footer>
+
+<script>
+(function(){
+  "use strict";
+
+  var Q = [
+    {
+      q:"Mivel kezdd a beszélgetést?",
+      s:"Tárcsáztad a számot, az illető felvette, és röviden annyit mondott: „Halló?”",
+      a:[ "Rögtön rátérni az ajánlatra, mielőtt leteszi",
+          "Bemutatkozni, megnevezni a céget, és röviden elmondani, milyen ügyben hívsz",
+          "Megkérdezni, milyen a hangulata, és van-e pár perce beszélgetni" ],
+      ok:1,
+      e:"Az embernek pár másodperc alatt meg kell értenie, ki hívja és miért. Enélkül a hívás spamnek hat, egy ismeretlentől érkező hangulatkérdés pedig csak fokozza az ingerültséget."
+    },
+    {
+      q:"Mit jelent valójában az, hogy „drága”?",
+      s:"Az ügyfél végighallgatta az ajánlatot, és azt mondja: „Drága.”",
+      a:[ "Az illető nem hajlandó fizetni, ideje befejezni a beszélgetést",
+          "Azonnal kedvezményt kell ajánlani, különben elmegy",
+          "A leggyakrabban az illető nem látta, miért fizet — érdemes megkérdezni, mihez hasonlítja" ],
+      ok:2,
+      e:"A „drága” szinte sosem az összegről szól, hanem a nem világos értékről. A nyers kedvezmény leértékeli a terméket, a beszélgetést pedig korai lezárni: előbb érdemes kideríteni, mihez hasonlítja az illető."
+    },
+    {
+      q:"Melyik kérdés ad több információt?",
+      s:"Meg kell értened, mi fontos az ügyfélnek.",
+      a:[ "„Érdekli Önt ez?”",
+          "„Mi a legfontosabb Önnek a választásnál?”",
+          "„Megveszi?”" ],
+      ok:1,
+      e:"A zárt kérdések csak „igen” vagy „nem” választ adnak, és zsákutcába futnak. A nyitott kérdés ráveszi az embert, hogy meséljen a helyzetéről — onnantól már van mivel dolgozni."
+    },
+    {
+      q:"Az ügyfél ingerült, és felemeli a hangját",
+      s:"„Meddig fognak még hívogatni, elegem van magukból!”",
+      a:[ "Nyugodtan végighallgatni, nem közbevágni, és elismerni a kellemetlenséget",
+          "Ugyanolyan hangnemben válaszolni, különben a fejünkre nőnek",
+          "Gyorsan elhadarni az ajánlatot, mielőtt leteszi" ],
+      ok:0,
+      e:"Az ingerültség elül, ha az embert meghallgatták. A közbevágás és a felgyorsult beszéd fokozza a konfliktust, a hangnem tükrözése pedig biztos út a panaszhoz üzlet helyett."
+    },
+    {
+      q:"Hogyan használd a szkriptet?",
+      s:"A cég kész beszélgetési szkriptet adott.",
+      a:[ "Szó szerint felolvasni, egyetlen szótól sem eltérve",
+          "Vázként használni: a szerkezet ugyanaz, a szavak sajátok és élők",
+          "Egyszer átfutni, aztán beszélni, ahogy jön" ],
+      ok:1,
+      e:"A szó szerinti felolvasás hallatszik a hanghordozáson, és a bizalom csökken. A szkript megadja a beszélgetés logikáját és javaslatot ad a kifogásokra, de úgy kell hangoznia, mint a hétköznapi beszéd."
+    },
+    {
+      q:"Mit tegyél, miután kérdést tettél fel az ügyfélnek?",
+      s:"Feltettél egy kérdést. Az ügyfél néhány másodpercig hallgat.",
+      a:[ "Azonnal kitölteni a szünetet, és feltenni a következő kérdést",
+          "Kitartani a szünetet, és hagyni, hogy az illető válaszoljon",
+          "Megismételni a kérdést más szavakkal" ],
+      ok:1,
+      e:"A szünet munkaeszköz, nem kínos pillanat. Az embernek idő kell, hogy megfogalmazza a választ; ha kitöltöd, a beszélgetés az operátor monológjává válik."
+    },
+    {
+      q:"Mivel zárd a beszélgetést?",
+      s:"A megállapodás megszületett, ideje elköszönni.",
+      a:[ "Egyszerűen elköszönni, a részletekre az illető úgyis emlékszik",
+          "Még egyszer felsorolni a termék összes előnyét",
+          "Röviden összefoglalni, miben állapodtatok meg, és mi következik" ],
+      ok:2,
+      e:"A záró összefoglalás a jövőbeli félreértések felét megszünteti: az ember tiszta képpel távozik arról, mi és mikor fog történni. Az előnyöket a beleegyezés után ismételni annyi, mint újranyitni egy lezárt kérdést."
+    }
+  ];
+
+  var i = 0, score = 0, locked = false;
+  var $ = function(id){ return document.getElementById(id); };
+  var screens = { start:$("s-start"), quiz:$("s-quiz"), res:$("s-res") };
+  var marks = [];
+
+  function show(n){
+    for (var k in screens) screens[k].classList.toggle("on", k === n);
+    window.scrollTo({top:0, behavior:"smooth"});
+  }
+
+  function segs(){
+    var box = $("segs"); box.innerHTML = "";
+    for (var k = 0; k < Q.length; k++){
+      var s = document.createElement("i");
+      if (marks[k] === true) s.className = "ok";
+      else if (marks[k] === false) s.className = "bad";
+      else if (k === i) s.className = "now";
+      box.appendChild(s);
+    }
+  }
+
+  function render(){
+    locked = false;
+    segs();
+    $("qn").textContent = "Kérdés " + (i+1) + " / " + Q.length;
+    $("chip").textContent = score + " helyes";
+    $("qtext").textContent = Q[i].q;
+    $("situ").textContent = Q[i].s;
+    $("why").innerHTML = "";
+
+    var box = $("opts"); box.innerHTML = "";
+    Q[i].a.forEach(function(text, idx){
+      var b = document.createElement("button");
+      b.className = "opt"; b.type = "button";
+      b.innerHTML = '<span class="ltr">' + "ABC".charAt(idx) + '</span><span>' + text + '</span>';
+      b.addEventListener("click", function(){ answer(idx, b); });
+      box.appendChild(b);
+    });
+  }
+
+  function answer(idx, btn){
+    if (locked) return;
+    locked = true;
+    var item = Q[i];
+    var right = (idx === item.ok);
+    marks[i] = right;
+    if (right) score++;
+
+    var all = document.querySelectorAll("#opts .opt");
+    all.forEach(function(b, k){
+      b.disabled = true;
+      if (k === item.ok) b.classList.add("right");
+      else if (k === idx) b.classList.add("wrong");
+    });
+    segs();
+    $("chip").textContent = score + " helyes";
+
+    $("why").innerHTML =
+      '<div class="why"><b>' + (right ? "Helyes" : "A helyes válasz — " + "ABC".charAt(item.ok)) + '</b>' +
+      '<p>' + item.e + '</p>' +
+      '<div class="next"><button class="btn btn-p" id="next">' +
+        (i === Q.length - 1 ? "Eredmény megtekintése" : "Tovább") + '</button></div></div>';
+
+    $("next").addEventListener("click", function(){
+      if (i < Q.length - 1){ i++; render(); } else { finish(); }
+    });
+    $("next").focus();
+  }
+
+  function finish(){
+    var pct = Math.round(score / Q.length * 100);
+    $("pct").textContent = score + "/" + Q.length;
+    var LEN = 327;
+    setTimeout(function(){ $("fg").style.strokeDashoffset = String(LEN - LEN * (score / Q.length)); }, 90);
+
+    var t, l, h;
+    if (score >= 6){
+      t = "Van hozzá érzéked";
+      l = "Érted a beszélgetés logikáját: meghallgatni, pontosítani, nem nyomulni. Pontosan erre épül az operátori munka.";
+      h = "Ilyen értéssel a képzés gyorsan lezajlik — 3–7 napig tart, a szkripteket és az ügyféladatbázist pedig a cég adja.";
+    } else if (score >= 3){
+      t = "Az alapokat érzed";
+      l = "A helyzetek egy részét jól oldottad meg, más részét nem. Ez normális: a telefonbeszélgetést gyakorlatban tanulja meg az ember, nem elméletből.";
+      h = "A képzésen pontosan ilyen eseteket elemeztek, az első hívásoknál pedig mentor van melletted — kérdezni menet közben is lehet.";
+    } else {
+      t = "És ez teljesen normális";
+      l = "A teszt olyan készséget mért, amelyet külön tanítanak. Az értékesítési tapasztalat nem szerepel a pozíció követelményei között — az operátorok többsége enélkül érkezik.";
+      h = "A képzés nulláról indul, és 3–7 napig tart. Az elvégzett képzésért az első munkában töltött hónap után 150 € bónuszt fizetünk.";
+    }
+    $("title").textContent = t; $("lead").textContent = l; $("hint").textContent = h;
+    show("res");
+  }
+
+  $("begin").addEventListener("click", function(){ i=0; score=0; marks=[]; render(); show("quiz"); });
+  $("again").addEventListener("click", function(){
+    i=0; score=0; marks=[];
+    $("fg").style.strokeDashoffset = "327";
+    show("start");
+  });
+})();
+</script>
+
+
+<script>
+(function(){
+  var sw=document.querySelector('.lang-sw'); if(!sw) return;
+  var btn=sw.querySelector('.lang-btn'), menu=sw.querySelector('.lang-menu');
+  function close(){menu.hidden=true;sw.classList.remove('open');btn.setAttribute('aria-expanded','false');}
+  btn.addEventListener('click',function(e){e.stopPropagation();
+    if(menu.hidden){menu.hidden=false;sw.classList.add('open');btn.setAttribute('aria-expanded','true');}else close();});
+  document.addEventListener('click',function(e){if(!sw.contains(e.target))close();});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')close();});
+  menu.addEventListener('click',function(e){var a=e.target.closest('a[data-lang]');if(a){close();}});
+})();
+</script>
+</body>
+</html>

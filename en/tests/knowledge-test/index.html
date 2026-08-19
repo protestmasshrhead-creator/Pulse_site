@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Do you know sales? Test — Pulse Call</title>
+<meta name="description" content="Seven questions about phone sales and handling objections. With a breakdown of every answer — even if you have no experience.">
+<link rel="canonical" href="https://pulse-call.com/en/tests/knowledge-test/">
+<link rel="alternate" hreflang="ru" href="https://pulse-call.com/tests/knowledge-test/">
+<link rel="alternate" hreflang="en" href="https://pulse-call.com/en/tests/knowledge-test/">
+<link rel="alternate" hreflang="de" href="https://pulse-call.com/de/tests/knowledge-test/">
+<link rel="alternate" hreflang="es" href="https://pulse-call.com/es/tests/knowledge-test/">
+<link rel="alternate" hreflang="cs" href="https://pulse-call.com/cs/tests/knowledge-test/">
+<link rel="alternate" hreflang="sk" href="https://pulse-call.com/sk/tests/knowledge-test/">
+<link rel="alternate" hreflang="ro" href="https://pulse-call.com/ro/tests/knowledge-test/">
+<link rel="alternate" hreflang="hu" href="https://pulse-call.com/hu/tests/knowledge-test/">
+<link rel="alternate" hreflang="x-default" href="https://pulse-call.com/tests/knowledge-test/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#0A1A33;--paper:#EEF2F8;--card:#fff;--line:#D8E2EF;
+  --blue:#1155CC;--blue-soft:#E7EFFD;--orange:#FF7A1A;--muted:#5C6470;
+  --ok:#0E9A57;--ok-soft:#E4F6EC;--no:#D64545;--no-soft:#FDECEC;
+}
+*{box-sizing:border-box}
+body{
+  margin:0;background:var(--paper);color:var(--ink);min-height:100vh;
+  font-family:'Inter',system-ui,sans-serif;font-size:17px;line-height:1.6;
+  -webkit-font-smoothing:antialiased;display:flex;flex-direction:column;
+}
+.wrap{width:100%;max-width:700px;margin:0 auto;padding:0 20px}
+h1,h2,h3{font-family:'Manrope',sans-serif;margin:0;letter-spacing:-.03em;line-height:1.12}
+p{margin:0}
+a{color:inherit}
+.mono{font-family:'JetBrains Mono',ui-monospace,monospace}
+
+header{background:var(--ink);padding:15px 0}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:14px}
+.logo{font-family:'Manrope';font-weight:800;font-size:19px;color:#fff;display:flex;align-items:center;gap:9px;text-decoration:none;letter-spacing:-.03em}
+.logo i{width:8px;height:8px;border-radius:50%;background:var(--orange)}
+.nav a.back{color:#8FA6C4;font-size:14px;text-decoration:none}
+.nav a.back:hover{color:#fff}
+
+main{flex:1;display:flex;align-items:center;padding:40px 0 56px}
+.stage{width:100%}
+.screen{display:none}
+.screen.on{display:block;animation:in .3s ease both}
+@keyframes in{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:9px;border:0;cursor:pointer;
+  font-family:'Inter',sans-serif;font-weight:600;font-size:16.5px;padding:16px 32px;border-radius:999px;
+  text-decoration:none;transition:.18s;
+}
+.btn-p{background:var(--orange);color:#12203A;box-shadow:0 10px 26px rgba(255,122,26,.24)}
+.btn-p:hover{background:#EE6C0D;transform:translateY(-2px)}
+.btn-g{background:transparent;color:var(--ink);border:1.5px solid var(--line)}
+.btn-g:hover{border-color:var(--blue);color:var(--blue)}
+
+.kicker{
+  display:inline-flex;align-items:center;gap:8px;font-family:'Manrope';font-weight:700;font-size:12px;
+  letter-spacing:.16em;text-transform:uppercase;color:var(--blue);
+  background:var(--blue-soft);padding:7px 14px;border-radius:999px;margin-bottom:22px;
+}
+.start h1{font-size:clamp(31px,5.4vw,48px);font-weight:800;max-width:17ch}
+.start h1 em{font-style:normal;color:var(--orange)}
+.start .sub{margin-top:18px;font-size:18px;color:var(--muted);max-width:47ch}
+.start .go{margin-top:30px;display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.tiny{font-size:13.5px;color:var(--muted)}
+.calm{
+  margin-top:26px;background:var(--blue-soft);border-radius:14px;padding:15px 18px;
+  font-size:15px;color:#1B3B70;
+}
+
+/* шкала-сегменты вместо полоски */
+.segs{display:flex;gap:5px;margin-bottom:8px}
+.segs i{height:5px;flex:1;border-radius:999px;background:#DCE4EF;transition:background .25s}
+.segs i.ok{background:var(--ok)}
+.segs i.bad{background:var(--no)}
+.segs i.now{background:var(--orange)}
+.topline{display:flex;justify-content:space-between;align-items:center;margin:0 0 22px}
+.topline .n{font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--muted);letter-spacing:.05em}
+.chip{
+  font-family:'JetBrains Mono',monospace;font-weight:700;font-size:13px;color:var(--ok);
+  background:var(--ok-soft);padding:5px 11px;border-radius:999px;
+}
+
+.q h2{font-size:clamp(21px,3.2vw,28px);font-weight:800;max-width:26ch}
+.situ{
+  background:var(--card);border:1px solid var(--line);border-left:3px solid var(--blue);
+  border-radius:0 14px 14px 0;padding:16px 20px;margin-top:18px;color:#33445E;font-size:16px;
+}
+.opts{display:grid;gap:10px;margin-top:22px}
+.opt{
+  display:flex;gap:14px;align-items:flex-start;width:100%;text-align:left;cursor:pointer;
+  background:var(--card);border:1.5px solid var(--line);border-radius:14px;padding:17px 19px;
+  font:inherit;color:var(--ink);transition:.15s;
+}
+.opt:hover:not(:disabled){border-color:var(--blue);transform:translateX(3px)}
+.opt:disabled{cursor:default;opacity:.75}
+.opt .ltr{
+  flex:none;width:27px;height:27px;border-radius:9px;background:#EDF2FA;color:var(--muted);
+  display:grid;place-items:center;font-family:'Manrope';font-weight:800;font-size:13px;transition:.15s;
+}
+.opt.right{border-color:var(--ok);background:var(--ok-soft);opacity:1}
+.opt.right .ltr{background:var(--ok);color:#fff}
+.opt.wrong{border-color:var(--no);background:var(--no-soft);opacity:1}
+.opt.wrong .ltr{background:var(--no);color:#fff}
+
+.why{
+  margin-top:14px;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:19px 21px;
+}
+.why b{display:block;font-family:'Manrope';font-weight:800;font-size:15px;margin-bottom:7px}
+.why p{color:#33445E;font-size:15.5px}
+.why .next{margin-top:18px;display:flex;justify-content:flex-end}
+
+/* результат */
+.res{text-align:center}
+.ring{margin:0 auto;display:block;width:190px;height:190px}
+.ring circle{fill:none;stroke-width:14}
+.ring .bg{stroke:#DCE4EF}
+.ring .fg{stroke:var(--orange);stroke-linecap:round;transform:rotate(-90deg);transform-origin:50% 50%;
+  transition:stroke-dashoffset 1s cubic-bezier(.2,.8,.2,1)}
+.ring text{font-family:'Manrope',sans-serif;font-weight:800;font-size:40px;fill:var(--ink)}
+.res h2{font-size:clamp(23px,3.4vw,30px);font-weight:800;margin-top:20px}
+.res .lead{color:var(--muted);margin-top:12px;max-width:48ch;margin-inline:auto}
+.res .hint{
+  margin-top:22px;background:var(--card);border:1px solid var(--line);border-radius:14px;
+  padding:18px 20px;font-size:15.5px;color:#33445E;text-align:left;
+}
+.cta{margin-top:28px;display:flex;flex-wrap:wrap;gap:12px;justify-content:center}
+
+footer{background:var(--ink);color:#8FA6C4;padding:26px 0;font-size:13.5px}
+.foot{display:flex;flex-wrap:wrap;gap:8px 18px;justify-content:space-between}
+.foot a{color:#8FA6C4;text-decoration:none}
+.foot a:hover{color:#fff}
+
+*:focus-visible{outline:2px solid var(--orange);outline-offset:3px;border-radius:8px}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+@media(max-width:560px){.btn{width:100%}.start .go{flex-direction:column;align-items:stretch}}
+
+.lang-sw{position:relative;flex:none;margin-left:auto}
+.lang-btn{display:inline-flex;align-items:center;gap:8px;cursor:pointer;
+  background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.22);color:#EAF1FB;
+  font:inherit;font-size:14px;font-weight:600;padding:8px 12px;border-radius:999px;transition:.16s;line-height:1}
+.lang-btn:hover{border-color:rgba(255,122,26,.7)}
+.lang-btn svg{width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:2}
+.lang-btn .car{width:10px;height:10px;opacity:.75;transition:transform .18s}
+.lang-sw.open .lang-btn .car{transform:rotate(180deg)}
+.lang-menu{position:absolute;top:calc(100% + 8px);right:0;min-width:200px;z-index:80;
+  background:#0E1E3C;border:1px solid rgba(255,255,255,.2);border-radius:14px;padding:6px;
+  box-shadow:0 18px 44px rgba(0,0,0,.45)}
+.lang-menu[hidden]{display:none}
+.lang-menu a{display:flex;align-items:center;justify-content:space-between;gap:10px;
+  padding:10px 12px;border-radius:10px;text-decoration:none;color:#DCE7F6;font-size:14px;transition:.14s}
+.lang-menu a:hover{background:rgba(76,141,246,.18);color:#fff}
+.lang-menu a[aria-current="true"]{background:rgba(255,122,26,.16);color:#fff}
+.lang-menu b.code{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.1em;font-weight:700}
+@media(max-width:600px){.lang-btn span.lbl{display:none}}
+</style>
+</head>
+<body>
+
+<header><div class="wrap nav">
+  <a class="logo" href="/en/"><i></i>Pulse Call</a>
+  <a class="back" href="/en/tests/">← All tests</a>
+  <div class="lang-sw" data-lang="en">
+    <button type="button" class="lang-btn" aria-haspopup="true" aria-expanded="false" aria-label="Select language">
+      <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a15 15 0 0 1 0 18 15 15 0 0 1 0-18z"/></svg>
+      <span class="lbl">English</span>
+      <svg class="car" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg>
+    </button>
+    <div class="lang-menu" role="menu" hidden>
+      <a href="/tests/knowledge-test/" data-lang="ru" hreflang="ru">Русский<b class="code">RU</b></a>
+      <a href="/en/tests/knowledge-test/" data-lang="en" aria-current="true">English<b class="code">EN</b></a>
+      <a href="/de/tests/knowledge-test/" data-lang="de" hreflang="de">Deutsch<b class="code">DE</b></a>
+      <a href="/es/tests/knowledge-test/" data-lang="es" hreflang="es">Español<b class="code">ES</b></a>
+      <a href="/cs/tests/knowledge-test/" data-lang="cs" hreflang="cs">Čeština<b class="code">CS</b></a>
+      <a href="/sk/tests/knowledge-test/" data-lang="sk" hreflang="sk">Slovenčina<b class="code">SK</b></a>
+      <a href="/ro/tests/knowledge-test/" data-lang="ro" hreflang="ro">Română<b class="code">RO</b></a>
+      <a href="/hu/tests/knowledge-test/" data-lang="hu" hreflang="hu">Magyar<b class="code">HU</b></a>
+    </div>
+  </div>
+</div></header>
+
+<main><div class="wrap stage">
+
+  <section class="screen on start" id="s-start">
+    <span class="kicker">7 questions · 3 minutes</span>
+    <h1>Do you know <em>phone sales</em>?</h1>
+    <p class="sub">Seven situations an operator faces every day. After each answer — a short explanation of why that is the right one.</p>
+    <div class="calm">A low score decides nothing: at Pulse Call we train from scratch, and sales experience is not among the requirements. The test is to try the job on, not to screen you out.</div>
+    <div class="go">
+      <button class="btn btn-p" id="begin">Start the test</button>
+      <span class="tiny">No registration</span>
+    </div>
+  </section>
+
+  <section class="screen q" id="s-quiz" aria-live="polite">
+    <div class="segs" id="segs"></div>
+    <div class="topline">
+      <span class="n" id="qn"></span>
+      <span class="chip" id="chip">0 correct</span>
+    </div>
+    <h2 id="qtext"></h2>
+    <div class="situ" id="situ"></div>
+    <div class="opts" id="opts"></div>
+    <div id="why"></div>
+  </section>
+
+  <section class="screen res" id="s-res">
+    <svg class="ring" viewBox="0 0 120 120" role="img" aria-label="Test result">
+      <circle class="bg" cx="60" cy="60" r="52"/>
+      <circle class="fg" id="fg" cx="60" cy="60" r="52" stroke-dasharray="327" stroke-dashoffset="327"/>
+      <text id="pct" x="60" y="74" text-anchor="middle">0</text>
+    </svg>
+    <h2 id="title"></h2>
+    <p class="lead" id="lead"></p>
+    <div class="hint" id="hint"></div>
+    <div class="cta">
+      <a class="btn btn-p" href="/en/jobs/operators/#form">Apply now</a>
+      <button class="btn btn-g" id="again">Try again</button>
+    </div>
+  </section>
+
+</div></main>
+
+<footer><div class="wrap foot">
+  <span>© 2026 Pulse Call</span>
+  <span>
+    <a href="/en/tests/">All tests</a> ·
+    <a href="/en/about/">About</a> ·
+    <a href="/en/jobs/operators/">Vacancy</a> ·
+    <a href="/en/legal/privacy-policy/">Data policy</a>
+  </span>
+</div></footer>
+
+<script>
+(function(){
+  "use strict";
+
+  var Q = [
+    {
+      q:"How should you open the conversation?",
+      s:"You dialled the number, the person picked up and said briefly: \"Hello?\"",
+      a:[ "Go straight to the offer before they hang up",
+          "Introduce yourself, name the company and briefly say what you are calling about",
+          "Ask how they are doing and whether they have a couple of minutes to chat" ],
+      ok:1,
+      e:"Within a couple of seconds the person must understand who is calling and why. Without that the call reads as spam, and a question about their mood from a stranger only adds to the irritation."
+    },
+    {
+      q:"What does \"too expensive\" really mean?",
+      s:"The client listened to the offer and says: \"Too expensive.\"",
+      a:[ "They are not willing to pay, it is time to end the conversation",
+          "You should offer a discount immediately, or they will leave",
+          "Most often the person has not seen what they are paying for — it is worth asking what they are comparing it with" ],
+      ok:2,
+      e:"\"Too expensive\" is almost never about the amount, but about unclear value. A blunt discount devalues the product, and it is too early to end the conversation: first find out what the person is comparing it with."
+    },
+    {
+      q:"Which question will give you more information?",
+      s:"You need to understand what matters to the client.",
+      a:[ "\"Are you interested in this?\"",
+          "\"What matters most to you when choosing?\"",
+          "\"Will you take it?\"" ],
+      ok:1,
+      e:"Closed questions give only \"yes\" or \"no\" and run into a dead end. An open question makes the person describe their situation — and then you have something to work with."
+    },
+    {
+      q:"The client is irritated and raising their voice",
+      s:"\"How many times are you going to call, I've had enough of you!\"",
+      a:[ "Listen calmly, do not interrupt and acknowledge the inconvenience",
+          "Answer in the same tone, otherwise they will walk all over you",
+          "Say the offer quickly before they hang up" ],
+      ok:0,
+      e:"Irritation fades once a person has been heard. Interrupting and speeding up your speech escalate the conflict, and mirroring their tone is a sure way to get a complaint instead of a deal."
+    },
+    {
+      q:"How should you use a script?",
+      s:"The company has provided a ready conversation script.",
+      a:[ "Read it word for word, without deviating at all",
+          "Use it as a framework: same structure, your own living words",
+          "Skim it once and then say whatever comes out" ],
+      ok:1,
+      e:"Reading word for word is audible in your intonation, and trust drops. A script sets the logic of the conversation and suggests answers to objections, but it should sound like ordinary speech."
+    },
+    {
+      q:"What should you do after asking the client a question?",
+      s:"You asked a question. The client is silent for a few seconds.",
+      a:[ "Fill the pause immediately and ask the next question",
+          "Hold the pause and let the person answer",
+          "Repeat the question in different words" ],
+      ok:1,
+      e:"A pause is a working tool, not an awkward moment. A person needs time to formulate an answer; if you fill it, the conversation turns into the operator's monologue."
+    },
+    {
+      q:"How should you close the conversation?",
+      s:"An agreement has been reached, it is time to say goodbye.",
+      a:[ "Just say goodbye, the person will remember the details anyway",
+          "List all the product's advantages once more",
+          "Briefly restate what was agreed and what happens next" ],
+      ok:2,
+      e:"A summary at the end removes half of all future misunderstandings: the person leaves with a clear picture of what will happen and when. Repeating advantages after agreement means reopening a closed question."
+    }
+  ];
+
+  var i = 0, score = 0, locked = false;
+  var $ = function(id){ return document.getElementById(id); };
+  var screens = { start:$("s-start"), quiz:$("s-quiz"), res:$("s-res") };
+  var marks = [];
+
+  function show(n){
+    for (var k in screens) screens[k].classList.toggle("on", k === n);
+    window.scrollTo({top:0, behavior:"smooth"});
+  }
+
+  function segs(){
+    var box = $("segs"); box.innerHTML = "";
+    for (var k = 0; k < Q.length; k++){
+      var s = document.createElement("i");
+      if (marks[k] === true) s.className = "ok";
+      else if (marks[k] === false) s.className = "bad";
+      else if (k === i) s.className = "now";
+      box.appendChild(s);
+    }
+  }
+
+  function render(){
+    locked = false;
+    segs();
+    $("qn").textContent = "Question " + (i+1) + " of " + Q.length;
+    $("chip").textContent = score + " correct";
+    $("qtext").textContent = Q[i].q;
+    $("situ").textContent = Q[i].s;
+    $("why").innerHTML = "";
+
+    var box = $("opts"); box.innerHTML = "";
+    Q[i].a.forEach(function(text, idx){
+      var b = document.createElement("button");
+      b.className = "opt"; b.type = "button";
+      b.innerHTML = '<span class="ltr">' + "ABC".charAt(idx) + '</span><span>' + text + '</span>';
+      b.addEventListener("click", function(){ answer(idx, b); });
+      box.appendChild(b);
+    });
+  }
+
+  function answer(idx, btn){
+    if (locked) return;
+    locked = true;
+    var item = Q[i];
+    var right = (idx === item.ok);
+    marks[i] = right;
+    if (right) score++;
+
+    var all = document.querySelectorAll("#opts .opt");
+    all.forEach(function(b, k){
+      b.disabled = true;
+      if (k === item.ok) b.classList.add("right");
+      else if (k === idx) b.classList.add("wrong");
+    });
+    segs();
+    $("chip").textContent = score + " correct";
+
+    $("why").innerHTML =
+      '<div class="why"><b>' + (right ? "Correct" : "The correct answer is " + "ABC".charAt(item.ok)) + '</b>' +
+      '<p>' + item.e + '</p>' +
+      '<div class="next"><button class="btn btn-p" id="next">' +
+        (i === Q.length - 1 ? "Show result" : "Next") + '</button></div></div>';
+
+    $("next").addEventListener("click", function(){
+      if (i < Q.length - 1){ i++; render(); } else { finish(); }
+    });
+    $("next").focus();
+  }
+
+  function finish(){
+    var pct = Math.round(score / Q.length * 100);
+    $("pct").textContent = score + "/" + Q.length;
+    var LEN = 327;
+    setTimeout(function(){ $("fg").style.strokeDashoffset = String(LEN - LEN * (score / Q.length)); }, 90);
+
+    var t, l, h;
+    if (score >= 6){
+      t = "You have an instinct for it";
+      l = "You understand the logic of a conversation: listen, clarify, do not push. That is exactly what an operator's work is built on.";
+      h = "With that understanding training will go quickly — it takes 3 to 7 days, and the company provides the scripts and the client base.";
+    } else if (score >= 3){
+      t = "You have a feel for the basics";
+      l = "You got some situations right and some wrong. That is normal: phone conversation is learned in practice, not from theory.";
+      h = "Training covers exactly these cases, and a mentor is beside you on your first calls — you can ask questions as you go.";
+    } else {
+      t = "And that is completely normal";
+      l = "The test measured a skill that is specifically taught. Sales experience is not among the requirements for the vacancy — most operators arrive without it.";
+      h = "Training starts from scratch and takes 3 to 7 days. A €150 bonus is paid for completed training after your first month of work.";
+    }
+    $("title").textContent = t; $("lead").textContent = l; $("hint").textContent = h;
+    show("res");
+  }
+
+  $("begin").addEventListener("click", function(){ i=0; score=0; marks=[]; render(); show("quiz"); });
+  $("again").addEventListener("click", function(){
+    i=0; score=0; marks=[];
+    $("fg").style.strokeDashoffset = "327";
+    show("start");
+  });
+})();
+</script>
+
+
+<script>
+(function(){
+  var sw=document.querySelector('.lang-sw'); if(!sw) return;
+  var btn=sw.querySelector('.lang-btn'), menu=sw.querySelector('.lang-menu');
+  function close(){menu.hidden=true;sw.classList.remove('open');btn.setAttribute('aria-expanded','false');}
+  btn.addEventListener('click',function(e){e.stopPropagation();
+    if(menu.hidden){menu.hidden=false;sw.classList.add('open');btn.setAttribute('aria-expanded','true');}else close();});
+  document.addEventListener('click',function(e){if(!sw.contains(e.target))close();});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')close();});
+  menu.addEventListener('click',function(e){var a=e.target.closest('a[data-lang]');if(a){close();}});
+})();
+</script>
+</body>
+</html>

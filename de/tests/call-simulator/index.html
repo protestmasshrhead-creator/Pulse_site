@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Gesprächstrainer — Pulse Call</title>
+<meta name="description" content="Führen Sie ein Gespräch mit einem Kunden: Wählen Sie die Repliken und beobachten Sie, wie sich seine Stimmung verändert. Auswertung nach jedem Schritt.">
+<link rel="canonical" href="https://pulse-call.com/de/tests/call-simulator/">
+<link rel="alternate" hreflang="ru" href="https://pulse-call.com/tests/call-simulator/">
+<link rel="alternate" hreflang="en" href="https://pulse-call.com/en/tests/call-simulator/">
+<link rel="alternate" hreflang="de" href="https://pulse-call.com/de/tests/call-simulator/">
+<link rel="alternate" hreflang="es" href="https://pulse-call.com/es/tests/call-simulator/">
+<link rel="alternate" hreflang="cs" href="https://pulse-call.com/cs/tests/call-simulator/">
+<link rel="alternate" hreflang="sk" href="https://pulse-call.com/sk/tests/call-simulator/">
+<link rel="alternate" hreflang="ro" href="https://pulse-call.com/ro/tests/call-simulator/">
+<link rel="alternate" hreflang="hu" href="https://pulse-call.com/hu/tests/call-simulator/">
+<link rel="alternate" hreflang="x-default" href="https://pulse-call.com/tests/call-simulator/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@600;700&display=swap" rel="stylesheet">
+<style>
+:root{--deep:#071229;--panel:#0E1E3C;--hair:rgba(255,255,255,.14);
+  --blue:#4C8DF6;--orange:#FF7A1A;--muted:#8FA6C4;--ok:#3FD07F;--no:#FF6B6B}
+*{box-sizing:border-box}
+body{margin:0;background:var(--deep);color:#EAF1FB;min-height:100vh;
+  font-family:'Inter',system-ui,sans-serif;font-size:17px;line-height:1.6;
+  -webkit-font-smoothing:antialiased;display:flex;flex-direction:column}
+.wrap{width:100%;max-width:760px;margin:0 auto;padding:0 20px}
+h1,h2,h3{font-family:'Manrope',sans-serif;margin:0;letter-spacing:-.03em;line-height:1.1}
+p{margin:0} a{color:inherit}
+header{border-bottom:1px solid var(--hair);padding:15px 0}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:14px}
+.logo{font-family:'Manrope';font-weight:800;font-size:19px;color:#fff;display:flex;align-items:center;gap:9px;text-decoration:none;letter-spacing:-.03em}
+.logo i{width:8px;height:8px;border-radius:50%;background:var(--orange)}
+.nav a.back{color:#8FA6C4;font-size:14px;text-decoration:none}
+.nav a.back:hover{color:#fff}
+main{flex:1;display:flex;align-items:center;padding:40px 0 56px}
+.stage{width:100%}
+.screen{display:none}.screen.on{display:block;animation:in .3s ease both}
+@keyframes in{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;border:0;cursor:pointer;
+  font-family:'Inter',sans-serif;font-weight:600;font-size:16.5px;padding:16px 32px;border-radius:999px;
+  text-decoration:none;transition:.18s}
+.btn-p{background:var(--orange);color:#12203A;box-shadow:0 10px 26px rgba(255,122,26,.26)}
+.btn-p:hover{background:#EE6C0D;transform:translateY(-2px)}
+.btn-g{background:transparent;color:#EAF1FB;border:1.5px solid var(--hair)}
+.btn-g:hover{border-color:var(--blue);color:#fff}
+.kicker{display:inline-flex;gap:8px;font-family:'Manrope';font-weight:700;font-size:12px;
+  letter-spacing:.16em;text-transform:uppercase;color:var(--blue);
+  border:1px solid var(--hair);padding:7px 14px;border-radius:999px;margin-bottom:22px}
+.start h1{font-size:clamp(32px,5.6vw,50px);font-weight:800;max-width:15ch}
+.start h1 em{font-style:normal;color:var(--orange)}
+.start .sub{margin-top:18px;font-size:18px;color:#B7C7DD;max-width:46ch}
+.start .go{margin-top:30px;display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.tiny{font-size:13.5px;color:var(--muted)}
+
+/* индикатор настроя */
+.mood{display:flex;align-items:center;gap:14px;margin-bottom:22px}
+.mood .lbl{font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--muted);white-space:nowrap}
+.bar{flex:1;height:8px;background:rgba(255,255,255,.12);border-radius:999px;overflow:hidden}
+.bar i{display:block;height:100%;width:50%;border-radius:999px;
+  background:linear-gradient(90deg,#FF6B6B,#FFC24B 45%,#3FD07F);transition:width .5s cubic-bezier(.2,.8,.2,1)}
+.mood .val{font-family:'JetBrains Mono',monospace;font-weight:700;font-size:14px;min-width:42px;text-align:right}
+
+/* диалог */
+.talk{display:grid;gap:12px;margin-bottom:22px}
+.msg{max-width:86%;padding:15px 18px;border-radius:16px;font-size:16px;line-height:1.5;animation:in .28s ease both}
+.msg.them{background:var(--panel);border:1px solid var(--hair);border-bottom-left-radius:5px}
+.msg.me{margin-left:auto;background:rgba(76,141,246,.16);border:1px solid rgba(76,141,246,.4);border-bottom-right-radius:5px}
+.who{display:block;font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--muted);margin-bottom:6px}
+.opts{display:grid;gap:10px}
+.opt{cursor:pointer;text-align:left;background:rgba(255,255,255,.04);border:1.5px solid var(--hair);
+  border-radius:14px;padding:16px 18px;font:inherit;color:#EAF1FB;transition:.16s}
+.opt:hover{border-color:var(--blue);background:rgba(76,141,246,.12);transform:translateX(3px)}
+.fb{margin-top:14px;border-radius:14px;padding:18px 20px;border:1px solid var(--hair);background:var(--panel)}
+.fb b{display:block;font-family:'Manrope';font-weight:800;font-size:14.5px;margin-bottom:7px}
+.fb.good b{color:var(--ok)} .fb.bad b{color:var(--no)} .fb.mid b{color:#FFC24B}
+.fb p{color:#C4D3E7;font-size:15.5px}
+.fb .next{margin-top:16px;display:flex;justify-content:flex-end}
+
+.res{text-align:center}
+.res .big{font-family:'Manrope';font-weight:800;font-size:clamp(40px,10vw,72px);letter-spacing:-.04em;line-height:1}
+.res h2{font-size:clamp(23px,3.4vw,30px);font-weight:800;margin-top:22px}
+.res .lead{color:#B7C7DD;margin-top:12px;max-width:48ch;margin-inline:auto}
+.res .hint{margin-top:22px;background:var(--panel);border:1px solid var(--hair);border-radius:16px;
+  padding:19px 21px;font-size:15.5px;color:#C4D3E7;text-align:left}
+.cta{margin-top:28px;display:flex;flex-wrap:wrap;gap:12px;justify-content:center}
+footer{border-top:1px solid var(--hair);padding:26px 0;color:var(--muted);font-size:13.5px}
+.foot{display:flex;flex-wrap:wrap;gap:8px 18px;justify-content:space-between}
+.foot a{color:var(--muted);text-decoration:none}.foot a:hover{color:#fff}
+*:focus-visible{outline:2px solid var(--orange);outline-offset:3px;border-radius:8px}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+@media(max-width:560px){.btn{width:100%}.start .go{flex-direction:column;align-items:stretch}.msg{max-width:94%}}
+
+.lang-sw{position:relative;flex:none;margin-left:auto}
+.lang-btn{display:inline-flex;align-items:center;gap:8px;cursor:pointer;
+  background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.22);color:#EAF1FB;
+  font:inherit;font-size:14px;font-weight:600;padding:8px 12px;border-radius:999px;transition:.16s;line-height:1}
+.lang-btn:hover{border-color:rgba(255,122,26,.7)}
+.lang-btn svg{width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:2}
+.lang-btn .car{width:10px;height:10px;opacity:.75;transition:transform .18s}
+.lang-sw.open .lang-btn .car{transform:rotate(180deg)}
+.lang-menu{position:absolute;top:calc(100% + 8px);right:0;min-width:200px;z-index:80;
+  background:#0E1E3C;border:1px solid rgba(255,255,255,.2);border-radius:14px;padding:6px;
+  box-shadow:0 18px 44px rgba(0,0,0,.45)}
+.lang-menu[hidden]{display:none}
+.lang-menu a{display:flex;align-items:center;justify-content:space-between;gap:10px;
+  padding:10px 12px;border-radius:10px;text-decoration:none;color:#DCE7F6;font-size:14px;transition:.14s}
+.lang-menu a:hover{background:rgba(76,141,246,.18);color:#fff}
+.lang-menu a[aria-current="true"]{background:rgba(255,122,26,.16);color:#fff}
+.lang-menu b.code{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.1em;font-weight:700}
+@media(max-width:600px){.lang-btn span.lbl{display:none}}
+</style>
+</head>
+<body>
+
+<header><div class="wrap nav">
+  <a class="logo" href="/de/"><i></i>Pulse Call</a>
+  <a class="back" href="/de/tests/">← Alle Tests</a>
+  <div class="lang-sw" data-lang="de">
+    <button type="button" class="lang-btn" aria-haspopup="true" aria-expanded="false" aria-label="Sprache wählen">
+      <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a15 15 0 0 1 0 18 15 15 0 0 1 0-18z"/></svg>
+      <span class="lbl">Deutsch</span>
+      <svg class="car" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg>
+    </button>
+    <div class="lang-menu" role="menu" hidden>
+      <a href="/tests/call-simulator/" data-lang="ru" hreflang="ru">Русский<b class="code">RU</b></a>
+      <a href="/en/tests/call-simulator/" data-lang="en" hreflang="en">English<b class="code">EN</b></a>
+      <a href="/de/tests/call-simulator/" data-lang="de" aria-current="true">Deutsch<b class="code">DE</b></a>
+      <a href="/es/tests/call-simulator/" data-lang="es" hreflang="es">Español<b class="code">ES</b></a>
+      <a href="/cs/tests/call-simulator/" data-lang="cs" hreflang="cs">Čeština<b class="code">CS</b></a>
+      <a href="/sk/tests/call-simulator/" data-lang="sk" hreflang="sk">Slovenčina<b class="code">SK</b></a>
+      <a href="/ro/tests/call-simulator/" data-lang="ro" hreflang="ro">Română<b class="code">RO</b></a>
+      <a href="/hu/tests/call-simulator/" data-lang="hu" hreflang="hu">Magyar<b class="code">HU</b></a>
+    </div>
+  </div>
+</div></header>
+
+<main><div class="wrap stage">
+
+  <section class="screen on start" id="s-start">
+    <span class="kicker">6 Repliken · 3 Minuten</span>
+    <h1>Gesprächs <em>trainer</em></h1>
+    <p class="sub">Sie rufen einen Kunden an. Wählen Sie, was Sie antworten, und beobachten Sie den Stimmungsbalken: Jede Replik gewinnt den Menschen entweder oder stößt ihn ab. Am Ende folgt die Auswertung.</p>
+    <div class="go">
+      <button class="btn btn-p" id="begin">Anruf starten</button>
+      <span class="tiny">Das ist ein Trainer, keine Prüfung</span>
+    </div>
+  </section>
+
+  <section class="screen" id="s-game" aria-live="polite">
+    <div class="mood">
+      <span class="lbl">Stimmung des Kunden</span>
+      <span class="bar"><i id="bar"></i></span>
+      <span class="val" id="val">50</span>
+    </div>
+    <div class="talk" id="talk"></div>
+    <div class="opts" id="opts"></div>
+    <div id="fb"></div>
+  </section>
+
+  <section class="screen res" id="s-res">
+    <p class="big" id="score">—</p>
+    <h2 id="title"></h2>
+    <p class="lead" id="lead"></p>
+    <div class="hint" id="hint"></div>
+    <div class="cta">
+      <a class="btn btn-p" href="/de/jobs/operators/#form">Jetzt bewerben</a>
+      <button class="btn btn-g" id="again">Erneut versuchen</button>
+    </div>
+  </section>
+
+</div></main>
+
+<footer><div class="wrap foot">
+  <span>© 2026 Pulse Call</span>
+  <span>
+    <a href="/de/tests/">Alle Tests</a> ·
+    <a href="/de/about/">Über uns</a> ·
+    <a href="/de/jobs/operators/">Stelle</a> ·
+    <a href="/de/legal/privacy-policy/">Datenschutzrichtlinie</a>
+  </span>
+</div></footer>
+
+<script>
+(function(){
+  "use strict";
+
+  var STEPS = [
+    { them:"Hallo? Wer ist da?",
+      opts:[
+        {t:"Guten Tag! Mein Name ist Anna, ich rufe von Pulse Call an. Es geht um Ihre Bewerbung auf unserer Website — passt es Ihnen gerade zu sprechen?", d:+15, k:"good",
+         e:"Name, Unternehmen, Anlass des Anrufs und die Frage nach dem passenden Moment — alles in einem Satz. Der Mensch hat in drei Sekunden verstanden, wer anruft und warum."},
+        {t:"Guten Tag! Wir haben ein tolles Angebot für Sie, wirklich nur eine Minute Ihrer Zeit!", d:-20, k:"bad",
+         e:"„Tolles Angebot“ ist ein Erkennungszeichen für Spam-Anrufe. Der Mensch hat nicht verstanden, wer anruft und woher Sie seine Nummer haben, und ist schon bereit aufzulegen."},
+        {t:"Hier ist Anna. Haben Sie sich beworben?", d:0, k:"mid",
+         e:"Nicht unhöflich, aber Ihr Gegenüber muss raten, welche Anna und von welchem Unternehmen. Besser gleich das Unternehmen nennen."}
+      ]},
+    { them:"Ach ja, ich glaube schon. Aber ich fahre gerade, es passt schlecht.",
+      opts:[
+        {t:"Verstanden, ich halte Sie nicht auf. Wann passt es Ihnen besser — in einer Stunde oder eher gegen Abend?", d:+15, k:"good",
+         e:"Sie haben zugehört und sofort eine konkrete Auswahl angeboten. Die offene Frage „wann passt es Ihnen?“ endet häufiger mit „ich melde mich selbst“."},
+        {t:"Es dauert nur zwei Minuten, ich mache es kurz.", d:-20, k:"bad",
+         e:"Der Mensch hat klar gesagt, dass es ihm nicht passt. Drängen wirkt in diesem Moment fast immer respektlos."},
+        {t:"Gut, dann auf Wiederhören.", d:-5, k:"mid",
+         e:"Höflich, aber Sie haben den Kontakt verloren: Es wurde kein nächster Schritt vereinbart. Die Bewerbung war da, das Interesse war da — jetzt muss es neu aufgebaut werden."}
+      ]},
+    { them:"Dann heute Abend. Obwohl… gut, sagen Sie kurz, worum es geht.",
+      opts:[
+        {t:"Danke. Kurz: Remote-Arbeit als Agent, Dienstplan 2/2, Auszahlungen alle 10 Tage. Einarbeitung von Grund auf — Erfahrung ist nicht nötig.", d:+15, k:"good",
+         e:"Sie haben die zugesagte Kürze eingehalten und das Wesentliche genannt: Format, Dienstplan, Geld, Einstiegshürde. Danach fragt der Mensch von selbst weiter."},
+        {t:"Unser Unternehmen ist seit 2020 in mehr als zehn europäischen Ländern tätig, wir haben ein großes Team und schätzen unsere Mitarbeiter sehr…", d:-15, k:"bad",
+         e:"Der Mensch bat um Kürze und bekam eine Unternehmenspräsentation. Zum Kern sind Sie nicht gekommen, seine Geduld ist aber schon aufgebraucht."},
+        {t:"Na ja, eine Stelle als Agent, alles Weitere beim Treffen.", d:-10, k:"mid",
+         e:"Eine leere Antwort. Sie haben um Aufmerksamkeit gebeten und nichts Konkretes zurückgegeben — das Vertrauen sinkt."}
+      ]},
+    { them:"Bis zu zweitausend Euro — ist das Ihr Ernst? Klingt nach Betrug.",
+      opts:[
+        {t:"Ich verstehe den Zweifel. Das ist die Obergrenze, nicht das, was alle bekommen. Der Verdienst ist Stundensatz plus Umsatzbeteiligung und hängt von Stunden und Ergebnis ab.", d:+20, k:"good",
+         e:"Eine ehrliche Antwort auf einen direkten Zweifel wirkt besser als jede Beteuerung. Sie haben die Zahl nicht verteidigt, sondern erklärt, wie sie zustande kommt."},
+        {t:"Nein, nein, alles ehrlich, wir zahlen das wirklich, viele bekommen so viel!", d:-15, k:"bad",
+         e:"Beteuerungen ohne Erklärung verstärken den Verdacht. Je eifriger Sie überzeugen, desto stärker das Gefühl, dass etwas nicht stimmt."},
+        {t:"Na ja, wie man arbeitet, so verdient man.", d:-5, k:"mid",
+         e:"Im Kern richtig, aber es klingt abweisend. Der Mensch hat ehrlich gefragt und eine ebenso ehrliche Erklärung erwartet."}
+      ]},
+    { them:"Und was genau muss man machen? Ich habe nie im Vertrieb gearbeitet.",
+      opts:[
+        {t:"Kunden aus der Datenbank des Unternehmens anrufen und nach fertigen Leitfäden arbeiten. Erfahrung ist nicht nötig: Die Einarbeitung dauert 3 bis 7 Tage.", d:+15, k:"good",
+         e:"Sie haben die Hauptsorge — „ich kann das nicht“ — mit Konkretem ausgeräumt: Die Datenbank ist da, die Leitfäden gibt es, die Einarbeitung ist kurz."},
+        {t:"Ach, das ist nicht schwer, das schaffen Sie schon!", d:-10, k:"bad",
+         e:"Das wertet die Frage ab. Der Mensch wollte den Inhalt der Arbeit verstehen und wurde abgespeist — und blieb mit derselben Sorge zurück."},
+        {t:"Das erfahren Sie alles in der Einarbeitung.", d:-5, k:"mid",
+         e:"Formal richtig, aber die Frage kam jetzt. Ein paar konkrete Sätze sind hier mehr wert als das Versprechen, es später zu erklären."}
+      ]},
+    { them:"Gut, das klingt verständlich. Wie geht es weiter?",
+      opts:[
+        {t:"Dann machen wir es so: Ich gebe Ihre Bewerbung an die Personalabteilung weiter, man meldet sich morgen bis mittags für ein kurzes Interview. Unter dieser Nummer?", d:+20, k:"good",
+         e:"Das Gespräch wird mit einer Zusammenfassung geschlossen: was passiert, wann und unter welcher Nummer. Der Mensch legt mit einem klaren Bild auf, nicht mit dem Gefühl „was war das jetzt“."},
+        {t:"Na, überlegen Sie es sich, rufen Sie an, wenn was ist.", d:-15, k:"bad",
+         e:"Die Initiative wurde jemandem übergeben, der Ihnen nichts schuldet. In den meisten Fällen wird er nicht anrufen."},
+        {t:"Super! Wir freuen uns auf Sie im Team!", d:-5, k:"mid",
+         e:"Schwungvoll, aber leer: Es ist unklar, was als Nächstes zu tun ist. Das Ende eines Gesprächs muss einen konkreten nächsten Schritt enthalten."}
+      ]}
+  ];
+
+  var i=0, mood=50, picks=[], locked=false;
+  var $=function(id){return document.getElementById(id);};
+  var screens={start:$("s-start"),game:$("s-game"),res:$("s-res")};
+
+  function show(n){ for(var k in screens) screens[k].classList.toggle("on",k===n); window.scrollTo({top:0,behavior:"smooth"}); }
+  function setMood(v){
+    mood=Math.max(0,Math.min(100,v));
+    $("bar").style.width=mood+"%"; $("val").textContent=mood;
+    $("val").style.color = mood>=65 ? "#3FD07F" : (mood<=35 ? "#FF6B6B" : "#FFC24B");
+  }
+  function say(who,text){
+    var el=document.createElement("div");
+    el.className="msg "+(who==="them"?"them":"me");
+    el.innerHTML='<span class="who">'+(who==="them"?"Kunde":"Sie")+'</span>'+text;
+    $("talk").appendChild(el);
+  }
+
+  function render(){
+    locked=false; $("fb").innerHTML="";
+    say("them",STEPS[i].them);
+    var box=$("opts"); box.innerHTML="";
+    STEPS[i].opts.forEach(function(o){
+      var b=document.createElement("button");
+      b.className="opt"; b.type="button"; b.textContent=o.t;
+      b.addEventListener("click",function(){ pick(o); });
+      box.appendChild(b);
+    });
+  }
+
+  function pick(o){
+    if(locked) return; locked=true;
+    picks.push(o.k);
+    say("me",o.t);
+    setMood(mood+o.d);
+    $("opts").innerHTML="";
+    var label = o.k==="good" ? "Guter Zug" : (o.k==="bad" ? "So besser nicht antworten" : "Geht besser");
+    $("fb").innerHTML='<div class="fb '+o.k+'"><b>'+label+' · Stimmung '+(o.d>0?"+":"")+o.d+'</b><p>'+o.e+'</p>'+
+      '<div class="next"><button class="btn btn-p" id="next">'+(i===STEPS.length-1?"Ergebnis des Gesprächs":"Weiter")+'</button></div></div>';
+    $("next").addEventListener("click",function(){
+      if(i<STEPS.length-1){ i++; render(); } else { finish(); }
+    });
+    $("next").focus();
+  }
+
+  function finish(){
+    $("score").textContent=mood;
+    $("score").style.color = mood>=65 ? "#3FD07F" : (mood<=35 ? "#FF6B6B" : "#FFC24B");
+    var good=picks.filter(function(k){return k==="good";}).length;
+    var t,l,h;
+    if(mood>=75){
+      t="Der Kunde hat zugehört und erwartet den Anruf";
+      l="Sie haben die Struktur des Gesprächs gehalten: vorgestellt, den Einwand gehört, ehrlich geantwortet und mit einer Vereinbarung abgeschlossen.";
+      h="Genau so wird ein Gespräch nach Leitfaden aufgebaut: Die Struktur steht, aber die Worte sind lebendig. In der Einarbeitung wird das an echten Aufzeichnungen geübt.";
+    } else if(mood>=45){
+      t="Das Gespräch kam zustande, aber mit Verlusten";
+      l="Ein Teil der Repliken hat gewirkt, ein anderer hat den Gesprächspartner abgekühlt. Im Telefongespräch kostet ein misslungener Satz mehrere gelungene.";
+      h="Die Stimmung sinkt am häufigsten dort, wo der Agent drängt oder mit Allgemeinplätzen antwortet. Das ist korrigierbar und wird in der Einarbeitung besprochen.";
+    } else {
+      t="Der Kunde hätte aufgelegt";
+      l="Die Stimmung ging nach unten: Vermutlich haben Druck und allgemeine Floskeln statt konkreter Angaben gewirkt.";
+      h="Keine Sorge: Vertriebserfahrung gehört nicht zu den Anforderungen dieser Stelle. Die Einarbeitung dauert 3 bis 7 Tage, und bei den ersten Anrufen steht ein Mentor zur Seite.";
+    }
+    $("title").textContent=t; $("lead").textContent=l; $("hint").textContent=h;
+    show("res");
+  }
+
+  $("begin").addEventListener("click",function(){
+    i=0; picks=[]; $("talk").innerHTML=""; setMood(50); render(); show("game");
+  });
+  $("again").addEventListener("click",function(){
+    i=0; picks=[]; $("talk").innerHTML=""; setMood(50); show("start");
+  });
+})();
+</script>
+
+
+<script>
+(function(){
+  var sw=document.querySelector('.lang-sw'); if(!sw) return;
+  var btn=sw.querySelector('.lang-btn'), menu=sw.querySelector('.lang-menu');
+  function close(){menu.hidden=true;sw.classList.remove('open');btn.setAttribute('aria-expanded','false');}
+  btn.addEventListener('click',function(e){e.stopPropagation();
+    if(menu.hidden){menu.hidden=false;sw.classList.add('open');btn.setAttribute('aria-expanded','true');}else close();});
+  document.addEventListener('click',function(e){if(!sw.contains(e.target))close();});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')close();});
+  menu.addEventListener('click',function(e){var a=e.target.closest('a[data-lang]');if(a){close();}});
+})();
+</script>
+</body>
+</html>

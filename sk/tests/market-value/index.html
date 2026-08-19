@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Aký zárobok je pre vás reálny — test od Pulse Call</title>
+<meta name="description" content="Päť otázok o jazyku, skúsenostiach a rozvrhu — a uvidíte, s akým zárobkom môže reálne počítať operátor call centra so znalosťou češtiny.">
+<link rel="canonical" href="https://pulse-call.com/sk/tests/market-value/">
+<link rel="alternate" hreflang="ru" href="https://pulse-call.com/tests/market-value/">
+<link rel="alternate" hreflang="en" href="https://pulse-call.com/en/tests/market-value/">
+<link rel="alternate" hreflang="de" href="https://pulse-call.com/de/tests/market-value/">
+<link rel="alternate" hreflang="es" href="https://pulse-call.com/es/tests/market-value/">
+<link rel="alternate" hreflang="cs" href="https://pulse-call.com/cs/tests/market-value/">
+<link rel="alternate" hreflang="sk" href="https://pulse-call.com/sk/tests/market-value/">
+<link rel="alternate" hreflang="ro" href="https://pulse-call.com/ro/tests/market-value/">
+<link rel="alternate" hreflang="hu" href="https://pulse-call.com/hu/tests/market-value/">
+<link rel="alternate" hreflang="x-default" href="https://pulse-call.com/tests/market-value/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#0A1A33;--deep:#071229;--paper:#F4F7FB;--card:#fff;--line:#DCE5F0;
+  --blue:#1155CC;--blue-soft:#E8F0FD;--orange:#FF7A1A;--muted:#5C6470;--green:#12A05C;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:var(--paper);color:var(--ink);
+  font-family:'Inter',system-ui,sans-serif;font-size:17px;line-height:1.6;
+  -webkit-font-smoothing:antialiased;min-height:100vh;display:flex;flex-direction:column;
+}
+.wrap{width:100%;max-width:760px;margin:0 auto;padding:0 20px}
+h1,h2,h3{font-family:'Manrope',sans-serif;margin:0;letter-spacing:-.03em;line-height:1.1}
+p{margin:0}
+a{color:inherit}
+.mono{font-family:'JetBrains Mono',ui-monospace,monospace}
+
+header{background:var(--ink);padding:15px 0}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:14px}
+.logo{font-family:'Manrope';font-weight:800;font-size:19px;color:#fff;display:flex;align-items:center;gap:9px;text-decoration:none;letter-spacing:-.03em}
+.logo i{width:8px;height:8px;border-radius:50%;background:var(--orange)}
+.nav a.back{color:#8FA6C4;font-size:14px;text-decoration:none}
+.nav a.back:hover{color:#fff}
+
+main{flex:1;display:flex;align-items:center;padding:40px 0 56px}
+.stage{width:100%}
+.screen{display:none}
+.screen.on{display:block;animation:in .32s ease both}
+@keyframes in{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:9px;border:0;cursor:pointer;
+  font-family:'Inter',sans-serif;font-weight:600;font-size:16.5px;padding:16px 32px;border-radius:999px;
+  text-decoration:none;transition:.18s;
+}
+.btn-p{background:var(--orange);color:#12203A;box-shadow:0 10px 26px rgba(255,122,26,.26)}
+.btn-p:hover{background:#EE6C0D;transform:translateY(-2px)}
+.btn-g{background:transparent;color:var(--ink);border:1.5px solid var(--line)}
+.btn-g:hover{border-color:var(--blue);color:var(--blue)}
+
+/* ── старт ── */
+.kicker{
+  display:inline-flex;align-items:center;gap:8px;font-family:'Manrope';font-weight:700;font-size:12px;
+  letter-spacing:.16em;text-transform:uppercase;color:var(--blue);
+  background:var(--blue-soft);padding:7px 14px;border-radius:999px;margin-bottom:22px;
+}
+.start h1{font-size:clamp(32px,5.6vw,50px);font-weight:800;max-width:16ch}
+.start h1 em{font-style:normal;color:var(--orange)}
+.start p.sub{margin-top:18px;font-size:18px;color:var(--muted);max-width:46ch}
+.start .go{margin-top:32px;display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.tiny{font-size:13.5px;color:var(--muted)}
+
+/* ── вопрос ── */
+.bar{height:4px;background:#E3EAF4;border-radius:999px;overflow:hidden;margin-bottom:26px}
+.bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--blue),var(--orange));transition:width .35s ease}
+.qmeta{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px}
+.qmeta .n{font-family:'JetBrains Mono',monospace;font-weight:700;font-size:13px;color:var(--muted);letter-spacing:.06em}
+.qmeta button{background:none;border:0;color:var(--muted);font:inherit;font-size:14px;cursor:pointer;padding:4px 8px;border-radius:8px}
+.qmeta button:hover{color:var(--blue)}
+.qmeta button[hidden]{display:none}
+.q h2{font-size:clamp(23px,3.4vw,31px);font-weight:800;max-width:22ch}
+.opts{display:grid;gap:11px;margin-top:26px}
+.opt{
+  display:flex;align-items:center;gap:14px;width:100%;text-align:left;cursor:pointer;
+  background:var(--card);border:1.5px solid var(--line);border-radius:15px;padding:18px 20px;
+  font:inherit;color:var(--ink);transition:.15s;
+}
+.opt:hover{border-color:var(--blue);transform:translateX(3px)}
+.opt .mark{
+  flex:none;width:26px;height:26px;border-radius:50%;border:1.5px solid var(--line);
+  display:grid;place-items:center;font-family:'JetBrains Mono';font-size:12px;font-weight:700;color:var(--muted);transition:.15s;
+}
+.opt:hover .mark{border-color:var(--blue);background:var(--blue);color:#fff}
+.opt b{font-weight:600}
+.opt small{display:block;color:var(--muted);font-size:14px;margin-top:2px;font-weight:400}
+
+/* ── результат ── */
+.res{text-align:center}
+.gauge{margin:0 auto;display:block;max-width:330px;width:100%}
+.gauge .track{stroke:#E3EAF4}
+.gauge .fill{stroke:url(#g);stroke-linecap:round;transition:stroke-dashoffset 1.1s cubic-bezier(.2,.8,.2,1)}
+.res .range{font-family:'Manrope';font-weight:800;font-size:clamp(34px,7vw,54px);letter-spacing:-.03em;margin-top:-46px}
+.res .range span{color:var(--orange)}
+.res .cap{font-size:14.5px;color:var(--muted);margin-top:6px}
+.res h2{font-size:clamp(22px,3.2vw,28px);font-weight:800;margin-top:30px}
+.res .lead{color:var(--muted);margin-top:12px;max-width:50ch;margin-inline:auto}
+
+.why{text-align:left;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:22px 24px;margin-top:28px}
+.why b.t{display:block;font-family:'Manrope';font-weight:800;font-size:15px;margin-bottom:12px}
+.why ul{list-style:none;margin:0;padding:0;display:grid;gap:9px}
+.why li{display:flex;gap:11px;align-items:flex-start;font-size:15.5px}
+.why li svg{flex:none;width:18px;height:18px;margin-top:3px;stroke:var(--green)}
+.why li.minus svg{stroke:var(--muted)}
+
+.bonus{text-align:left;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:22px 24px;margin-top:14px}
+.bonus b.t{display:block;font-family:'Manrope';font-weight:800;font-size:15px;margin-bottom:14px}
+.brow{display:flex;gap:14px;align-items:baseline;padding:9px 0;border-top:1px solid var(--line)}
+.brow:first-of-type{border-top:0;padding-top:0}
+.brow .mono{font-weight:700;font-size:19px;color:var(--orange);flex:none;min-width:88px}
+.brow span:last-child{font-size:15px;color:var(--muted)}
+
+.note{
+  background:#FFF6EC;border:1px solid #FFD9B4;border-radius:14px;padding:16px 18px;
+  margin-top:22px;text-align:left;font-size:14.5px;color:#4A3520;line-height:1.55;
+}
+.cta{margin-top:30px;display:flex;flex-wrap:wrap;gap:12px;justify-content:center}
+
+footer{background:var(--ink);color:#8FA6C4;padding:26px 0;font-size:13.5px}
+.foot{display:flex;flex-wrap:wrap;gap:8px 18px;justify-content:space-between}
+.foot a{color:#8FA6C4;text-decoration:none}
+.foot a:hover{color:#fff}
+
+*:focus-visible{outline:2px solid var(--orange);outline-offset:3px;border-radius:8px}
+@media(prefers-reduced-motion:reduce){
+  *{transition:none!important;animation:none!important}
+}
+@media(max-width:560px){
+  .btn{width:100%}
+  .start .go{flex-direction:column;align-items:stretch}
+  .res .range{margin-top:-34px}
+}
+
+.lang-sw{position:relative;flex:none;margin-left:auto}
+.lang-btn{display:inline-flex;align-items:center;gap:8px;cursor:pointer;
+  background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.22);color:#EAF1FB;
+  font:inherit;font-size:14px;font-weight:600;padding:8px 12px;border-radius:999px;transition:.16s;line-height:1}
+.lang-btn:hover{border-color:rgba(255,122,26,.7)}
+.lang-btn svg{width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:2}
+.lang-btn .car{width:10px;height:10px;opacity:.75;transition:transform .18s}
+.lang-sw.open .lang-btn .car{transform:rotate(180deg)}
+.lang-menu{position:absolute;top:calc(100% + 8px);right:0;min-width:200px;z-index:80;
+  background:#0E1E3C;border:1px solid rgba(255,255,255,.2);border-radius:14px;padding:6px;
+  box-shadow:0 18px 44px rgba(0,0,0,.45)}
+.lang-menu[hidden]{display:none}
+.lang-menu a{display:flex;align-items:center;justify-content:space-between;gap:10px;
+  padding:10px 12px;border-radius:10px;text-decoration:none;color:#DCE7F6;font-size:14px;transition:.14s}
+.lang-menu a:hover{background:rgba(76,141,246,.18);color:#fff}
+.lang-menu a[aria-current="true"]{background:rgba(255,122,26,.16);color:#fff}
+.lang-menu b.code{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.1em;font-weight:700}
+@media(max-width:600px){.lang-btn span.lbl{display:none}}
+</style>
+</head>
+<body>
+
+<header><div class="wrap nav">
+  <a class="logo" href="/sk/"><i></i>Pulse Call</a>
+  <a class="back" href="/sk/tests/">← Všetky testy</a>
+  <div class="lang-sw" data-lang="sk">
+    <button type="button" class="lang-btn" aria-haspopup="true" aria-expanded="false" aria-label="Vybrať jazyk">
+      <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a15 15 0 0 1 0 18 15 15 0 0 1 0-18z"/></svg>
+      <span class="lbl">Slovenčina</span>
+      <svg class="car" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg>
+    </button>
+    <div class="lang-menu" role="menu" hidden>
+      <a href="/tests/market-value/" data-lang="ru" hreflang="ru">Русский<b class="code">RU</b></a>
+      <a href="/en/tests/market-value/" data-lang="en" hreflang="en">English<b class="code">EN</b></a>
+      <a href="/de/tests/market-value/" data-lang="de" hreflang="de">Deutsch<b class="code">DE</b></a>
+      <a href="/es/tests/market-value/" data-lang="es" hreflang="es">Español<b class="code">ES</b></a>
+      <a href="/cs/tests/market-value/" data-lang="cs" hreflang="cs">Čeština<b class="code">CS</b></a>
+      <a href="/sk/tests/market-value/" data-lang="sk" aria-current="true">Slovenčina<b class="code">SK</b></a>
+      <a href="/ro/tests/market-value/" data-lang="ro" hreflang="ro">Română<b class="code">RO</b></a>
+      <a href="/hu/tests/market-value/" data-lang="hu" hreflang="hu">Magyar<b class="code">HU</b></a>
+    </div>
+  </div>
+</div></header>
+
+<main><div class="wrap stage">
+
+  <!-- СТАРТ -->
+  <section class="screen on start" id="s-start">
+    <span class="kicker">Test · 1 minúta</span>
+    <h1>Aký zárobok je reálny <em>práve pre vás</em>?</h1>
+    <p class="sub">Päť otázok o jazyku, skúsenostiach a rozvrhu. Na konci — odhad potenciálneho zárobku operátora a rozbor toho, čo ho ovplyvňuje.</p>
+    <div class="go">
+      <button class="btn btn-p" id="begin">Začať test</button>
+      <span class="tiny">Bez registrácie a telefónu</span>
+    </div>
+  </section>
+
+  <!-- ВОПРОС -->
+  <section class="screen q" id="s-quiz" aria-live="polite">
+    <div class="bar"><i id="bar"></i></div>
+    <div class="qmeta">
+      <span class="n" id="qn">Otázka 1 z 5</span>
+      <button id="back" hidden>← Späť</button>
+    </div>
+    <h2 id="qtext"></h2>
+    <div class="opts" id="opts"></div>
+  </section>
+
+  <!-- РЕЗУЛЬТАТ -->
+  <section class="screen res" id="s-res">
+    <svg class="gauge" viewBox="0 0 300 172" role="img" aria-label="Škála zárobku">
+      <defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="0">
+        <stop offset="0" stop-color="#1155CC"/><stop offset="1" stop-color="#FF7A1A"/>
+      </linearGradient></defs>
+      <path class="track" d="M 30 150 A 120 120 0 0 1 270 150" fill="none" stroke-width="16"/>
+      <path class="fill" id="arc" d="M 30 150 A 120 120 0 0 1 270 150" fill="none" stroke-width="16"
+            stroke-dasharray="377" stroke-dashoffset="377"/>
+    </svg>
+    <p class="range" id="range">—</p>
+    <p class="cap">potenciálny mesačný zárobok — v rámci rozpätia do 2000 € uvedeného pre túto pozíciu</p>
+
+    <h2 id="verdict"></h2>
+    <p class="lead" id="vlead"></p>
+
+    <div class="why">
+      <b class="t">Čo ovplyvnilo odhad</b>
+      <ul id="why"></ul>
+    </div>
+
+    <div class="bonus">
+      <b class="t">Nad rámec toho — pevné bonusy</b>
+      <div class="brow"><span class="mono">150 €</span><span>za absolvované zaškolenie, výplata po prvom mesiaci práce</span></div>
+      <div class="brow"><span class="mono">až 300 €</span><span>za každého odporúčaného priateľa, ktorý nastúpil do práce</span></div>
+    </div>
+
+    <div class="note">
+      <b>Je to odhad, nie ponuka práce.</b> Číslo vyššie je horná hranica reálna pri vašich odpovediach, nie zaručená výplata. Spoločnosť uvádza pre pozíciu rozpätie do 2000 €. Skutočný zárobok sa skladá z hodinovej sadzby a percenta z predaja, závisí od odpracovaných hodín a výsledku a je stanovený zmluvou.
+    </div>
+
+    <div class="cta">
+      <a class="btn btn-p" href="/sk/jobs/operators/#form">Podať prihlášku</a>
+      <button class="btn btn-g" id="again">Skúsiť znova</button>
+    </div>
+  </section>
+
+</div></main>
+
+<footer><div class="wrap foot">
+  <span>© 2026 Pulse Call</span>
+  <span>
+    <a href="/sk/tests/">Všetky testy</a> ·
+    <a href="/sk/about/">O spoločnosti</a> ·
+    <a href="/sk/jobs/operators/">Pozícia</a> ·
+    <a href="/sk/legal/privacy-policy/">Zásady ochrany údajov</a>
+  </span>
+</div></footer>
+
+<script>
+(function(){
+  "use strict";
+
+  var Q = [
+    { q:"Ako plynulo hovoríte po česky?",
+      a:[ {t:"Isto, ale s prízvukom", s:"úroveň približne B2", p:0},
+          {t:"Plynulo, takmer bez chýb", s:"úroveň C1", p:1},
+          {t:"Je to môj rodný jazyk", s:"rodený hovoriaci", p:2} ] },
+    { q:"Mali ste skúsenosť v predaji alebo call centre?",
+      a:[ {t:"Nie, budem začínať od nuly", s:"spoločnosť školí 3 – 7 dní", p:0},
+          {t:"Menej ako rok", s:"základné zručnosti mám", p:1},
+          {t:"Viac ako rok", s:"skúsenosť s prácou s námietkami", p:2} ] },
+    { q:"Koľko hodín týždenne ste ochotní pracovať?",
+      a:[ {t:"Do 20 hodín", s:"privyrobenie popri štúdiu alebo práci", p:0},
+          {t:"20 – 35 hodín", s:"čiastočný úväzok", p:1},
+          {t:"35 hodín a viac", s:"plný úväzok", p:2} ] },
+    { q:"Aký rozvrh vám vyhovuje?",
+      a:[ {t:"Len voľný, keď to vyjde", s:"nepravidelné zmeny", p:0},
+          {t:"Štandardný 2/2", s:"základný rozvrh spoločnosti", p:1},
+          {t:"2/2 a som ochotný zaskakovať za kolegov", s:"maximum zmien", p:2} ] },
+    { q:"Ako sa staviate k práci na výsledok?",
+      a:[ {t:"Chcem pokojné tempo a stabilnú sadzbu", s:"bez naháňania bonusov", p:0},
+          {t:"Som pripravený rásť postupne", s:"sadzba plus prémie", p:1},
+          {t:"Mierim na maximum", s:"percento z predaja je hlavný cieľ", p:2} ] }
+  ];
+
+  // Компания заявляет для позиции только потолок — до 2000 € в месяц.
+  // Поэтому результат тоже даётся как «до N €»: без выдуманной нижней границы
+  // и никогда выше того, что обещано на странице вакансии.
+  var CEILING = 2000;
+  var BANDS = [
+    { max:2,  cap:900,  v:"Formát privyrobenia",
+      l:"Pri malom úväzku sa na hornú hranicu rozpätia dostať nedá — hodín je jednoducho menej. Zato je to pokojný spôsob, ako si prácu vyskúšať bez záväzkov." },
+    { max:4,  cap:1200, v:"Istý štart",
+      l:"Takýto profil zvyčajne prejde zaškolením bez problémov a rýchlo sa dostane k stabilným zmenám." },
+    { max:6,  cap:1500, v:"Solídna stredná úroveň",
+      l:"Plný úväzok a zrozumiteľný rozvrh sú to, na čom sa zárobok stáva predvídateľným už od druhého mesiaca." },
+    { max:8,  cap:1800, v:"Nadpriemer",
+      l:"Skúsenosť a počet zmien pracujú pre percento z predaja — práve to dvíha zárobok nad sadzbu." },
+    { max:10, cap:2000, v:"Horná hranica rozpätia je reálna",
+      l:"Profil sa blíži tomu, na ktorom sa operátori dostávajú k hornej hranici uvedenej pre túto pozíciu." }
+  ];
+
+  var i = 0, answers = [];
+  var $ = function(id){ return document.getElementById(id); };
+  var screens = { start:$("s-start"), quiz:$("s-quiz"), res:$("s-res") };
+
+  function show(name){
+    for (var k in screens) screens[k].classList.toggle("on", k === name);
+    window.scrollTo({top:0, behavior:"smooth"});
+  }
+
+  function render(){
+    var item = Q[i];
+    $("qn").textContent = "Otázka " + (i+1) + " z " + Q.length;
+    $("bar").style.width = ((i) / Q.length * 100) + "%";
+    $("qtext").textContent = item.q;
+    $("back").hidden = (i === 0);
+
+    var box = $("opts");
+    box.innerHTML = "";
+    item.a.forEach(function(opt, idx){
+      var b = document.createElement("button");
+      b.className = "opt";
+      b.type = "button";
+      b.innerHTML = '<span class="mark">' + (idx+1) + '</span><span><b>' +
+                    opt.t + '</b><small>' + opt.s + '</small></span>';
+      b.addEventListener("click", function(){ pick(opt.p); });
+      box.appendChild(b);
+    });
+  }
+
+  function pick(points){
+    answers[i] = points;
+    if (i < Q.length - 1){ i++; render(); }
+    else { finish(); }
+  }
+
+  function finish(){
+    var total = answers.reduce(function(a,b){ return a + b; }, 0);
+    var band = BANDS.find(function(x){ return total <= x.max; });
+
+    $("range").innerHTML = 'až <span class="mono">' + band.cap + '</span> €';
+    $("verdict").textContent = band.v;
+    $("vlead").textContent = band.l;
+
+    // объяснение: что подтянуло вверх, что придержало
+    var labels = ["Úroveň češtiny","Skúsenosť v predaji","Hodiny týždenne","Rozvrh","Nastavenie na výsledok"];
+    var ul = $("why");
+    ul.innerHTML = "";
+    answers.forEach(function(p, k){
+      var up = p >= 1;
+      var li = document.createElement("li");
+      if (!up) li.className = "minus";
+      li.innerHTML = (up
+          ? '<svg viewBox="0 0 24 24" fill="none" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>'
+          : '<svg viewBox="0 0 24 24" fill="none" stroke-width="2.6" stroke-linecap="round"><path d="M5 12h14"/></svg>')
+        + "<span>" + labels[k] + " — " + (up ? "pracuje pre zárobok" : "zatiaľ odhad brzdí") + "</span>";
+      ul.appendChild(li);
+    });
+
+    show("res");
+    $("bar").style.width = "100%";
+
+    // заполнение шкалы: оценка относительно заявленного потолка в 2000 €
+    var frac = Math.min(band.cap / CEILING, 1);
+    var LEN = 377;
+    setTimeout(function(){ $("arc").style.strokeDashoffset = String(LEN - LEN * frac); }, 90);
+  }
+
+  $("begin").addEventListener("click", function(){ i = 0; answers = []; render(); show("quiz"); });
+  $("back").addEventListener("click", function(){ if (i > 0){ i--; render(); } });
+  $("again").addEventListener("click", function(){
+    i = 0; answers = [];
+    $("arc").style.strokeDashoffset = "377";
+    show("start");
+  });
+
+  // цифрами 1-3 можно отвечать с клавиатуры
+  document.addEventListener("keydown", function(e){
+    if (!screens.quiz.classList.contains("on")) return;
+    var n = parseInt(e.key, 10);
+    if (n >= 1 && n <= 3){
+      var btns = document.querySelectorAll("#opts .opt");
+      if (btns[n-1]) btns[n-1].click();
+    }
+  });
+})();
+</script>
+
+
+<script>
+(function(){
+  var sw=document.querySelector('.lang-sw'); if(!sw) return;
+  var btn=sw.querySelector('.lang-btn'), menu=sw.querySelector('.lang-menu');
+  function close(){menu.hidden=true;sw.classList.remove('open');btn.setAttribute('aria-expanded','false');}
+  btn.addEventListener('click',function(e){e.stopPropagation();
+    if(menu.hidden){menu.hidden=false;sw.classList.add('open');btn.setAttribute('aria-expanded','true');}else close();});
+  document.addEventListener('click',function(e){if(!sw.contains(e.target))close();});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')close();});
+  menu.addEventListener('click',function(e){var a=e.target.closest('a[data-lang]');if(a){close();}});
+})();
+</script>
+</body>
+</html>

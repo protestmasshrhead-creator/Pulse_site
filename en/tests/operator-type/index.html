@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>What kind of operator are you — a test by Pulse Call</title>
+<meta name="description" content="Six questions about how you behave in a conversation. At the end — your working style and where its strength lies.">
+<link rel="canonical" href="https://pulse-call.com/en/tests/operator-type/">
+<link rel="alternate" hreflang="ru" href="https://pulse-call.com/tests/operator-type/">
+<link rel="alternate" hreflang="en" href="https://pulse-call.com/en/tests/operator-type/">
+<link rel="alternate" hreflang="de" href="https://pulse-call.com/de/tests/operator-type/">
+<link rel="alternate" hreflang="es" href="https://pulse-call.com/es/tests/operator-type/">
+<link rel="alternate" hreflang="cs" href="https://pulse-call.com/cs/tests/operator-type/">
+<link rel="alternate" hreflang="sk" href="https://pulse-call.com/sk/tests/operator-type/">
+<link rel="alternate" hreflang="ro" href="https://pulse-call.com/ro/tests/operator-type/">
+<link rel="alternate" hreflang="hu" href="https://pulse-call.com/hu/tests/operator-type/">
+<link rel="alternate" hreflang="x-default" href="https://pulse-call.com/tests/operator-type/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --deep:#0A1730;--ink:#0A1A33;--card:rgba(255,255,255,.05);--hair:rgba(255,255,255,.15);
+  --blue:#4C8DF6;--orange:#FF7A1A;--muted:#93A9C6;
+}
+*{box-sizing:border-box}
+body{
+  margin:0;background:var(--deep);color:#EAF1FB;min-height:100vh;
+  font-family:'Inter',system-ui,sans-serif;font-size:17px;line-height:1.6;
+  -webkit-font-smoothing:antialiased;display:flex;flex-direction:column;overflow-x:hidden;
+}
+body::before{
+  content:"";position:fixed;inset:0;z-index:0;pointer-events:none;
+  background:radial-gradient(820px 520px at 82% -12%, rgba(76,141,246,.16), transparent 62%),
+             radial-gradient(680px 460px at 8% 106%, rgba(255,122,26,.12), transparent 64%);
+}
+.wrap{position:relative;z-index:1;width:100%;max-width:720px;margin:0 auto;padding:0 20px}
+h1,h2,h3{font-family:'Manrope',sans-serif;margin:0;letter-spacing:-.03em;line-height:1.1}
+p{margin:0}
+a{color:inherit}
+
+header{position:relative;z-index:1;border-bottom:1px solid var(--hair);padding:15px 0}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:14px}
+.logo{font-family:'Manrope';font-weight:800;font-size:19px;color:#fff;display:flex;align-items:center;gap:9px;text-decoration:none;letter-spacing:-.03em}
+.logo i{width:8px;height:8px;border-radius:50%;background:var(--orange)}
+.nav a.back{color:#8FA6C4;font-size:14px;text-decoration:none}
+.nav a.back:hover{color:#fff}
+
+main{position:relative;z-index:1;flex:1;display:flex;align-items:center;padding:40px 0 56px}
+.stage{width:100%}
+.screen{display:none}
+.screen.on{display:block;animation:in .32s ease both}
+@keyframes in{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:9px;border:0;cursor:pointer;
+  font-family:'Inter',sans-serif;font-weight:600;font-size:16.5px;padding:16px 32px;border-radius:999px;
+  text-decoration:none;transition:.18s;
+}
+.btn-p{background:var(--orange);color:#12203A;box-shadow:0 10px 26px rgba(255,122,26,.26)}
+.btn-p:hover{background:#EE6C0D;transform:translateY(-2px)}
+.btn-g{background:transparent;color:#EAF1FB;border:1.5px solid var(--hair)}
+.btn-g:hover{border-color:var(--blue);color:#fff}
+
+.kicker{
+  display:inline-flex;gap:8px;font-family:'Manrope';font-weight:700;font-size:12px;
+  letter-spacing:.16em;text-transform:uppercase;color:var(--blue);
+  border:1px solid var(--hair);padding:7px 14px;border-radius:999px;margin-bottom:22px;
+}
+.start h1{font-size:clamp(33px,5.8vw,52px);font-weight:800;max-width:14ch}
+.start h1 em{font-style:normal;color:var(--orange)}
+.start .sub{margin-top:18px;font-size:18px;color:#B7C7DD;max-width:45ch}
+.start .go{margin-top:30px;display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.tiny{font-size:13.5px;color:var(--muted)}
+
+.pips{display:flex;gap:8px;margin-bottom:26px}
+.pips i{width:9px;height:9px;border-radius:50%;background:rgba(255,255,255,.16);transition:.25s}
+.pips i.done{background:var(--blue)}
+.pips i.now{background:var(--orange);transform:scale(1.35)}
+
+.qn{font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--muted);letter-spacing:.05em;margin-bottom:12px}
+.q h2{font-size:clamp(22px,3.6vw,31px);font-weight:800;max-width:20ch}
+.opts{display:grid;gap:11px;margin-top:26px}
+.opt{
+  cursor:pointer;text-align:left;background:var(--card);border:1.5px solid var(--hair);
+  border-radius:15px;padding:18px 20px;font:inherit;color:#EAF1FB;transition:.16s;
+}
+.opt:hover{border-color:var(--blue);background:rgba(76,141,246,.14);transform:translateX(4px)}
+
+/* результат */
+.res{text-align:center}
+.emblem{width:96px;height:96px;margin:0 auto 20px;border-radius:26px;display:grid;place-items:center;border:1px solid var(--hair)}
+.emblem svg{width:46px;height:46px;stroke-width:1.8;fill:none}
+.res .role{font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
+.res h2{font-size:clamp(30px,6vw,46px);font-weight:800;margin-top:10px}
+.res .lead{color:#BCCBE0;margin-top:14px;max-width:46ch;margin-inline:auto;font-size:17.5px}
+
+.pair{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:28px;text-align:left}
+@media(max-width:600px){.pair{grid-template-columns:1fr}}
+.pane{background:var(--card);border:1px solid var(--hair);border-radius:16px;padding:20px 22px}
+.pane b{display:block;font-family:'Manrope';font-weight:800;font-size:14px;margin-bottom:9px}
+.pane p{font-size:15.5px;color:#BCCBE0}
+.pane.up b{color:#6FE0A0}
+.pane.watch b{color:var(--orange)}
+
+.share{margin-top:22px;background:var(--card);border:1px solid var(--hair);border-radius:16px;padding:18px 20px;display:flex;gap:12px;align-items:center;justify-content:space-between;flex-wrap:wrap;text-align:left}
+.share span{font-size:15px;color:#BCCBE0}
+.share button{background:transparent;border:1.5px solid var(--hair);color:#EAF1FB;font:inherit;font-size:15px;font-weight:600;padding:11px 20px;border-radius:999px;cursor:pointer;transition:.16s}
+.share button:hover{border-color:var(--blue);color:#fff}
+
+.cta{margin-top:26px;display:flex;flex-wrap:wrap;gap:12px;justify-content:center}
+.foot-note{margin-top:18px;font-size:13.5px;color:var(--muted)}
+
+footer{position:relative;z-index:1;border-top:1px solid var(--hair);padding:26px 0;color:var(--muted);font-size:13.5px}
+.foot{display:flex;flex-wrap:wrap;gap:8px 18px;justify-content:space-between}
+.foot a{color:var(--muted);text-decoration:none}
+.foot a:hover{color:#fff}
+
+*:focus-visible{outline:2px solid var(--orange);outline-offset:3px;border-radius:8px}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+@media(max-width:560px){.btn{width:100%}.start .go{flex-direction:column;align-items:stretch}}
+
+.lang-sw{position:relative;flex:none;margin-left:auto}
+.lang-btn{display:inline-flex;align-items:center;gap:8px;cursor:pointer;
+  background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.22);color:#EAF1FB;
+  font:inherit;font-size:14px;font-weight:600;padding:8px 12px;border-radius:999px;transition:.16s;line-height:1}
+.lang-btn:hover{border-color:rgba(255,122,26,.7)}
+.lang-btn svg{width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:2}
+.lang-btn .car{width:10px;height:10px;opacity:.75;transition:transform .18s}
+.lang-sw.open .lang-btn .car{transform:rotate(180deg)}
+.lang-menu{position:absolute;top:calc(100% + 8px);right:0;min-width:200px;z-index:80;
+  background:#0E1E3C;border:1px solid rgba(255,255,255,.2);border-radius:14px;padding:6px;
+  box-shadow:0 18px 44px rgba(0,0,0,.45)}
+.lang-menu[hidden]{display:none}
+.lang-menu a{display:flex;align-items:center;justify-content:space-between;gap:10px;
+  padding:10px 12px;border-radius:10px;text-decoration:none;color:#DCE7F6;font-size:14px;transition:.14s}
+.lang-menu a:hover{background:rgba(76,141,246,.18);color:#fff}
+.lang-menu a[aria-current="true"]{background:rgba(255,122,26,.16);color:#fff}
+.lang-menu b.code{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.1em;font-weight:700}
+@media(max-width:600px){.lang-btn span.lbl{display:none}}
+</style>
+</head>
+<body>
+
+<header><div class="wrap nav">
+  <a class="logo" href="/en/"><i></i>Pulse Call</a>
+  <a class="back" href="/en/tests/">← All tests</a>
+  <div class="lang-sw" data-lang="en">
+    <button type="button" class="lang-btn" aria-haspopup="true" aria-expanded="false" aria-label="Select language">
+      <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a15 15 0 0 1 0 18 15 15 0 0 1 0-18z"/></svg>
+      <span class="lbl">English</span>
+      <svg class="car" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg>
+    </button>
+    <div class="lang-menu" role="menu" hidden>
+      <a href="/tests/operator-type/" data-lang="ru" hreflang="ru">Русский<b class="code">RU</b></a>
+      <a href="/en/tests/operator-type/" data-lang="en" aria-current="true">English<b class="code">EN</b></a>
+      <a href="/de/tests/operator-type/" data-lang="de" hreflang="de">Deutsch<b class="code">DE</b></a>
+      <a href="/es/tests/operator-type/" data-lang="es" hreflang="es">Español<b class="code">ES</b></a>
+      <a href="/cs/tests/operator-type/" data-lang="cs" hreflang="cs">Čeština<b class="code">CS</b></a>
+      <a href="/sk/tests/operator-type/" data-lang="sk" hreflang="sk">Slovenčina<b class="code">SK</b></a>
+      <a href="/ro/tests/operator-type/" data-lang="ro" hreflang="ro">Română<b class="code">RO</b></a>
+      <a href="/hu/tests/operator-type/" data-lang="hu" hreflang="hu">Magyar<b class="code">HU</b></a>
+    </div>
+  </div>
+</div></header>
+
+<main><div class="wrap stage">
+
+  <section class="screen on start" id="s-start">
+    <span class="kicker">6 questions · 1 minute</span>
+    <h1>What kind of operator <em>operator</em>?</h1>
+    <p class="sub">Not about experience or skills — about how you behave in a conversation. At the end you get your working style. There are no bad ones.</p>
+    <div class="go">
+      <button class="btn btn-p" id="begin">Find out your style</button>
+      <span class="tiny">No registration</span>
+    </div>
+  </section>
+
+  <section class="screen q" id="s-quiz" aria-live="polite">
+    <div class="pips" id="pips"></div>
+    <p class="qn" id="qn"></p>
+    <h2 id="qtext"></h2>
+    <div class="opts" id="opts"></div>
+  </section>
+
+  <section class="screen res" id="s-res">
+    <div class="emblem" id="emblem"></div>
+    <p class="role">your style</p>
+    <h2 id="tname"></h2>
+    <p class="lead" id="tlead"></p>
+    <div class="pair">
+      <div class="pane up"><b>Strength</b><p id="tup"></p></div>
+      <div class="pane watch"><b>What to watch for</b><p id="twatch"></p></div>
+    </div>
+    <div class="share">
+      <span id="sharetext"></span>
+      <button id="copy">Copy</button>
+    </div>
+    <div class="cta">
+      <a class="btn btn-p" href="/en/jobs/operators/#form">Try it for real</a>
+      <button class="btn btn-g" id="again">Try again</button>
+    </div>
+    <p class="foot-note">This test is for entertainment: it does not affect selection and decides nothing about you.</p>
+  </section>
+
+</div></main>
+
+<footer><div class="wrap foot">
+  <span>© 2026 Pulse Call</span>
+  <span>
+    <a href="/en/tests/">All tests</a> ·
+    <a href="/en/about/">About</a> ·
+    <a href="/en/jobs/operators/">Vacancy</a> ·
+    <a href="/en/legal/privacy-policy/">Data policy</a>
+  </span>
+</div></footer>
+
+<script>
+(function(){
+  "use strict";
+
+  var TYPES = {
+    diplomat:{
+      n:"The Diplomat", c:"#4C8DF6",
+      l:"You defuse tension with your voice. Where another operator would argue, you let the person speak their mind — and the conversation returns to peaceful ground.",
+      up:"Difficult and irritated clients do not blow up on you but stay to the end of the conversation.",
+      w:"Sometimes you agree where you should have gently insisted. An agreement still needs to be carried through.",
+      i:'<svg viewBox="0 0 24 24" stroke="currentColor"><path d="M21 11.5a8.4 8.4 0 0 1-9 8.4 8.5 8.5 0 0 1-3.9-.9L3 21l1.9-5.1A8.4 8.4 0 0 1 12 3a8.4 8.4 0 0 1 9 8.5z"/></svg>'
+    },
+    analyst:{
+      n:"The Analyst", c:"#7C9CF0",
+      l:"You listen to the meaning, not the words. While the client says \"too expensive\", you already understand what they are comparing it with and what they are really worried about.",
+      up:"For you an objection is information, not a refusal. That is why you answer to the point rather than with a memorised phrase.",
+      w:"Do not get carried away analysing: sometimes the person is already ready to agree, and one extra question complicates everything.",
+      i:'<svg viewBox="0 0 24 24" stroke="currentColor"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.6-3.6"/></svg>'
+    },
+    sprinter:{
+      n:"The Sprinter", c:"#FF7A1A",
+      l:"You work at speed: you quickly tell whether there is interest and do not waste time where there is none. Your day is many short, precise conversations.",
+      up:"A high pace and many closed deals. For you the percentage of sales is not a bonus but the main part of your income.",
+      w:"At speed it is easy to miss a hesitant client who needs one extra minute.",
+      i:'<svg viewBox="0 0 24 24" stroke="currentColor"><path d="M13 2 4.5 13.5H11l-1 8.5 8.5-11.5H12z"/></svg>'
+    },
+    marathon:{
+      n:"The Marathon Runner", c:"#3FD07F",
+      l:"Your strength is an even pace. You do not burn out by mid-shift and look the same at the end of the month as at the beginning.",
+      up:"Stability: shifts get covered, metrics do not jump around, you can be relied on.",
+      w:"An even pace sometimes stops you taking a risk where a push is needed. Try accelerating occasionally.",
+      i:'<svg viewBox="0 0 24 24" stroke="currentColor"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg>'
+    },
+    mentor:{
+      n:"Mentor", c:"#B48CF2",
+      l:"You explain things so that everyone understands — clients and the newcomers beside you. People come to you with questions by their second week.",
+      up:"You pick up the product quickly and know how to pass that knowledge on. It is a direct route to growth within the team.",
+      w:"Helping others, it is easy to let your own metrics slip. Your own shift still comes first.",
+      i:'<svg viewBox="0 0 24 24" stroke="currentColor"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="m17 11 2 2 4-4"/></svg>'
+    }
+  };
+
+  var Q = [
+    { q:"The client says \"I don't have time\" right away",
+      a:[ {t:"I will calmly offer to call back at a convenient time", k:"diplomat"},
+          {t:"I will clarify what exactly is inconvenient now — maybe it is not about time", k:"analyst"},
+          {t:"In ten seconds I will state the essentials: if they are interested, we continue", k:"sprinter"},
+          {t:"I will note it in the base and come back to them later as planned", k:"marathon"} ] },
+    { q:"What makes a shift a good one for you?",
+      a:[ {t:"Lots of conversations and a high pace", k:"sprinter"},
+          {t:"Not a single conflict, everyone left satisfied", k:"diplomat"},
+          {t:"Hit the plan steadily, with no failures", k:"marathon"},
+          {t:"Managed to help a newcomer without slipping myself", k:"mentor"} ] },
+    { q:"A newcomer beside you is struggling with a call",
+      a:[ {t:"I will suggest a phrase right in the middle of the conversation", k:"mentor"},
+          {t:"I will go through the recording with them after the shift", k:"analyst"},
+          {t:"I will reassure them: the first days are hard for everyone", k:"diplomat"},
+          {t:"I will let them finish the shift and go through it at a calm moment", k:"marathon"} ] },
+    { q:"How do you feel about the script?",
+      a:[ {t:"I keep to the structure and choose words to fit the situation", k:"marathon"},
+          {t:"I look for weak spots in it and suggest fixes", k:"analyst"},
+          {t:"I take only what speeds the conversation up", k:"sprinter"},
+          {t:"I explain to newcomers why each block is there", k:"mentor"} ] },
+    { q:"The client is openly rude",
+      a:[ {t:"I do not take it personally and carry on calmly", k:"diplomat"},
+          {t:"I will politely wrap up the call and move on through the base", k:"sprinter"},
+          {t:"I will try to understand what caused the reaction", k:"analyst"},
+          {t:"Later I will tell the team how I handled it", k:"mentor"} ] },
+    { q:"What do you expect from the job in six months?",
+      a:[ {t:"A stable income without the stress", k:"marathon"},
+          {t:"The maximum on the sales percentage", k:"sprinter"},
+          {t:"A reputation as someone who is easy to talk to", k:"diplomat"},
+          {t:"Understanding the product better than anyone on the team", k:"analyst"} ] }
+  ];
+
+  var i = 0, tally = {}, order = [];
+  var $ = function(id){ return document.getElementById(id); };
+  var screens = { start:$("s-start"), quiz:$("s-quiz"), res:$("s-res") };
+
+  function show(n){
+    for (var k in screens) screens[k].classList.toggle("on", k === n);
+    window.scrollTo({top:0, behavior:"smooth"});
+  }
+
+  function pips(){
+    var box = $("pips"); box.innerHTML = "";
+    for (var k = 0; k < Q.length; k++){
+      var d = document.createElement("i");
+      if (k < i) d.className = "done"; else if (k === i) d.className = "now";
+      box.appendChild(d);
+    }
+  }
+
+  function render(){
+    pips();
+    $("qn").textContent = "Question " + (i+1) + " of " + Q.length;
+    $("qtext").textContent = Q[i].q;
+    var box = $("opts"); box.innerHTML = "";
+    Q[i].a.forEach(function(o){
+      var b = document.createElement("button");
+      b.className = "opt"; b.type = "button"; b.textContent = o.t;
+      b.addEventListener("click", function(){ pick(o.k); });
+      box.appendChild(b);
+    });
+  }
+
+  function pick(key){
+    tally[key] = (tally[key] || 0) + 1;
+    order.push(key);
+    if (i < Q.length - 1){ i++; render(); } else { finish(); }
+  }
+
+  function finish(){
+    // побеждает тип с максимумом; при равенстве — тот, что выбран раньше
+    var best = null, max = -1;
+    Object.keys(tally).forEach(function(k){
+      var v = tally[k];
+      if (v > max || (v === max && order.indexOf(k) < order.indexOf(best))){ max = v; best = k; }
+    });
+    var t = TYPES[best];
+
+    $("emblem").innerHTML = t.i;
+    $("emblem").style.background = "linear-gradient(150deg," + t.c + "33, transparent)";
+    $("emblem").style.color = t.c;
+    $("tname").textContent = t.n;
+    $("tname").style.color = t.c;
+    $("tlead").textContent = t.l;
+    $("tup").textContent = t.up;
+    $("twatch").textContent = t.w;
+    $("sharetext").textContent = "My operator style is \"" + t.n + "\". And yours?";
+    show("res");
+  }
+
+  $("begin").addEventListener("click", function(){ i=0; tally={}; order=[]; render(); show("quiz"); });
+  $("again").addEventListener("click", function(){ i=0; tally={}; order=[]; show("start"); });
+
+  $("copy").addEventListener("click", function(){
+    var txt = $("sharetext").textContent + " " + location.href;
+    var done = function(){ $("copy").textContent = "Copied"; setTimeout(function(){ $("copy").textContent = "Copy"; }, 1800); };
+    if (navigator.clipboard && navigator.clipboard.writeText){
+      navigator.clipboard.writeText(txt).then(done, function(){ fallback(txt, done); });
+    } else { fallback(txt, done); }
+  });
+
+  function fallback(txt, done){
+    var ta = document.createElement("textarea");
+    ta.value = txt; ta.setAttribute("readonly",""); ta.style.position = "fixed"; ta.style.opacity = "0";
+    document.body.appendChild(ta); ta.select();
+    try { document.execCommand("copy"); done(); } catch(e){}
+    document.body.removeChild(ta);
+  }
+})();
+</script>
+
+
+<script>
+(function(){
+  var sw=document.querySelector('.lang-sw'); if(!sw) return;
+  var btn=sw.querySelector('.lang-btn'), menu=sw.querySelector('.lang-menu');
+  function close(){menu.hidden=true;sw.classList.remove('open');btn.setAttribute('aria-expanded','false');}
+  btn.addEventListener('click',function(e){e.stopPropagation();
+    if(menu.hidden){menu.hidden=false;sw.classList.add('open');btn.setAttribute('aria-expanded','true');}else close();});
+  document.addEventListener('click',function(e){if(!sw.contains(e.target))close();});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')close();});
+  menu.addEventListener('click',function(e){var a=e.target.closest('a[data-lang]');if(a){close();}});
+})();
+</script>
+</body>
+</html>

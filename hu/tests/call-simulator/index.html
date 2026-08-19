@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hívásszimulátor — Pulse Call</title>
+<meta name="description" content="Folytass le egy beszélgetést egy ügyféllel: válaszd ki a replikákat, és figyeld, hogyan változik a hangulata. Elemzés minden lépés után.">
+<link rel="canonical" href="https://pulse-call.com/hu/tests/call-simulator/">
+<link rel="alternate" hreflang="ru" href="https://pulse-call.com/tests/call-simulator/">
+<link rel="alternate" hreflang="en" href="https://pulse-call.com/en/tests/call-simulator/">
+<link rel="alternate" hreflang="de" href="https://pulse-call.com/de/tests/call-simulator/">
+<link rel="alternate" hreflang="es" href="https://pulse-call.com/es/tests/call-simulator/">
+<link rel="alternate" hreflang="cs" href="https://pulse-call.com/cs/tests/call-simulator/">
+<link rel="alternate" hreflang="sk" href="https://pulse-call.com/sk/tests/call-simulator/">
+<link rel="alternate" hreflang="ro" href="https://pulse-call.com/ro/tests/call-simulator/">
+<link rel="alternate" hreflang="hu" href="https://pulse-call.com/hu/tests/call-simulator/">
+<link rel="alternate" hreflang="x-default" href="https://pulse-call.com/tests/call-simulator/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@600;700&display=swap" rel="stylesheet">
+<style>
+:root{--deep:#071229;--panel:#0E1E3C;--hair:rgba(255,255,255,.14);
+  --blue:#4C8DF6;--orange:#FF7A1A;--muted:#8FA6C4;--ok:#3FD07F;--no:#FF6B6B}
+*{box-sizing:border-box}
+body{margin:0;background:var(--deep);color:#EAF1FB;min-height:100vh;
+  font-family:'Inter',system-ui,sans-serif;font-size:17px;line-height:1.6;
+  -webkit-font-smoothing:antialiased;display:flex;flex-direction:column}
+.wrap{width:100%;max-width:760px;margin:0 auto;padding:0 20px}
+h1,h2,h3{font-family:'Manrope',sans-serif;margin:0;letter-spacing:-.03em;line-height:1.1}
+p{margin:0} a{color:inherit}
+header{border-bottom:1px solid var(--hair);padding:15px 0}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:14px}
+.logo{font-family:'Manrope';font-weight:800;font-size:19px;color:#fff;display:flex;align-items:center;gap:9px;text-decoration:none;letter-spacing:-.03em}
+.logo i{width:8px;height:8px;border-radius:50%;background:var(--orange)}
+.nav a.back{color:#8FA6C4;font-size:14px;text-decoration:none}
+.nav a.back:hover{color:#fff}
+main{flex:1;display:flex;align-items:center;padding:40px 0 56px}
+.stage{width:100%}
+.screen{display:none}.screen.on{display:block;animation:in .3s ease both}
+@keyframes in{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;border:0;cursor:pointer;
+  font-family:'Inter',sans-serif;font-weight:600;font-size:16.5px;padding:16px 32px;border-radius:999px;
+  text-decoration:none;transition:.18s}
+.btn-p{background:var(--orange);color:#12203A;box-shadow:0 10px 26px rgba(255,122,26,.26)}
+.btn-p:hover{background:#EE6C0D;transform:translateY(-2px)}
+.btn-g{background:transparent;color:#EAF1FB;border:1.5px solid var(--hair)}
+.btn-g:hover{border-color:var(--blue);color:#fff}
+.kicker{display:inline-flex;gap:8px;font-family:'Manrope';font-weight:700;font-size:12px;
+  letter-spacing:.16em;text-transform:uppercase;color:var(--blue);
+  border:1px solid var(--hair);padding:7px 14px;border-radius:999px;margin-bottom:22px}
+.start h1{font-size:clamp(32px,5.6vw,50px);font-weight:800;max-width:15ch}
+.start h1 em{font-style:normal;color:var(--orange)}
+.start .sub{margin-top:18px;font-size:18px;color:#B7C7DD;max-width:46ch}
+.start .go{margin-top:30px;display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.tiny{font-size:13.5px;color:var(--muted)}
+
+/* индикатор настроя */
+.mood{display:flex;align-items:center;gap:14px;margin-bottom:22px}
+.mood .lbl{font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--muted);white-space:nowrap}
+.bar{flex:1;height:8px;background:rgba(255,255,255,.12);border-radius:999px;overflow:hidden}
+.bar i{display:block;height:100%;width:50%;border-radius:999px;
+  background:linear-gradient(90deg,#FF6B6B,#FFC24B 45%,#3FD07F);transition:width .5s cubic-bezier(.2,.8,.2,1)}
+.mood .val{font-family:'JetBrains Mono',monospace;font-weight:700;font-size:14px;min-width:42px;text-align:right}
+
+/* диалог */
+.talk{display:grid;gap:12px;margin-bottom:22px}
+.msg{max-width:86%;padding:15px 18px;border-radius:16px;font-size:16px;line-height:1.5;animation:in .28s ease both}
+.msg.them{background:var(--panel);border:1px solid var(--hair);border-bottom-left-radius:5px}
+.msg.me{margin-left:auto;background:rgba(76,141,246,.16);border:1px solid rgba(76,141,246,.4);border-bottom-right-radius:5px}
+.who{display:block;font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--muted);margin-bottom:6px}
+.opts{display:grid;gap:10px}
+.opt{cursor:pointer;text-align:left;background:rgba(255,255,255,.04);border:1.5px solid var(--hair);
+  border-radius:14px;padding:16px 18px;font:inherit;color:#EAF1FB;transition:.16s}
+.opt:hover{border-color:var(--blue);background:rgba(76,141,246,.12);transform:translateX(3px)}
+.fb{margin-top:14px;border-radius:14px;padding:18px 20px;border:1px solid var(--hair);background:var(--panel)}
+.fb b{display:block;font-family:'Manrope';font-weight:800;font-size:14.5px;margin-bottom:7px}
+.fb.good b{color:var(--ok)} .fb.bad b{color:var(--no)} .fb.mid b{color:#FFC24B}
+.fb p{color:#C4D3E7;font-size:15.5px}
+.fb .next{margin-top:16px;display:flex;justify-content:flex-end}
+
+.res{text-align:center}
+.res .big{font-family:'Manrope';font-weight:800;font-size:clamp(40px,10vw,72px);letter-spacing:-.04em;line-height:1}
+.res h2{font-size:clamp(23px,3.4vw,30px);font-weight:800;margin-top:22px}
+.res .lead{color:#B7C7DD;margin-top:12px;max-width:48ch;margin-inline:auto}
+.res .hint{margin-top:22px;background:var(--panel);border:1px solid var(--hair);border-radius:16px;
+  padding:19px 21px;font-size:15.5px;color:#C4D3E7;text-align:left}
+.cta{margin-top:28px;display:flex;flex-wrap:wrap;gap:12px;justify-content:center}
+footer{border-top:1px solid var(--hair);padding:26px 0;color:var(--muted);font-size:13.5px}
+.foot{display:flex;flex-wrap:wrap;gap:8px 18px;justify-content:space-between}
+.foot a{color:var(--muted);text-decoration:none}.foot a:hover{color:#fff}
+*:focus-visible{outline:2px solid var(--orange);outline-offset:3px;border-radius:8px}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+@media(max-width:560px){.btn{width:100%}.start .go{flex-direction:column;align-items:stretch}.msg{max-width:94%}}
+
+.lang-sw{position:relative;flex:none;margin-left:auto}
+.lang-btn{display:inline-flex;align-items:center;gap:8px;cursor:pointer;
+  background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.22);color:#EAF1FB;
+  font:inherit;font-size:14px;font-weight:600;padding:8px 12px;border-radius:999px;transition:.16s;line-height:1}
+.lang-btn:hover{border-color:rgba(255,122,26,.7)}
+.lang-btn svg{width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:2}
+.lang-btn .car{width:10px;height:10px;opacity:.75;transition:transform .18s}
+.lang-sw.open .lang-btn .car{transform:rotate(180deg)}
+.lang-menu{position:absolute;top:calc(100% + 8px);right:0;min-width:200px;z-index:80;
+  background:#0E1E3C;border:1px solid rgba(255,255,255,.2);border-radius:14px;padding:6px;
+  box-shadow:0 18px 44px rgba(0,0,0,.45)}
+.lang-menu[hidden]{display:none}
+.lang-menu a{display:flex;align-items:center;justify-content:space-between;gap:10px;
+  padding:10px 12px;border-radius:10px;text-decoration:none;color:#DCE7F6;font-size:14px;transition:.14s}
+.lang-menu a:hover{background:rgba(76,141,246,.18);color:#fff}
+.lang-menu a[aria-current="true"]{background:rgba(255,122,26,.16);color:#fff}
+.lang-menu b.code{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.1em;font-weight:700}
+@media(max-width:600px){.lang-btn span.lbl{display:none}}
+</style>
+</head>
+<body>
+
+<header><div class="wrap nav">
+  <a class="logo" href="/hu/"><i></i>Pulse Call</a>
+  <a class="back" href="/hu/tests/">← Minden teszt</a>
+  <div class="lang-sw" data-lang="hu">
+    <button type="button" class="lang-btn" aria-haspopup="true" aria-expanded="false" aria-label="Nyelv választása">
+      <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a15 15 0 0 1 0 18 15 15 0 0 1 0-18z"/></svg>
+      <span class="lbl">Magyar</span>
+      <svg class="car" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg>
+    </button>
+    <div class="lang-menu" role="menu" hidden>
+      <a href="/tests/call-simulator/" data-lang="ru" hreflang="ru">Русский<b class="code">RU</b></a>
+      <a href="/en/tests/call-simulator/" data-lang="en" hreflang="en">English<b class="code">EN</b></a>
+      <a href="/de/tests/call-simulator/" data-lang="de" hreflang="de">Deutsch<b class="code">DE</b></a>
+      <a href="/es/tests/call-simulator/" data-lang="es" hreflang="es">Español<b class="code">ES</b></a>
+      <a href="/cs/tests/call-simulator/" data-lang="cs" hreflang="cs">Čeština<b class="code">CS</b></a>
+      <a href="/sk/tests/call-simulator/" data-lang="sk" hreflang="sk">Slovenčina<b class="code">SK</b></a>
+      <a href="/ro/tests/call-simulator/" data-lang="ro" hreflang="ro">Română<b class="code">RO</b></a>
+      <a href="/hu/tests/call-simulator/" data-lang="hu" aria-current="true">Magyar<b class="code">HU</b></a>
+    </div>
+  </div>
+</div></header>
+
+<main><div class="wrap stage">
+
+  <section class="screen on start" id="s-start">
+    <span class="kicker">6 replika · 3 perc</span>
+    <h1>Hívás <em>szimulátor</em></h1>
+    <p class="sub">Felhívsz egy ügyfelet. Válaszd ki, mit válaszolsz, és figyeld a hangulatsávot: minden replika vagy megnyeri az embert, vagy eltaszítja. A végén elemzés következik.</p>
+    <div class="go">
+      <button class="btn btn-p" id="begin">Hívás indítása</button>
+      <span class="tiny">Ez szimulátor, nem vizsga</span>
+    </div>
+  </section>
+
+  <section class="screen" id="s-game" aria-live="polite">
+    <div class="mood">
+      <span class="lbl">Az ügyfél hangulata</span>
+      <span class="bar"><i id="bar"></i></span>
+      <span class="val" id="val">50</span>
+    </div>
+    <div class="talk" id="talk"></div>
+    <div class="opts" id="opts"></div>
+    <div id="fb"></div>
+  </section>
+
+  <section class="screen res" id="s-res">
+    <p class="big" id="score">—</p>
+    <h2 id="title"></h2>
+    <p class="lead" id="lead"></p>
+    <div class="hint" id="hint"></div>
+    <div class="cta">
+      <a class="btn btn-p" href="/hu/jobs/operators/#form">Jelentkezem</a>
+      <button class="btn btn-g" id="again">Újra próbálom</button>
+    </div>
+  </section>
+
+</div></main>
+
+<footer><div class="wrap foot">
+  <span>© 2026 Pulse Call</span>
+  <span>
+    <a href="/hu/tests/">Minden teszt</a> ·
+    <a href="/hu/about/">A cégről</a> ·
+    <a href="/hu/jobs/operators/">Álláshirdetés</a> ·
+    <a href="/hu/legal/privacy-policy/">Adatvédelmi szabályzat</a>
+  </span>
+</div></footer>
+
+<script>
+(function(){
+  "use strict";
+
+  var STEPS = [
+    { them:"Halló? Ki az?",
+      opts:[
+        {t:"Jó napot! Anna vagyok, a Pulse Call cégtől hívom. A honlapon leadott jelentkezése ügyében keresem — alkalmas most a beszélgetés?", d:+15, k:"good",
+         e:"Név, cég, a hívás oka és egy kérdés az alkalmasságról — mind egyetlen mondatban. Az ember három másodperc alatt megértette, ki hívja és miért."},
+        {t:"Jó napot! Kiváló ajánlatunk van az Ön számára, szó szerint egy percet kérek!", d:-20, k:"bad",
+         e:"A „kiváló ajánlat” a spamhívás jellemzője. Az ember nem értette meg, ki hívja és honnan van meg a száma, és már kész letenni."},
+        {t:"Anna vagyok. Adott le jelentkezést?", d:0, k:"mid",
+         e:"Nem udvariatlan, de a másik félnek találgatnia kell, melyik Anna és melyik cégtől. Jobb rögtön megnevezni a céget."}
+      ]},
+    { them:"Á, igen, azt hiszem, leadtam. De most vezetek, nem alkalmas.",
+      opts:[
+        {t:"Értem, nem tartom fel. Mikor hívjam vissza — egy óra múlva vagy inkább este felé?", d:+15, k:"good",
+         e:"Meghallgattad az embert, és rögtön konkrét választási lehetőséget kínáltál. A nyitott „mikor alkalmas Önnek?” kérdés gyakrabban végződik azzal, hogy „majd én jelentkezem”."},
+        {t:"Csak két percet vesz igénybe, gyorsan elmondom.", d:-20, k:"bad",
+         e:"Az ember világosan megmondta, hogy nem alkalmas. A nyomulás ilyenkor szinte mindig tiszteletlenségnek hat."},
+        {t:"Rendben, akkor viszonthallásra.", d:-5, k:"mid",
+         e:"Udvarias, de elveszítetted a kapcsolatot: nem beszéltetek meg következő lépést. A jelentkezés megvolt, az érdeklődés megvolt — most újra fel kell építeni."}
+      ]},
+    { them:"Legyen este. Bár… jó, mondja röviden, mi az.",
+      opts:[
+        {t:"Köszönöm. Röviden: távmunka operátorként, 2/2-es beosztás, kifizetés tíznaponta. Képzés nulláról — tapasztalat nem kell.", d:+15, k:"good",
+         e:"Betartottad az ígért rövidséget, és a lényeget mondtad: formátum, beosztás, pénz, belépési küszöb. Innentől az ember már magától kérdez."},
+        {t:"A cégünk 2020 óta működik több mint tíz európai országban, nagy csapatunk van, és nagyra értékeljük a munkatársainkat…", d:-15, k:"bad",
+         e:"Az ember rövidséget kért, és céges bemutatót kapott. A lényegig nem jutottál el, a türelme viszont már elfogyott."},
+        {t:"Hát, operátori állás, mindent elmondok, ha találkozunk.", d:-10, k:"mid",
+         e:"Üres válasz. Figyelmet kértél, és semmi konkrétat nem adtál cserébe — a bizalom csökken."}
+      ]},
+    { them:"Akár kétezer euró — ezt komolyan mondja? Átverésnek hangzik.",
+      opts:[
+        {t:"Értem a kétségét. Ez a felső határ, nem az, amit mindenki megkap. A kereset a bér plusz az értékesítés utáni százalék, az óráktól és az eredménytől függ.", d:+20, k:"good",
+         e:"Az őszinte válasz egy közvetlen kétségre jobban működik minden bizonygatásnál. Nem védeni kezdted a számot, hanem elmagyaráztad, hogyan áll össze."},
+        {t:"Nem, nem, minden tisztességes, tényleg ennyit fizetünk, sokan kapnak ennyit!", d:-15, k:"bad",
+         e:"A magyarázat nélküli bizonygatás erősíti a gyanút. Minél hevesebben győzködsz, annál erősebb az érzés, hogy valami nem stimmel."},
+        {t:"Hát, amennyit dolgozik, annyit keres.", d:-5, k:"mid",
+         e:"Lényegében igaz, de lekezelően hangzik. Az ember őszintén kérdezett, és ugyanolyan őszinte magyarázatot várt."}
+      ]},
+    { them:"És mit kell pontosan csinálni? Sosem dolgoztam értékesítésben.",
+      opts:[
+        {t:"Felhívni az embereket a cég által adott adatbázisból, és kész szkriptek alapján dolgozni. Tapasztalat nem kell: a képzés 3–7 napig tart.", d:+15, k:"good",
+         e:"Eloszlattad a fő félelmet — „nem tudom, hogyan kell” — konkrétumokkal: az adatbázis kész, a szkriptek megvannak, a képzés rövid."},
+        {t:"Ugyan, nincs ebben semmi nehéz, menni fog!", d:-10, k:"bad",
+         e:"Ez lekicsinyli a kérdést. Az ember a munka tartalmát akarta megérteni, és elhessegetést kapott — ugyanazzal az aggodalommal maradt."},
+        {t:"Mindent elmondanak majd a képzésen.", d:-5, k:"mid",
+         e:"Formálisan igaz, de a kérdés most hangzott el. Néhány konkrét mondat itt többet ér, mint az ígéret, hogy majd később elmagyarázzák."}
+      ]},
+    { them:"Rendben, érthetően hangzik. Mi a következő lépés?",
+      opts:[
+        {t:"Akkor a következőben maradunk: továbbítom a jelentkezését a HR-nek, holnap délelőtt keresni fogják egy rövid interjú miatt. Ezen a számon?", d:+20, k:"good",
+         e:"A beszélgetést összefoglalás zárja: mi fog történni, mikor és melyik számon. Az ember tiszta képpel teszi le a telefont, nem azzal az érzéssel, hogy „ez meg mi volt”."},
+        {t:"Hát, gondolja át, ha valami, hívjon vissza.", d:-15, k:"bad",
+         e:"A kezdeményezést átadtad valakinek, aki semmivel sem tartozik neked. A legtöbb esetben nem fog visszahívni."},
+        {t:"Nagyszerű! Várjuk a csapatban!", d:-5, k:"mid",
+         e:"Lendületes, de üres: nem világos, mi a következő lépés. A beszélgetés végének konkrét következő lépést kell tartalmaznia."}
+      ]}
+  ];
+
+  var i=0, mood=50, picks=[], locked=false;
+  var $=function(id){return document.getElementById(id);};
+  var screens={start:$("s-start"),game:$("s-game"),res:$("s-res")};
+
+  function show(n){ for(var k in screens) screens[k].classList.toggle("on",k===n); window.scrollTo({top:0,behavior:"smooth"}); }
+  function setMood(v){
+    mood=Math.max(0,Math.min(100,v));
+    $("bar").style.width=mood+"%"; $("val").textContent=mood;
+    $("val").style.color = mood>=65 ? "#3FD07F" : (mood<=35 ? "#FF6B6B" : "#FFC24B");
+  }
+  function say(who,text){
+    var el=document.createElement("div");
+    el.className="msg "+(who==="them"?"them":"me");
+    el.innerHTML='<span class="who">'+(who==="them"?"Ügyfél":"Te")+'</span>'+text;
+    $("talk").appendChild(el);
+  }
+
+  function render(){
+    locked=false; $("fb").innerHTML="";
+    say("them",STEPS[i].them);
+    var box=$("opts"); box.innerHTML="";
+    STEPS[i].opts.forEach(function(o){
+      var b=document.createElement("button");
+      b.className="opt"; b.type="button"; b.textContent=o.t;
+      b.addEventListener("click",function(){ pick(o); });
+      box.appendChild(b);
+    });
+  }
+
+  function pick(o){
+    if(locked) return; locked=true;
+    picks.push(o.k);
+    say("me",o.t);
+    setMood(mood+o.d);
+    $("opts").innerHTML="";
+    var label = o.k==="good" ? "Jó húzás" : (o.k==="bad" ? "Így jobb nem válaszolni" : "Lehetne jobb");
+    $("fb").innerHTML='<div class="fb '+o.k+'"><b>'+label+' · hangulat '+(o.d>0?"+":"")+o.d+'</b><p>'+o.e+'</p>'+
+      '<div class="next"><button class="btn btn-p" id="next">'+(i===STEPS.length-1?"A beszélgetés eredménye":"Tovább")+'</button></div></div>';
+    $("next").addEventListener("click",function(){
+      if(i<STEPS.length-1){ i++; render(); } else { finish(); }
+    });
+    $("next").focus();
+  }
+
+  function finish(){
+    $("score").textContent=mood;
+    $("score").style.color = mood>=65 ? "#3FD07F" : (mood<=35 ? "#FF6B6B" : "#FFC24B");
+    var good=picks.filter(function(k){return k==="good";}).length;
+    var t,l,h;
+    if(mood>=75){
+      t="Az ügyfél végighallgatott, és várja a hívást";
+      l="Tartottad a beszélgetés szerkezetét: bemutatkoztál, meghallgattad a kifogást, őszintén válaszoltál, és megállapodással zártál.";
+      h="Pontosan így épül fel egy szkript szerinti beszélgetés: a szerkezet adott, de a szavak élők. A képzésen ezt valódi felvételeken gyakoroljátok.";
+    } else if(mood>=45){
+      t="A beszélgetés létrejött, de veszteségekkel";
+      l="A replikák egy része működött, más része lehűtötte a másik felet. Telefonbeszélgetésben egy rossz mondat több jót is felér.";
+      h="A hangulat leggyakrabban ott esik, ahol az operátor nyomul vagy általánosságokkal válaszol. Ez javítható, és a képzésen átbeszélitek.";
+    } else {
+      t="Az ügyfél letette volna";
+      l="A hangulat lement: nagy valószínűséggel a nyomulás és a konkrétumok helyett használt általános mondatok tették.";
+      h="Ne aggódj: az értékesítési tapasztalat nem szerepel ennek a pozíciónak a követelményei között. A képzés 3–7 napig tart, az első hívásoknál pedig mentor van melletted.";
+    }
+    $("title").textContent=t; $("lead").textContent=l; $("hint").textContent=h;
+    show("res");
+  }
+
+  $("begin").addEventListener("click",function(){
+    i=0; picks=[]; $("talk").innerHTML=""; setMood(50); render(); show("game");
+  });
+  $("again").addEventListener("click",function(){
+    i=0; picks=[]; $("talk").innerHTML=""; setMood(50); show("start");
+  });
+})();
+</script>
+
+
+<script>
+(function(){
+  var sw=document.querySelector('.lang-sw'); if(!sw) return;
+  var btn=sw.querySelector('.lang-btn'), menu=sw.querySelector('.lang-menu');
+  function close(){menu.hidden=true;sw.classList.remove('open');btn.setAttribute('aria-expanded','false');}
+  btn.addEventListener('click',function(e){e.stopPropagation();
+    if(menu.hidden){menu.hidden=false;sw.classList.add('open');btn.setAttribute('aria-expanded','true');}else close();});
+  document.addEventListener('click',function(e){if(!sw.contains(e.target))close();});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')close();});
+  menu.addEventListener('click',function(e){var a=e.target.closest('a[data-lang]');if(a){close();}});
+})();
+</script>
+</body>
+</html>

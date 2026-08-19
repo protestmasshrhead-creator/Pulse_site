@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Personal Data Processing Policy — Pulse Call</title>
+<meta name="description" content="Operational rules for processing personal data at Pulse Call: lawful bases, retention, processors, security and breach handling.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#0A1A33;--paper:#F4F7FB;--card:#fff;--line:#D3DEEC;
+  --blue:#1155CC;--blue-soft:#E7EFFD;--orange:#FF7A1A;--muted:#5C6470;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);
+  font-family:'Inter',system-ui,sans-serif;font-size:16.5px;line-height:1.68;-webkit-font-smoothing:antialiased}
+.wrap{max-width:860px;margin:0 auto;padding:0 24px}
+header{background:var(--ink);padding:16px 0;position:sticky;top:0;z-index:10}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:14px}
+.logo{font-family:'Manrope',sans-serif;font-weight:800;font-size:19px;color:#fff;display:flex;align-items:center;gap:9px;text-decoration:none;letter-spacing:-.02em}
+.logo i{width:8px;height:8px;border-radius:50%;background:var(--orange)}
+.nav a.up{color:#8FA6C4;font-size:14px;text-decoration:none}
+.nav a.up:hover{color:#fff}
+main{padding:50px 0 80px}
+h1{font-family:'Manrope',sans-serif;font-size:clamp(27px,4vw,40px);font-weight:800;letter-spacing:-.025em;line-height:1.14;margin:0 0 14px}
+h2{font-family:'Manrope',sans-serif;font-size:21px;font-weight:800;letter-spacing:-.015em;
+  margin:44px 0 14px;padding-top:20px;border-top:1px solid var(--line);scroll-margin-top:80px}
+h3{font-family:'Manrope',sans-serif;font-size:17px;font-weight:700;margin:26px 0 8px}
+h3.nt{margin-top:0}
+p{margin:0 0 12px}
+p,li{color:#25334A}
+ul,ol{padding-left:22px;margin:12px 0}
+li{margin-bottom:7px}
+a{color:var(--blue)}
+a:hover{color:var(--orange)}
+.meta{color:var(--muted);font-size:14px;margin-bottom:6px}
+.lead{font-size:18px;color:var(--muted);line-height:1.6;margin-bottom:8px}
+.toc{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px 26px;margin:26px 0 8px}
+.toc b{font-family:'Manrope',sans-serif;font-weight:800;font-size:15px;display:block;margin-bottom:10px}
+.toc ol{margin:0;padding-left:20px;columns:2;column-gap:32px}
+.toc li{margin-bottom:6px;font-size:14.5px;break-inside:avoid}
+.toc a{text-decoration:none}
+.toc a:hover{text-decoration:underline}
+@media(max-width:620px){.toc ol{columns:1}}
+.box{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:20px 24px;margin:18px 0}
+.callout{background:var(--blue-soft);border-left:4px solid var(--blue);border-radius:0 12px 12px 0;padding:18px 22px;margin:20px 0}
+.callout b{display:block;font-family:'Manrope',sans-serif;font-weight:800;margin-bottom:6px}
+.callout p:last-child{margin-bottom:0}
+.warn{background:#FFF4E5;border-left:4px solid var(--orange);border-radius:0 12px 12px 0;padding:18px 22px;margin:20px 0}
+.warn b{display:block;font-family:'Manrope',sans-serif;font-weight:800;margin-bottom:6px;color:#8A4200}
+.warn p:last-child{margin-bottom:0}
+.fill{background:#FFE9C9;padding:1px 8px;border-radius:5px;font-weight:600;color:#8A4200;font-size:.95em}
+table{width:100%;border-collapse:collapse;margin:16px 0;font-size:14.7px}
+th,td{border:1px solid var(--line);padding:11px 13px;text-align:left;vertical-align:top;background:var(--card)}
+th{background:var(--blue-soft);font-family:'Manrope',sans-serif;font-weight:700;font-size:14px}
+table.req td:first-child{width:38%;font-weight:600;background:#F8FAFD}
+@media(max-width:620px){table{font-size:13.5px}th,td{padding:9px 10px}}
+.foot-nav{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-top:52px;padding-top:24px;border-top:1px solid var(--line)}
+.back{font-size:15px;text-decoration:none;color:var(--blue);font-weight:600}
+footer{border-top:1px solid var(--line);padding:24px 0;color:var(--muted);font-size:14px;background:var(--card)}
+*:focus-visible{outline:2px solid var(--orange);outline-offset:3px;border-radius:6px}
+</style>
+</head>
+<body>
+<header><div class="wrap nav">
+  <a class="logo" href="/"><i></i>Pulse Call</a>
+  <a class="up" href="/legal/">All legal documents</a>
+</div></header>
+<main class="wrap">
+
+  <p class="meta">Version 1.0 · Last updated: 19 August 2026</p>
+  <h1>Personal Data Processing Policy</h1>
+  <p class="lead">This document sets out, in operational detail, how personal data is processed within Pulse Call: the principles we follow, the records we keep, the retention schedule we apply and the procedures that support the rights described in our Privacy Policy.</p>
+
+  <div class="callout"><b>How this differs from the Privacy Policy</b>
+    <p>The <a href="/legal/privacy-policy/">Privacy Policy</a> tells you, as a visitor or candidate, what happens to your data. This document is the internal processing standard behind it: lawful bases in detail, retention rules, processor requirements, breach handling and request procedures. Both are published so that our commitments can be checked.</p>
+  </div>
+
+  <nav class="toc"><b>Contents</b>
+    <ol>
+      <li><a href="#p1">Purpose and scope</a></li>
+      <li><a href="#p2">Definitions</a></li>
+      <li><a href="#p3">Data protection principles</a></li>
+      <li><a href="#p4">Categories of data subjects and data</a></li>
+      <li><a href="#p5">Lawful bases in detail</a></li>
+      <li><a href="#p6">Special category and criminal offence data</a></li>
+      <li><a href="#p7">Consent management</a></li>
+      <li><a href="#p8">Retention schedule</a></li>
+      <li><a href="#p9">Deletion and anonymisation</a></li>
+      <li><a href="#p10">Processors and sub-processors</a></li>
+      <li><a href="#p11">International transfers</a></li>
+      <li><a href="#p12">Security measures</a></li>
+      <li><a href="#p13">Personal data breaches</a></li>
+      <li><a href="#p14">Handling data subject requests</a></li>
+      <li><a href="#p15">Records of processing</a></li>
+      <li><a href="#p16">Impact assessments</a></li>
+      <li><a href="#p17">Responsibilities and training</a></li>
+      <li><a href="#p18">Review of this policy</a></li>
+    </ol>
+  </nav>
+
+  <h2 id="p1">1. Purpose and scope</h2>
+  <p>This policy applies to all processing of personal data carried out by SEAWAY DRAGON LP (registration number LP020855, registered in the United Kingdom on 17 February 2020, registered office Suite 6032, 128 Aldersgate Street, Barbican, London, England, EC1A 4AE) in connection with recruitment through the Pulse Call website and related channels.</p>
+  <p>It binds all employees, contractors and managers who handle candidate data, in every country in which we recruit. Processors act under contract on the terms set out in section 10.</p>
+  <p>The applicable law is the UK GDPR together with the Data Protection Act 2018 and, where we offer roles to people located in the European Union, Regulation (EU) 2016/679 by virtue of its Article 3(2).</p>
+
+  <h2 id="p2">2. Definitions</h2>
+  <table><tbody>
+    <tr><td><b>Personal data</b></td><td>Any information relating to an identified or identifiable living individual</td></tr>
+    <tr><td><b>Processing</b></td><td>Any operation performed on personal data, from collection to erasure</td></tr>
+    <tr><td><b>Controller</b></td><td>The party that determines the purposes and means of processing — here, the company named above</td></tr>
+    <tr><td><b>Processor</b></td><td>A party that processes data on the controller's behalf, such as a CRM or hosting provider</td></tr>
+    <tr><td><b>Data subject</b></td><td>The individual the data relates to — for us, mainly candidates and site visitors</td></tr>
+    <tr><td><b>Special category data</b></td><td>The categories listed in Article 9, including health, beliefs and biometric data</td></tr>
+  </tbody></table>
+
+  <h2 id="p3">3. Data protection principles</h2>
+  <p>All processing follows the six principles in Article 5, and we must be able to demonstrate that it does — the accountability principle.</p>
+  <table>
+    <thead><tr><th>Principle</th><th>What it means in our work</th></tr></thead>
+    <tbody>
+      <tr><td>Lawfulness, fairness, transparency</td><td>Every purpose has a lawful basis recorded in section 5, and the Privacy Policy states it plainly before data is collected</td></tr>
+      <tr><td>Purpose limitation</td><td>Candidate data is used to assess candidates. It is not reused for unrelated purposes without a new basis</td></tr>
+      <tr><td>Data minimisation</td><td>The application form asks for three fields only: name, phone number and language level. Everything else is optional</td></tr>
+      <tr><td>Accuracy</td><td>Candidates may correct their data at any time; recruiters record interview notes as observations, not conclusions about the person</td></tr>
+      <tr><td>Storage limitation</td><td>The schedule in section 8 sets a defined end point for every category</td></tr>
+      <tr><td>Integrity and confidentiality</td><td>The measures in section 12 apply to all systems holding candidate data</td></tr>
+    </tbody>
+  </table>
+
+  <h2 id="p4">4. Categories of data subjects and data</h2>
+  <table>
+    <thead><tr><th>Data subject</th><th>Data processed</th><th>Collected from</th></tr></thead>
+    <tbody>
+      <tr><td>Candidate who applies directly</td><td>Name, phone number, language level, optional free text, interview notes</td><td>The candidate</td></tr>
+      <tr><td>Candidate who was referred</td><td>Phone number, then the same data as above once contact is made</td><td>The referring person, then the candidate</td></tr>
+      <tr><td>Referring participant</td><td>Name, phone number, payment records relating to the bonus</td><td>The participant</td></tr>
+      <tr><td>Site visitor</td><td>IP address, browser and device type, time of access, referring page, cookie preferences</td><td>Automatically, on visiting</td></tr>
+    </tbody>
+  </table>
+
+  <h2 id="p5">5. Lawful bases in detail</h2>
+  <h3 class="nt">Pre-contractual steps — Article 6(1)(b)</h3>
+  <p>Assessing an application is a step taken at the candidate's request before entering into a contract. This basis covers contacting the candidate, holding an interview, recording assessment notes and communicating the outcome. It ends when the process ends.</p>
+  <h3>Consent — Article 6(1)(a)</h3>
+  <p>Keeping an unsuccessful application on file for future roles goes beyond the current process, so it needs separate, freely given consent. Consent is requested as a distinct, unticked option; refusing it has no effect on the current application.</p>
+  <h3>Legitimate interests — Article 6(1)(f)</h3>
+  <p>Used for the referral programme, for site security and for spam filtering. Before relying on this basis we carry out and document a three-part assessment: whether the interest is legitimate, whether the processing is necessary to achieve it, and whether it is overridden by the rights of the individual. Referral processing is limited to a single contact attempt if the person does not respond.</p>
+  <h3>Legal obligation — Article 6(1)(c)</h3>
+  <p>Retention of payment and accounting records relating to referral bonuses and salaries.</p>
+
+  <h2 id="p6">6. Special category and criminal offence data</h2>
+  <p>We do not seek special category data under Article 9 or criminal offence data under Article 10, and no processing condition in Schedule 1 of the Data Protection Act 2018 is relied upon.</p>
+  <div class="warn"><b>If such data reaches us anyway</b>
+    <p>Where a candidate volunteers special category data in the free-text field, the recruiter must delete it from the record without transferring it elsewhere and without taking it into account in the assessment. The deletion is logged. No copy is kept.</p>
+  </div>
+
+  <h2 id="p7">7. Consent management</h2>
+  <ul>
+    <li>Consent is requested separately from the terms of the application, in plain language, with no pre-ticked boxes.</li>
+    <li>We record what the person was told, what they agreed to and when.</li>
+    <li>Withdrawal is as easy as giving consent: one message to <a href="mailto:hr@pulse-call.com">hr@pulse-call.com</a>.</li>
+    <li>On withdrawal we stop the relevant processing and delete the data unless another basis genuinely applies, in which case we explain which.</li>
+    <li>Cookie consent is collected through the banner, stored with a record of the choice, and can be changed at any time.</li>
+  </ul>
+
+  <h2 id="p8">8. Retention schedule</h2>
+  <table>
+    <thead><tr><th>Record</th><th>Period</th><th>Trigger</th><th>Basis for the period</th></tr></thead>
+    <tbody>
+      <tr><td>Unsuccessful application</td><td>6 months</td><td>From last contact with the candidate</td><td>Window in which a hiring decision could be challenged</td></tr>
+      <tr><td>Application retained for future roles</td><td>1 year</td><td>From the date consent was given</td><td>Consent; renewed or deleted at expiry</td></tr>
+      <tr><td>Interview notes</td><td>Same as the application they belong to</td><td>—</td><td>They form part of the assessment record</td></tr>
+      <tr><td>Hired candidate</td><td>Transferred to employment records</td><td>On the start date</td><td>Employment and tax law of the relevant country</td></tr>
+      <tr><td>Referral bonus payment records</td><td>6 years</td><td>From the end of the accounting period</td><td>UK accounting and tax record-keeping</td></tr>
+      <tr><td>Server and access logs</td><td>Up to 12 months</td><td>From creation</td><td>Security monitoring and incident investigation</td></tr>
+      <tr><td>Records of consent</td><td>As long as the consent is relied on, plus 1 year</td><td>—</td><td>Demonstrating accountability</td></tr>
+      <tr><td>Data subject request correspondence</td><td>1 year after the request is closed</td><td>—</td><td>Evidence that the request was handled</td></tr>
+    </tbody>
+  </table>
+
+  <h2 id="p9">9. Deletion and anonymisation</h2>
+  <p>At the end of a retention period the record is deleted from the CRM and from any working copies, including exports and message threads. Where statistics are needed, data is anonymised so that re-identification is not reasonably possible, and aggregated figures may then be kept indefinitely.</p>
+  <p>Retention periods are reviewed on a rolling basis at least quarterly, and deletion is logged so that it can be evidenced.</p>
+
+  <h2 id="p10">10. Processors and sub-processors</h2>
+  <p>Current processors:</p>
+  <table>
+    <thead><tr><th>Processor</th><th>Service</th><th>Data</th></tr></thead>
+    <tbody>
+      <tr><td>SalesRender</td><td>CRM for applications and pipeline</td><td>Contact and professional data, interview notes</td></tr>
+      <tr><td>Netlify</td><td>Website hosting and delivery</td><td>Technical data; form content in transit</td></tr>
+    </tbody>
+  </table>
+  <p>Every processor is engaged under a written contract that, as required by Article 28, obliges them to:</p>
+  <ul>
+    <li>process only on our documented instructions;</li>
+    <li>impose confidentiality on their personnel;</li>
+    <li>apply appropriate security measures;</li>
+    <li>engage sub-processors only with our authorisation and on equivalent terms;</li>
+    <li>assist us with data subject requests, breach notification and impact assessments;</li>
+    <li>delete or return the data at the end of the engagement;</li>
+    <li>submit to audits and provide the information needed to demonstrate compliance.</li>
+  </ul>
+  <p>New processors are assessed for security and transfer arrangements before any data is shared.</p>
+
+  <h2 id="p11">11. International transfers</h2>
+  <p>Transfers outside the UK or the EEA take place only where one of the Chapter V mechanisms is in place: an applicable adequacy decision; the EU Standard Contractual Clauses; the UK International Data Transfer Agreement or the UK Addendum to the EU SCCs; or another appropriate safeguard.</p>
+  <p>Where SCCs or the IDTA are used, we carry out and document a transfer risk assessment covering the law and practice of the destination country, and we apply supplementary measures where the assessment requires them.</p>
+
+  <h2 id="p12">12. Security measures</h2>
+  <table>
+    <thead><tr><th>Area</th><th>Measure</th></tr></thead>
+    <tbody>
+      <tr><td>Transmission</td><td>HTTPS across the whole site, including the application form</td></tr>
+      <tr><td>Access control</td><td>Individual accounts, access granted on a need-to-know basis, removed when a role changes or ends</td></tr>
+      <tr><td>Authentication</td><td>Unique credentials; multi-factor authentication on systems that support it</td></tr>
+      <tr><td>Confidentiality</td><td>Written confidentiality obligations for all staff and contractors with access</td></tr>
+      <tr><td>Minimisation in practice</td><td>Candidate data is not copied into personal devices, spreadsheets or private messengers</td></tr>
+      <tr><td>Supplier assurance</td><td>Article 28 contracts and a security review before onboarding</td></tr>
+      <tr><td>Review</td><td>Access rights reviewed periodically; incidents reviewed after closure</td></tr>
+    </tbody>
+  </table>
+
+  <h2 id="p13">13. Personal data breaches</h2>
+  <p>A personal data breach is any security incident leading to accidental or unlawful destruction, loss, alteration, unauthorised disclosure of, or access to, personal data.</p>
+  <ol>
+    <li><b>Report internally without delay.</b> Anyone who becomes aware of a suspected breach reports it to <a href="mailto:hr@pulse-call.com">hr@pulse-call.com</a> immediately, without attempting to resolve it alone.</li>
+    <li><b>Contain and assess.</b> We stop the ongoing exposure, establish what data and how many people are affected, and assess the risk to their rights.</li>
+    <li><b>Notify the supervisory authority</b> within 72 hours of becoming aware, unless the breach is unlikely to result in a risk. If we cannot provide full details in time, we notify in phases.</li>
+    <li><b>Notify affected individuals</b> without undue delay where the risk to their rights is high, in clear language, describing the likely consequences and the steps we have taken.</li>
+    <li><b>Record.</b> Every breach is logged with its facts, effects and remedial action, whether or not it was notifiable.</li>
+  </ol>
+
+  <h2 id="p14">14. Handling data subject requests</h2>
+  <ul>
+    <li>Requests may arrive in any form and through any channel; there is no obligation on the individual to use a template.</li>
+    <li>Any staff member receiving one forwards it to <a href="mailto:hr@pulse-call.com">hr@pulse-call.com</a> on the same working day, because the clock starts on receipt by the organisation.</li>
+    <li>We respond within one month, extendable by two further months for complex or numerous requests, with reasons given inside the first month.</li>
+    <li>Identity is verified only where there is genuine doubt, using the least intrusive method available.</li>
+    <li>Responses are free of charge; a reasonable fee or refusal is possible only for manifestly unfounded or excessive requests, and we explain the reasoning and the right to complain.</li>
+    <li>Where data about the requester also concerns another person, we release it only if that is reasonable, redacting where necessary.</li>
+  </ul>
+
+  <h2 id="p15">15. Records of processing</h2>
+  <p>We maintain a record of processing activities in line with Article 30, covering purposes, categories of data subjects and data, recipients, transfers, retention periods and security measures. The record is updated whenever a new tool, purpose or recipient is introduced, and is made available to a supervisory authority on request.</p>
+
+  <h2 id="p16">16. Impact assessments</h2>
+  <p>A Data Protection Impact Assessment is carried out before any processing likely to result in a high risk to individuals — for example large-scale profiling, automated decision-making with significant effects, or systematic monitoring. Current recruitment processing does not meet that threshold, and this conclusion is reviewed whenever the processing changes.</p>
+
+  <h2 id="p17">17. Responsibilities and training</h2>
+  <table class="req">
+    <tr><td>Management</td><td>Owns compliance, approves this policy, allocates resources</td></tr>
+    <tr><td>HR and recruiters</td><td>Apply the principles day to day, collect only required fields, forward requests and suspected breaches immediately</td></tr>
+    <tr><td>Anyone with data access</td><td>Follows this policy; unauthorised copying or disclosure is a disciplinary matter</td></tr>
+    <tr><td>Data protection contact</td><td><a href="mailto:hr@pulse-call.com">hr@pulse-call.com</a> — first point of contact for questions, requests and incidents</td></tr>
+  </table>
+  <p>Staff with access to candidate data are briefed on this policy when they join and whenever it changes materially.</p>
+
+  <h2 id="p18">18. Review of this policy</h2>
+  <p>This policy is reviewed at least annually, and sooner if the law changes, a new processor is engaged, or an incident shows that a procedure needs improvement. The version number and date at the top reflect the current text.</p>
+
+  <div class="foot-nav">
+    <a class="back" href="/legal/privacy-policy/">← Privacy Policy</a>
+    <a class="back" href="/legal/terms-of-use/">Terms of Use →</a>
+  </div>
+
+</main>
+<footer><div class="wrap">© 2026 Pulse Call · SEAWAY DRAGON LP</div></footer>
+</body>
+</html>
