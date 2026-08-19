@@ -8,11 +8,13 @@
     tools/extract.py      извлечение переводимых строк из HTML и из JS
     tools/build.py        генерация страниц
     tools/build_tr.py     сборка словаря из TSV-файлов «номер<TAB>перевод»
+    tools/sitemap.py      генерация sitemap.xml и robots.txt в корне
 
 ## Пересобрать всё
 
     export SP=$(pwd)/_i18n
     for L in ru en de es cs sk ro hu; do python3 _i18n/tools/build.py $L; done
+    python3 _i18n/tools/sitemap.py
 
 Запускать из корня репозитория. Сборка идемпотентна: всегда читает из `src/`,
 повторный запуск не задваивает canonical и hreflang.
