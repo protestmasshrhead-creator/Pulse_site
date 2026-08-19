@@ -4,7 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Personal Data Processing Policy — Pulse Call</title>
-<meta name="description" content="Operational rules for processing personal data at Pulse Call: lawful bases, retention, processors, security and breach handling.">
+<meta name="description" content="Operational data protection standard: lawful bases, retention schedule, processors, transfers, security, breaches, data subject requests and complaints.">
+<meta name="robots" content="index,follow">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
@@ -61,6 +62,7 @@ table.req td:first-child{width:38%;font-weight:600;background:#F8FAFD}
 .foot-nav{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-top:52px;padding-top:24px;border-top:1px solid var(--line)}
 .back{font-size:15px;text-decoration:none;color:var(--blue);font-weight:600}
 footer{border-top:1px solid var(--line);padding:24px 0;color:var(--muted);font-size:14px;background:var(--card)}
+code{font-family:ui-monospace,'JetBrains Mono',SFMono-Regular,Menlo,monospace;font-size:.92em;background:#EEF3FA;border:1px solid var(--line);border-radius:5px;padding:1px 6px}
 *:focus-visible{outline:2px solid var(--orange);outline-offset:3px;border-radius:6px}
 </style>
 </head>
@@ -71,197 +73,253 @@ footer{border-top:1px solid var(--line);padding:24px 0;color:var(--muted);font-s
 </div></header>
 <main class="wrap">
 
-  <p class="meta">Version 1.0 · Last updated: 19 August 2026</p>
+  <p class="meta">Version 2.0 · In force from 19 August 2026 · Replaces version 1.0 · Next review by 19 August 2027</p>
   <h1>Personal Data Processing Policy</h1>
-  <p class="lead">This document sets out, in operational detail, how personal data is processed within Pulse Call: the principles we follow, the records we keep, the retention schedule we apply and the procedures that support the rights described in our Privacy Policy.</p>
+  <p class="lead">This document sets out, in operational detail, how personal data is processed within Pulse Call: the law we apply, the lawful bases we rely on, the retention schedule, the requirements we place on processors, and the procedures behind every right described in our Privacy Policy.</p>
 
   <div class="callout"><b>How this differs from the Privacy Policy</b>
-    <p>The <a href="/legal/privacy-policy/">Privacy Policy</a> tells you, as a visitor or candidate, what happens to your data. This document is the internal processing standard behind it: lawful bases in detail, retention rules, processor requirements, breach handling and request procedures. Both are published so that our commitments can be checked.</p>
-  </div>
+    <p>The <a href="/legal/privacy-policy/">Privacy Policy</a> tells you, as a visitor or candidate, what happens to your data. This document is the internal processing standard behind it. Both are published so that our commitments can be checked against what we actually do.</p></div>
 
   <nav class="toc"><b>Contents</b>
     <ol>
-      <li><a href="#p1">Purpose and scope</a></li>
-      <li><a href="#p2">Definitions</a></li>
-      <li><a href="#p3">Data protection principles</a></li>
-      <li><a href="#p4">Categories of data subjects and data</a></li>
-      <li><a href="#p5">Lawful bases in detail</a></li>
-      <li><a href="#p6">Special category and criminal offence data</a></li>
-      <li><a href="#p7">Consent management</a></li>
-      <li><a href="#p8">Retention schedule</a></li>
-      <li><a href="#p9">Deletion and anonymisation</a></li>
-      <li><a href="#p10">Processors and sub-processors</a></li>
-      <li><a href="#p11">International transfers</a></li>
-      <li><a href="#p12">Security measures</a></li>
-      <li><a href="#p13">Personal data breaches</a></li>
-      <li><a href="#p14">Handling data subject requests</a></li>
-      <li><a href="#p15">Records of processing</a></li>
-      <li><a href="#p16">Impact assessments</a></li>
-      <li><a href="#p17">Responsibilities and training</a></li>
-      <li><a href="#p18">Review of this policy</a></li>
+      <li><a href="#d1">Purpose, scope and applicable law</a></li>
+      <li><a href="#d2">Definitions</a></li>
+      <li><a href="#d3">Data protection principles</a></li>
+      <li><a href="#d4">Data subjects and categories of data</a></li>
+      <li><a href="#d5">Lawful bases in detail</a></li>
+      <li><a href="#d6">Special category and criminal offence data</a></li>
+      <li><a href="#d7">Consent management</a></li>
+      <li><a href="#d8">Retention schedule</a></li>
+      <li><a href="#d9">Deletion and anonymisation</a></li>
+      <li><a href="#d10">Recipients, processors and messaging platforms</a></li>
+      <li><a href="#d11">International transfers</a></li>
+      <li><a href="#d12">Security measures</a></li>
+      <li><a href="#d13">Personal data breaches</a></li>
+      <li><a href="#d14">Handling data subject requests</a></li>
+      <li><a href="#d15">Complaints made to us</a></li>
+      <li><a href="#d16">Records of processing</a></li>
+      <li><a href="#d17">Impact assessments</a></li>
+      <li><a href="#d18">Automated decisions and AI</a></li>
+      <li><a href="#d19">Cookies and access to your device</a></li>
+      <li><a href="#d20">Responsibilities and training</a></li>
+      <li><a href="#d21">Review and version history</a></li>
     </ol>
   </nav>
 
-  <h2 id="p1">1. Purpose and scope</h2>
-  <p>This policy applies to all processing of personal data carried out by SEAWAY DRAGON LP (registration number LP020855, registered in the United Kingdom on 17 February 2020, registered office Suite 6032, 128 Aldersgate Street, Barbican, London, England, EC1A 4AE) in connection with recruitment through the Pulse Call website and related channels.</p>
-  <p>It binds all employees, contractors and managers who handle candidate data, in every country in which we recruit. Processors act under contract on the terms set out in section 10.</p>
-  <p>The applicable law is the UK GDPR together with the Data Protection Act 2018 and, where we offer roles to people located in the European Union, Regulation (EU) 2016/679 by virtue of its Article 3(2).</p>
+  <h2 id="d1">1. Purpose, scope and applicable law</h2>
+  <p>This policy applies to all processing of personal data carried out by SEAWAY DRAGON LP (registration number LP020855, registered in the United Kingdom on 17 February 2020, registered office Suite 6032, 128 Aldersgate Street, Barbican, London, England, EC1A 4AE) in connection with recruitment through the Pulse Call website and the channels linked from it.</p>
+  <p>It binds everyone who handles candidate data on our behalf — partners, managers, recruiters, contractors — in every country in which we recruit. Processors act under contract on the terms in section 10.</p>
+  <p>Two regimes apply to us in parallel, and where they differ we apply the stricter requirement to everyone:</p>
+  <table>
+    <tr><th>Regime</th><th>Why it applies</th><th>What we apply</th></tr>
+    <tr><td>UK GDPR and the Data Protection Act 2018, as amended by the Data (Use and Access) Act 2025</td><td>We are established in the United Kingdom</td><td>The full UK regime, including the changes that took effect on 5 February 2026 and the complaints duty that took effect on 19 June 2026</td></tr>
+    <tr><td>Regulation (EU) 2016/679 (EU GDPR), by virtue of Article 3(2)(a)</td><td>We offer roles to people located in the European Union and target them by country and language</td><td>The EU regime for candidates and visitors in the EU, including Chapter V on transfers and the EU rules on consent for cookies</td></tr>
+    <tr><td>PECR 1998/2003 (UK) and the ePrivacy Directive 2002/58/EC as implemented in each Member State</td><td>The Site stores and reads information on user devices</td><td>Section 19 of this policy</td></tr>
+  </table>
+  <div class="warn"><b>Representative in the European Union — outstanding</b>
+    <p>Because we are established outside the EU and offer roles to people located in the EU on a regular basis, Article 27 of the EU GDPR requires a representative in the Union to be designated in writing, and the exemption for occasional processing does not apply to regular recruitment. The designated representative is <span class="fill">to be completed: name and address of the EU representative</span>. Until this entry is filled in and published in the Privacy Policy, the position is non-compliant and the omission is recorded here deliberately rather than hidden. There is no equivalent gap on the UK side, because we are established in the UK.</p></div>
 
-  <h2 id="p2">2. Definitions</h2>
-  <table><tbody>
-    <tr><td><b>Personal data</b></td><td>Any information relating to an identified or identifiable living individual</td></tr>
-    <tr><td><b>Processing</b></td><td>Any operation performed on personal data, from collection to erasure</td></tr>
-    <tr><td><b>Controller</b></td><td>The party that determines the purposes and means of processing — here, the company named above</td></tr>
-    <tr><td><b>Processor</b></td><td>A party that processes data on the controller's behalf, such as a CRM or hosting provider</td></tr>
-    <tr><td><b>Data subject</b></td><td>The individual the data relates to — for us, mainly candidates and site visitors</td></tr>
-    <tr><td><b>Special category data</b></td><td>The categories listed in Article 9, including health, beliefs and biometric data</td></tr>
+  <h2 id="d2">2. Definitions</h2>
+  <table class="req"><tbody>
+    <tr><td>Personal data</td><td>Any information relating to an identified or identifiable living individual</td></tr>
+    <tr><td>Processing</td><td>Any operation performed on personal data, from collection to erasure</td></tr>
+    <tr><td>Controller</td><td>The party that determines the purposes and means of processing — here, the company named in section 1</td></tr>
+    <tr><td>Processor</td><td>A party that processes data on our behalf and on our instructions, such as a CRM or hosting provider</td></tr>
+    <tr><td>Data subject</td><td>The individual the data relates to — for us, candidates, referred people, referring participants and site visitors</td></tr>
+    <tr><td>Special category data</td><td>The categories listed in Article 9: racial or ethnic origin, political opinions, religious or philosophical beliefs, trade union membership, genetic and biometric data, health, sex life and sexual orientation</td></tr>
+    <tr><td>Significant decision</td><td>A decision producing a legal effect for a person or similarly significantly affecting them — the term used in Articles 22A to 22D of the UK GDPR</td></tr>
   </tbody></table>
 
-  <h2 id="p3">3. Data protection principles</h2>
-  <p>All processing follows the six principles in Article 5, and we must be able to demonstrate that it does — the accountability principle.</p>
+  <h2 id="d3">3. Data protection principles</h2>
+  <p>All processing follows the principles in Article 5, and we must be able to demonstrate that it does — the accountability principle.</p>
   <table>
-    <thead><tr><th>Principle</th><th>What it means in our work</th></tr></thead>
-    <tbody>
-      <tr><td>Lawfulness, fairness, transparency</td><td>Every purpose has a lawful basis recorded in section 5, and the Privacy Policy states it plainly before data is collected</td></tr>
-      <tr><td>Purpose limitation</td><td>Candidate data is used to assess candidates. It is not reused for unrelated purposes without a new basis</td></tr>
-      <tr><td>Data minimisation</td><td>The application form asks for three fields only: name, phone number and language level. Everything else is optional</td></tr>
-      <tr><td>Accuracy</td><td>Candidates may correct their data at any time; recruiters record interview notes as observations, not conclusions about the person</td></tr>
-      <tr><td>Storage limitation</td><td>The schedule in section 8 sets a defined end point for every category</td></tr>
-      <tr><td>Integrity and confidentiality</td><td>The measures in section 12 apply to all systems holding candidate data</td></tr>
-    </tbody>
+    <tr><th>Principle</th><th>What it means in our work</th></tr>
+    <tr><td>Lawfulness, fairness, transparency</td><td>Every purpose has a lawful basis recorded in section 5, and the Privacy Policy states it plainly before data is collected</td></tr>
+    <tr><td>Purpose limitation</td><td>Candidate data is used to assess candidates. It is not reused for unrelated purposes without a compatibility assessment or a new basis</td></tr>
+    <tr><td>Data minimisation</td><td>The application block asks for three fields only — name, telephone number and language level. Everything else is optional. We do not ask for a photograph, date of birth, marital status, nationality or pay history</td></tr>
+    <tr><td>Accuracy</td><td>Candidates may correct their data at any time; recruiters record interview notes as observations, not as conclusions about the person</td></tr>
+    <tr><td>Storage limitation</td><td>The schedule in section 8 sets a defined end point for every category</td></tr>
+    <tr><td>Integrity and confidentiality</td><td>The measures in section 12 apply to every system holding candidate data</td></tr>
   </table>
 
-  <h2 id="p4">4. Categories of data subjects and data</h2>
+  <h2 id="d4">4. Data subjects and categories of data</h2>
   <table>
-    <thead><tr><th>Data subject</th><th>Data processed</th><th>Collected from</th></tr></thead>
-    <tbody>
-      <tr><td>Candidate who applies directly</td><td>Name, phone number, language level, optional free text, interview notes</td><td>The candidate</td></tr>
-      <tr><td>Candidate who was referred</td><td>Phone number, then the same data as above once contact is made</td><td>The referring person, then the candidate</td></tr>
-      <tr><td>Referring participant</td><td>Name, phone number, payment records relating to the bonus</td><td>The participant</td></tr>
-      <tr><td>Site visitor</td><td>IP address, browser and device type, time of access, referring page, cookie preferences</td><td>Automatically, on visiting</td></tr>
-    </tbody>
+    <tr><th>Data subject</th><th>Data processed</th><th>Collected from</th></tr>
+    <tr><td>Candidate who applies directly</td><td>Name, telephone number, language level, optional free-text comment, the messenger account used to write to us, correspondence, interview notes, outcome</td><td>The candidate, through WhatsApp, email or a telephone call</td></tr>
+    <tr><td>Referred person</td><td>Telephone number, then the same data as above once contact is made and they choose to continue</td><td>The referring participant, then the person themselves</td></tr>
+    <tr><td>Referring participant</td><td>Name, telephone number, records relating to the bonus and its payment</td><td>The participant</td></tr>
+    <tr><td>Site visitor</td><td>IP address, user agent, time of access and requested page, in the logs kept by the hosting provider; the language preference stored on the device</td><td>Automatically, on visiting</td></tr>
   </table>
+  <div class="callout"><b>What the Site itself does not collect</b>
+    <p>The Site has no server-side form, no account system and no analytics or advertising trackers. The tests run entirely in the browser and their answers are never transmitted to us. Application data reaches us only when the user sends the prepared message from their own messenger, or writes to us by email or telephone.</p></div>
 
-  <h2 id="p5">5. Lawful bases in detail</h2>
-  <h3 class="nt">Pre-contractual steps — Article 6(1)(b)</h3>
-  <p>Assessing an application is a step taken at the candidate's request before entering into a contract. This basis covers contacting the candidate, holding an interview, recording assessment notes and communicating the outcome. It ends when the process ends.</p>
-  <h3>Consent — Article 6(1)(a)</h3>
-  <p>Keeping an unsuccessful application on file for future roles goes beyond the current process, so it needs separate, freely given consent. Consent is requested as a distinct, unticked option; refusing it has no effect on the current application.</p>
-  <h3>Legitimate interests — Article 6(1)(f)</h3>
-  <p>Used for the referral programme, for site security and for spam filtering. Before relying on this basis we carry out and document a three-part assessment: whether the interest is legitimate, whether the processing is necessary to achieve it, and whether it is overridden by the rights of the individual. Referral processing is limited to a single contact attempt if the person does not respond.</p>
-  <h3>Legal obligation — Article 6(1)(c)</h3>
-  <p>Retention of payment and accounting records relating to referral bonuses and salaries.</p>
+  <h2 id="d5">5. Lawful bases in detail</h2>
+  <p>Each purpose is matched to one basis, chosen before the processing starts and recorded in the record of processing.</p>
+  <table>
+    <tr><th>Purpose</th><th>Basis</th><th>Notes</th></tr>
+    <tr><td>Receiving and assessing an application; contacting the candidate; interviewing; recording the outcome</td><td>Legitimate interests — Article 6(1)(f)</td><td>Our interest is filling roles with suitable people, and the candidate's interest is being considered. A legitimate interests assessment is documented and reviewed annually. We rely on this rather than on contract, because before an offer is accepted there is no contract to perform and the ICO expects legitimate interests at this stage</td></tr>
+    <tr><td>Steps taken at the candidate's request once an offer is made — preparing the contract, onboarding formalities</td><td>Contract — Article 6(1)(b)</td><td>These are steps prior to entering into a contract at the data subject's request</td></tr>
+    <tr><td>Keeping an unsuccessful application on file for future roles</td><td>Consent — Article 6(1)(a)</td><td>Requested separately, in plain language, as a distinct and unticked option. Refusing has no effect on the current application, and it may be withdrawn at any time</td></tr>
+    <tr><td>Referral programme: contacting a referred person once</td><td>Legitimate interests — Article 6(1)(f)</td><td>Limited to a single contact attempt, with the Article 14 information given at that first contact and immediate deletion if the person objects</td></tr>
+    <tr><td>Site security, spam filtering, investigating misuse</td><td>Legitimate interests — Article 6(1)(f)</td><td>Assessed and documented in the same way</td></tr>
+    <tr><td>Paying bonuses and salaries; accounting and tax records</td><td>Legal obligation — Article 6(1)(c)</td><td>UK accounting and tax law, and the equivalent law of the country of employment</td></tr>
+    <tr><td>Establishing, exercising or defending legal claims</td><td>Legitimate interests — Article 6(1)(f)</td><td>Supports the six-month retention in section 8</td></tr>
+  </table>
+  <p>5.1. <b>Legitimate interests assessments.</b> Before relying on Article 6(1)(f) we carry out a three-part test — is the interest legitimate, is the processing necessary to achieve it, and is it overridden by the interests, rights and freedoms of the individual — and we keep the assessment in writing. The right to object under Article 21 is honoured, and it is set out in the Privacy Policy next to each purpose that relies on this basis.</p>
+  <p>5.2. <b>Recognised legitimate interests (UK only).</b> The Data (Use and Access) Act 2025 added Article 6(1)(ea) and Annex 1 to the UK GDPR, where certain narrow purposes — crime prevention and detection, safeguarding vulnerable individuals, responding to requests from public bodies and similar — need no balancing test. We do not use this basis in routine recruitment. It is available if, for example, we must respond to a law enforcement request, and any such use is logged with the Annex 1 condition relied upon. This basis has no EU equivalent, so for people in the EU we conduct the balancing test in the usual way.</p>
+  <p>5.3. <b>No consent as a workaround.</b> We do not use consent to legitimise processing a candidate cannot realistically refuse. Consent is reserved for the talent-pool retention in the table above and for anything genuinely optional.</p>
 
-  <h2 id="p6">6. Special category and criminal offence data</h2>
-  <p>We do not seek special category data under Article 9 or criminal offence data under Article 10, and no processing condition in Schedule 1 of the Data Protection Act 2018 is relied upon.</p>
+  <h2 id="d6">6. Special category and criminal offence data</h2>
+  <p>We do not seek data falling under Article 9 or Article 10, we do not ask about health, disability, beliefs, origin, union membership, sexual orientation or criminal records, and we rely on no condition in Schedule 1 of the Data Protection Act 2018.</p>
   <div class="warn"><b>If such data reaches us anyway</b>
-    <p>Where a candidate volunteers special category data in the free-text field, the recruiter must delete it from the record without transferring it elsewhere and without taking it into account in the assessment. The deletion is logged. No copy is kept.</p>
-  </div>
+    <p>Where a candidate volunteers special category data — most often in the free-text comment or in a WhatsApp message — the recruiter deletes it from the record without copying it elsewhere and without taking it into account in the assessment. The deletion is logged with the date and the person who carried it out. No copy is kept in exports, message archives or notes. Where the message itself cannot be edited, the whole message is deleted after the relevant non-sensitive details have been transcribed.</p></div>
+  <p>Requirements of the role that touch on health or disability, such as adjustments for an interview, are handled separately, recorded only to the extent needed to make the adjustment, and are never used in the selection decision.</p>
 
-  <h2 id="p7">7. Consent management</h2>
+  <h2 id="d7">7. Consent management</h2>
   <ul>
-    <li>Consent is requested separately from the terms of the application, in plain language, with no pre-ticked boxes.</li>
-    <li>We record what the person was told, what they agreed to and when.</li>
-    <li>Withdrawal is as easy as giving consent: one message to <a href="mailto:hr@pulse-call.com">hr@pulse-call.com</a>.</li>
-    <li>On withdrawal we stop the relevant processing and delete the data unless another basis genuinely applies, in which case we explain which.</li>
-    <li>Cookie consent is collected through the banner, stored with a record of the choice, and can be changed at any time.</li>
+    <li>Consent is requested separately from the application itself, in plain language, with no pre-ticked boxes and no bundling.</li>
+    <li>We record what the person was told, what they agreed to, when, and by what means, so that consent can be demonstrated.</li>
+    <li>Withdrawal is as easy as giving consent: one message to <a href="mailto:hr@pulse-call.com">hr@pulse-call.com</a>, with no explanation required and no detriment.</li>
+    <li>On withdrawal we stop the relevant processing and delete the data, unless another basis genuinely applies, in which case we say which one and why.</li>
+    <li>Consent to talent-pool retention expires after one year and is renewed or the record is deleted.</li>
   </ul>
 
-  <h2 id="p8">8. Retention schedule</h2>
+  <h2 id="d8">8. Retention schedule</h2>
   <table>
-    <thead><tr><th>Record</th><th>Period</th><th>Trigger</th><th>Basis for the period</th></tr></thead>
-    <tbody>
-      <tr><td>Unsuccessful application</td><td>6 months</td><td>From last contact with the candidate</td><td>Window in which a hiring decision could be challenged</td></tr>
-      <tr><td>Application retained for future roles</td><td>1 year</td><td>From the date consent was given</td><td>Consent; renewed or deleted at expiry</td></tr>
-      <tr><td>Interview notes</td><td>Same as the application they belong to</td><td>—</td><td>They form part of the assessment record</td></tr>
-      <tr><td>Hired candidate</td><td>Transferred to employment records</td><td>On the start date</td><td>Employment and tax law of the relevant country</td></tr>
-      <tr><td>Referral bonus payment records</td><td>6 years</td><td>From the end of the accounting period</td><td>UK accounting and tax record-keeping</td></tr>
-      <tr><td>Server and access logs</td><td>Up to 12 months</td><td>From creation</td><td>Security monitoring and incident investigation</td></tr>
-      <tr><td>Records of consent</td><td>As long as the consent is relied on, plus 1 year</td><td>—</td><td>Demonstrating accountability</td></tr>
-      <tr><td>Data subject request correspondence</td><td>1 year after the request is closed</td><td>—</td><td>Evidence that the request was handled</td></tr>
-    </tbody>
+    <tr><th>Record</th><th>Period</th><th>Trigger</th><th>Why that period</th></tr>
+    <tr><td>Unsuccessful application, including notes and correspondence</td><td>6 months</td><td>From the last contact with the candidate</td><td>The window in which a hiring decision could be challenged</td></tr>
+    <tr><td>Application kept for future roles</td><td>1 year</td><td>From the date consent was given</td><td>Consent; renewed or deleted at expiry</td></tr>
+    <tr><td>Interview notes</td><td>Same as the application they belong to</td><td>—</td><td>They form part of the assessment record</td></tr>
+    <tr><td>Referred person who declines contact</td><td>Deleted immediately, keeping only a suppression note if they ask not to be contacted again</td><td>At first contact</td><td>Minimisation; the suppression note exists only to honour the objection</td></tr>
+    <tr><td>Hired candidate</td><td>Transferred to employment records</td><td>On the start date</td><td>Employment and tax law of the relevant country</td></tr>
+    <tr><td>Referral bonus and payment records</td><td>6 years</td><td>From the end of the accounting period</td><td>UK accounting and tax record-keeping</td></tr>
+    <tr><td>Messenger threads containing application data</td><td>6 months, or until the application record is deleted if that is sooner</td><td>From the last message</td><td>The thread duplicates the record and must not outlive it</td></tr>
+    <tr><td>Server and access logs held by the hosting provider</td><td>Up to 12 months</td><td>From creation</td><td>Security monitoring and incident investigation</td></tr>
+    <tr><td>Records of consent</td><td>As long as the consent is relied on, plus 1 year</td><td>—</td><td>Demonstrating accountability</td></tr>
+    <tr><td>Data subject requests and complaints, with correspondence</td><td>1 year after closure</td><td>—</td><td>Evidence that the request or complaint was handled</td></tr>
   </table>
 
-  <h2 id="p9">9. Deletion and anonymisation</h2>
-  <p>At the end of a retention period the record is deleted from the CRM and from any working copies, including exports and message threads. Where statistics are needed, data is anonymised so that re-identification is not reasonably possible, and aggregated figures may then be kept indefinitely.</p>
-  <p>Retention periods are reviewed on a rolling basis at least quarterly, and deletion is logged so that it can be evidenced.</p>
+  <h2 id="d9">9. Deletion and anonymisation</h2>
+  <p>At the end of a retention period the record is deleted from the CRM and from every working copy — exports, spreadsheets, message threads and backups as they cycle. Where statistics are needed, data is anonymised so that re-identification is not reasonably possible, and the aggregated figures may then be kept indefinitely.</p>
+  <p>Retention is reviewed on a rolling basis at least quarterly. Deletions are logged so that they can be evidenced, and the log itself holds no more than the record reference and the date.</p>
 
-  <h2 id="p10">10. Processors and sub-processors</h2>
-  <p>Current processors:</p>
-  <table>
-    <thead><tr><th>Processor</th><th>Service</th><th>Data</th></tr></thead>
-    <tbody>
-      <tr><td>SalesRender</td><td>CRM for applications and pipeline</td><td>Contact and professional data, interview notes</td></tr>
-      <tr><td>Netlify</td><td>Website hosting and delivery</td><td>Technical data; form content in transit</td></tr>
-    </tbody>
-  </table>
-  <p>Every processor is engaged under a written contract that, as required by Article 28, obliges them to:</p>
+  <h2 id="d10">10. Recipients, processors and messaging platforms</h2>
+  <p>10.1. <b>Processors.</b> Anyone processing candidate data on our behalf does so under a written contract meeting Article 28, which obliges them to:</p>
   <ul>
     <li>process only on our documented instructions;</li>
     <li>impose confidentiality on their personnel;</li>
-    <li>apply appropriate security measures;</li>
+    <li>apply appropriate technical and organisational security measures;</li>
     <li>engage sub-processors only with our authorisation and on equivalent terms;</li>
     <li>assist us with data subject requests, breach notification and impact assessments;</li>
     <li>delete or return the data at the end of the engagement;</li>
     <li>submit to audits and provide the information needed to demonstrate compliance.</li>
   </ul>
-  <p>New processors are assessed for security and transfer arrangements before any data is shared.</p>
-
-  <h2 id="p11">11. International transfers</h2>
-  <p>Transfers outside the UK or the EEA take place only where one of the Chapter V mechanisms is in place: an applicable adequacy decision; the EU Standard Contractual Clauses; the UK International Data Transfer Agreement or the UK Addendum to the EU SCCs; or another appropriate safeguard.</p>
-  <p>Where SCCs or the IDTA are used, we carry out and document a transfer risk assessment covering the law and practice of the destination country, and we apply supplementary measures where the assessment requires them.</p>
-
-  <h2 id="p12">12. Security measures</h2>
   <table>
-    <thead><tr><th>Area</th><th>Measure</th></tr></thead>
-    <tbody>
-      <tr><td>Transmission</td><td>HTTPS across the whole site, including the application form</td></tr>
-      <tr><td>Access control</td><td>Individual accounts, access granted on a need-to-know basis, removed when a role changes or ends</td></tr>
-      <tr><td>Authentication</td><td>Unique credentials; multi-factor authentication on systems that support it</td></tr>
-      <tr><td>Confidentiality</td><td>Written confidentiality obligations for all staff and contractors with access</td></tr>
-      <tr><td>Minimisation in practice</td><td>Candidate data is not copied into personal devices, spreadsheets or private messengers</td></tr>
-      <tr><td>Supplier assurance</td><td>Article 28 contracts and a security review before onboarding</td></tr>
-      <tr><td>Review</td><td>Access rights reviewed periodically; incidents reviewed after closure</td></tr>
-    </tbody>
+    <tr><th>Recipient</th><th>Role</th><th>Data</th><th>Status</th></tr>
+    <tr><td>CRM provider used for the candidate pipeline</td><td>Processor</td><td>Contact and professional data, interview notes</td><td><span class="fill">to be confirmed: provider name, Article 28 contract date, transfer mechanism</span></td></tr>
+    <tr><td>Hosting and content delivery provider for the Site</td><td>Processor</td><td>Technical data in server logs</td><td><span class="fill">to be confirmed: provider name, Article 28 contract date, transfer mechanism</span></td></tr>
+    <tr><td>Accountant or payroll provider</td><td>Processor</td><td>Payment records for bonuses and salaries</td><td><span class="fill">to be confirmed</span></td></tr>
+    <tr><td>Public authorities, courts, our legal or tax advisers</td><td>Separate controllers</td><td>Only what the law or the matter requires</td><td>Case by case, logged</td></tr>
+  </table>
+  <div class="warn"><b>Messaging platforms are not our processors</b>
+    <p>Applications normally reach us through WhatsApp, and some candidates use Telegram. Those providers — Meta Platforms Ireland Limited for WhatsApp, Telegram Messenger Inc. for Telegram — are not acting on our instructions when they carry a message. They are independent controllers for their own service, and they process at least the fact of the exchange, the phone numbers involved and their own account and metadata under their own terms and privacy policies. We cannot control that, we do not have an Article 28 contract covering it, and it is not something we can promise away. What we can do, and do, is: state it plainly in the Privacy Policy; offer email and telephone as alternatives; keep the prepared message limited to the fields the person entered; and copy the details we need into our own record and delete the thread on the schedule in section 8.</p></div>
+  <p>10.2. New processors are assessed for security and transfer arrangements before any data is shared, and this table is updated at the same time. We do not sell personal data and do not disclose it for third-party advertising.</p>
+
+  <h2 id="d11">11. International transfers</h2>
+  <p>11.1. Candidate data is held in the United Kingdom and in the EEA. Transfers out of the UK or the EEA take place only where a Chapter V mechanism is in place: an applicable adequacy decision or adequacy regulations; the EU Standard Contractual Clauses; the UK International Data Transfer Agreement or the UK Addendum to the EU SCCs; or another appropriate safeguard.</p>
+  <p>11.2. Data flowing from the EEA to us in the United Kingdom is covered by the European Commission's adequacy decisions for the UK, renewed on 19 December 2025 and running to 27 December 2031. Data flowing from the UK to the EEA is covered by the UK's adequacy regulations. No additional safeguard is needed for those two routes while those decisions stand; we monitor them, because both carry a sunset date.</p>
+  <p>11.3. Where SCCs or the IDTA are used, we carry out and document a transfer risk assessment covering the law and practice of the destination country, and we apply supplementary measures where the assessment calls for them.</p>
+  <p>11.4. A message sent to us through a messaging platform may be routed through infrastructure outside the UK and EEA by that platform, under its own arrangements. That is a consequence of the person's choice of channel rather than a transfer we make, and it is one reason we offer alternatives.</p>
+
+  <h2 id="d12">12. Security measures</h2>
+  <table>
+    <tr><th>Area</th><th>Measure</th></tr>
+    <tr><td>Transmission</td><td>HTTPS across the whole Site; messenger traffic is end-to-end encrypted by the platform</td></tr>
+    <tr><td>Access control</td><td>Individual named accounts, access on a need-to-know basis, removed the day a role changes or ends</td></tr>
+    <tr><td>Authentication</td><td>Unique credentials and multi-factor authentication on every system that supports it, including the messenger account used for recruitment</td></tr>
+    <tr><td>Device hygiene</td><td>Screen lock and disk encryption on devices with access to candidate data; the recruitment messenger account is not used on shared or personal devices without those protections</td></tr>
+    <tr><td>Confidentiality</td><td>Written confidentiality obligations for everyone with access, surviving the end of the engagement</td></tr>
+    <tr><td>Minimisation in practice</td><td>Candidate data is not copied into personal spreadsheets, private messengers or personal cloud accounts</td></tr>
+    <tr><td>Supplier assurance</td><td>Article 28 contracts and a security review before onboarding</td></tr>
+    <tr><td>Review</td><td>Access rights reviewed at least quarterly; every incident reviewed after closure and the lessons applied</td></tr>
   </table>
 
-  <h2 id="p13">13. Personal data breaches</h2>
-  <p>A personal data breach is any security incident leading to accidental or unlawful destruction, loss, alteration, unauthorised disclosure of, or access to, personal data.</p>
+  <h2 id="d13">13. Personal data breaches</h2>
+  <p>A personal data breach is any security incident leading to accidental or unlawful destruction, loss, alteration, unauthorised disclosure of, or access to, personal data. A lost phone with the recruitment messenger on it, a message sent to the wrong number and a mis-addressed export are all breaches.</p>
   <ol>
-    <li><b>Report internally without delay.</b> Anyone who becomes aware of a suspected breach reports it to <a href="mailto:hr@pulse-call.com">hr@pulse-call.com</a> immediately, without attempting to resolve it alone.</li>
-    <li><b>Contain and assess.</b> We stop the ongoing exposure, establish what data and how many people are affected, and assess the risk to their rights.</li>
-    <li><b>Notify the supervisory authority</b> within 72 hours of becoming aware, unless the breach is unlikely to result in a risk. If we cannot provide full details in time, we notify in phases.</li>
-    <li><b>Notify affected individuals</b> without undue delay where the risk to their rights is high, in clear language, describing the likely consequences and the steps we have taken.</li>
-    <li><b>Record.</b> Every breach is logged with its facts, effects and remedial action, whether or not it was notifiable.</li>
+    <li><b>Report internally without delay.</b> Anyone who becomes aware of a suspected breach reports it to <a href="mailto:hr@pulse-call.com">hr@pulse-call.com</a> immediately and does not try to resolve it alone.</li>
+    <li><b>Contain and assess.</b> We stop the ongoing exposure, establish what data and how many people are affected, and assess the risk to their rights and freedoms.</li>
+    <li><b>Notify the supervisory authority within 72 hours</b> of becoming aware, unless the breach is unlikely to result in a risk. Where both regimes are engaged we notify the ICO and the relevant EU authority. If full details are not available in time, we notify in phases.</li>
+    <li><b>Notify affected individuals</b> without undue delay where the risk to their rights is high, in clear language, describing the likely consequences and the steps taken.</li>
+    <li><b>Record.</b> Every breach is logged with its facts, effects and remedial action, whether or not it was notifiable, and the log is available to a supervisory authority on request.</li>
   </ol>
+  <p>Where a processor suffers a breach, its Article 28 contract requires it to inform us without undue delay so that these deadlines can be met.</p>
 
-  <h2 id="p14">14. Handling data subject requests</h2>
+  <h2 id="d14">14. Handling data subject requests</h2>
+  <p>Requests may arrive in any form and through any channel — email, a WhatsApp message, a phone call — and there is no obligation on the individual to use a template or to say "GDPR".</p>
   <ul>
-    <li>Requests may arrive in any form and through any channel; there is no obligation on the individual to use a template.</li>
-    <li>Any staff member receiving one forwards it to <a href="mailto:hr@pulse-call.com">hr@pulse-call.com</a> on the same working day, because the clock starts on receipt by the organisation.</li>
-    <li>We respond within one month, extendable by two further months for complex or numerous requests, with reasons given inside the first month.</li>
+    <li>Any person receiving a request forwards it to <a href="mailto:hr@pulse-call.com">hr@pulse-call.com</a> on the same working day, because the deadline runs from receipt by the organisation, not by the right person.</li>
+    <li>We respond within one month, extendable by two further months for complex or numerous requests, with the reasons given inside the first month.</li>
     <li>Identity is verified only where there is genuine doubt, using the least intrusive method available.</li>
-    <li>Responses are free of charge; a reasonable fee or refusal is possible only for manifestly unfounded or excessive requests, and we explain the reasoning and the right to complain.</li>
-    <li>Where data about the requester also concerns another person, we release it only if that is reasonable, redacting where necessary.</li>
+    <li>Responses are free of charge. A reasonable fee or a refusal is possible only for manifestly unfounded or excessive requests, and we explain the reasoning and the right to complain.</li>
+    <li>Where data about the requester also concerns another person — a referral, for instance — we release it only where that is reasonable, redacting what is not.</li>
+    <li>We keep a log of requests, the dates and the outcome.</li>
   </ul>
+  <p>14.1. <b>UK specifics from 5 February 2026.</b> For requests under the UK GDPR, the Data (Use and Access) Act 2025 confirms that the search we must carry out is one that is reasonable and proportionate, and that where we genuinely need clarification to respond, the time limit pauses until the requester provides it. We use both carefully: clarification is requested only where the request is genuinely unclear and we can show why, we tell the requester that the clock has stopped, and a proportionate search is never an excuse for an incomplete answer. These provisions have no EU equivalent, so for requests under the EU GDPR we do not apply them.</p>
+  <p>14.2. <b>Rights covered.</b> Access, rectification, erasure, restriction, portability, objection, withdrawal of consent, and the rights connected with automated decisions in section 18. Erasure and objection are the ones we receive most often, and a candidate asking to be removed is actioned in full: record, thread and exports.</p>
 
-  <h2 id="p15">15. Records of processing</h2>
-  <p>We maintain a record of processing activities in line with Article 30, covering purposes, categories of data subjects and data, recipients, transfers, retention periods and security measures. The record is updated whenever a new tool, purpose or recipient is introduced, and is made available to a supervisory authority on request.</p>
-
-  <h2 id="p16">16. Impact assessments</h2>
-  <p>A Data Protection Impact Assessment is carried out before any processing likely to result in a high risk to individuals — for example large-scale profiling, automated decision-making with significant effects, or systematic monitoring. Current recruitment processing does not meet that threshold, and this conclusion is reviewed whenever the processing changes.</p>
-
-  <h2 id="p17">17. Responsibilities and training</h2>
-  <table class="req">
-    <tr><td>Management</td><td>Owns compliance, approves this policy, allocates resources</td></tr>
-    <tr><td>HR and recruiters</td><td>Apply the principles day to day, collect only required fields, forward requests and suspected breaches immediately</td></tr>
-    <tr><td>Anyone with data access</td><td>Follows this policy; unauthorised copying or disclosure is a disciplinary matter</td></tr>
-    <tr><td>Data protection contact</td><td><a href="mailto:hr@pulse-call.com">hr@pulse-call.com</a> — first point of contact for questions, requests and incidents</td></tr>
+  <h2 id="d15">15. Complaints made to us</h2>
+  <p>15.1. Section 103 of the Data (Use and Access) Act 2025 gives people in the United Kingdom a statutory right to complain directly to a controller about processing that infringes the UK GDPR or the Data Protection Act 2018, and imposes duties on how we handle it. Those duties apply from 19 June 2026. We apply the same procedure to everyone, including candidates in the EU, who have an equivalent route through Article 77.</p>
+  <table>
+    <tr><th>Step</th><th>What we do</th><th>Deadline</th></tr>
+    <tr><td>Making a complaint</td><td>By email to <a href="mailto:hr@pulse-call.com">hr@pulse-call.com</a> with "Data protection complaint" in the subject, or in writing to the registered office. No form is required, and any message that reads as a complaint is treated as one</td><td>—</td></tr>
+    <tr><td>Acknowledgement</td><td>Written acknowledgement confirming receipt and who is handling it</td><td>Within 30 days of receipt</td></tr>
+    <tr><td>Investigation and response</td><td>Appropriate steps to investigate, then the outcome, the reasons and any corrective action</td><td>Without undue delay; we aim for 30 days and tell the complainant if it will take longer</td></tr>
+    <tr><td>Record</td><td>Every complaint is logged with its date, substance, outcome and any change made as a result</td><td>Kept per section 8</td></tr>
   </table>
-  <p>Staff with access to candidate data are briefed on this policy when they join and whenever it changes materially.</p>
+  <p>15.2. Complaining to us is not a precondition for going to a supervisory authority, and we say so in every acknowledgement. The Information Commissioner's Office is the UK authority; in the EU it is the authority of the Member State where the person lives, works, or where the alleged infringement occurred.</p>
 
-  <h2 id="p18">18. Review of this policy</h2>
-  <p>This policy is reviewed at least annually, and sooner if the law changes, a new processor is engaged, or an incident shows that a procedure needs improvement. The version number and date at the top reflect the current text.</p>
+  <h2 id="d16">16. Records of processing</h2>
+  <p>We maintain a record of processing activities in line with Article 30, covering purposes, categories of data subjects and data, recipients, transfers, retention periods and a general description of security measures. The record is updated whenever a new tool, purpose, recipient or country is introduced, and is made available to a supervisory authority on request. The exemption for small organisations is not relied upon, because our processing is regular rather than occasional.</p>
+
+  <h2 id="d17">17. Impact assessments</h2>
+  <p>A Data Protection Impact Assessment is carried out before any processing likely to result in a high risk to individuals — large-scale profiling, automated decision-making with significant effects, systematic monitoring, or the use of a new technology in the selection process.</p>
+  <p>Current recruitment processing does not meet that threshold: the data set is small, no special category data is sought, and no automated evaluation takes place. This conclusion is recorded, and is revisited whenever the processing changes — in particular before introducing any screening tool, call recording, monitoring of operators or AI assistance in selection.</p>
+
+  <h2 id="d18">18. Automated decisions and AI</h2>
+  <p>18.1. We take no significant decision about a candidate based solely on automated processing. Every rejection and every offer is made by a person who has considered the file. The tests on the Site produce results in the visitor's own browser, are never transmitted to us, and play no part in selection.</p>
+  <p>18.2. <b>If that changes.</b> Article 22 of the EU GDPR prohibits solely automated significant decisions except in narrow cases with safeguards. In the UK, Articles 22A to 22D of the UK GDPR, in force since 5 February 2026, permit them more broadly but require safeguards: information about the decision, an opportunity to make representations, human intervention and a right to contest. Special category data may not be used for such a decision unless explicit consent or an Article 9(2)(g) condition applies. Any introduction of automated screening would require a DPIA, an update to this policy and to the Privacy Policy, and those safeguards in place beforehand — designed to the EU standard, which is the stricter of the two.</p>
+  <p>18.3. <b>AI Act.</b> AI systems intended for use in recruitment — screening applications, filtering candidates, evaluating them — are high-risk under Annex III of Regulation (EU) 2024/1689. The obligations attaching to Annex III systems now apply from 2 December 2027, following the amendment adopted in July 2026, while the Article 50 transparency duties and the Article 4 AI literacy duty apply already. We use no AI system in recruitment today. Should we adopt one, we would be a deployer of a high-risk system and would meet the deployer obligations — human oversight by a competent person, informing candidates, monitoring, and keeping logs — regardless of the deferred deadline.</p>
+
+  <h2 id="d19">19. Cookies and access to your device</h2>
+  <p>19.1. The Site sets one cookie, <code>pc_lang</code>, and stores the same value in local storage, to remember the language chosen from the language switcher. It is written only when a visitor chooses a language, holds nothing but that choice, and expires after one year. There are no analytics, advertising, social or fingerprinting technologies on the Site.</p>
+  <p>19.2. Because this storage is used solely to provide a function the visitor explicitly requested, it is exempt from the consent requirement under regulation 6(4) of PECR and under Article 5(3) of the ePrivacy Directive. That is why the Site shows no cookie banner: there is nothing on it that consent could properly be sought for. Clearing browser storage removes the preference.</p>
+  <p>19.3. <b>If we ever add analytics or any other non-essential technology,</b> the two regimes now diverge and we will apply the stricter one:</p>
+  <table>
+    <tr><th>Regime</th><th>Position</th></tr>
+    <tr><td>United Kingdom</td><td>Since 5 February 2026 the Data (Use and Access) Act 2025 exempts certain purposes from consent — statistical measurement to improve the service, functionality and appearance preferences, security, and software updates — provided the visitor is given clear information and a straightforward way to object, and the data is used only for that purpose</td></tr>
+    <tr><td>European Union</td><td>No equivalent exemption is in force. The Commission's Digital Omnibus proposals of 19 November 2025 would change this, but they remain under negotiation, so analytics and similar storage still require prior consent, freely given through a banner that makes refusing as easy as accepting</td></tr>
+    <tr><td>What we would do</td><td>Ask for consent from everyone before setting anything non-essential, since the EU position is the stricter one and the Site serves both audiences</td></tr>
+  </table>
+  <p>19.4. Server logs kept by the hosting provider are not covered by these rules — they are a by-product of delivering the page — and are handled under section 5 (legitimate interests) and section 8 (retention).</p>
+
+  <h2 id="d20">20. Responsibilities and training</h2>
+  <table class="req">
+    <tr><td>Management</td><td>Owns compliance, approves this policy, allocates resources, signs off DPIAs and processor contracts</td></tr>
+    <tr><td>HR and recruiters</td><td>Apply the principles daily, collect only the required fields, remove special category data on sight, forward requests, complaints and suspected breaches the same working day</td></tr>
+    <tr><td>Anyone with data access</td><td>Follows this policy; unauthorised copying or disclosure is a disciplinary matter and may be a criminal offence under section 170 of the Data Protection Act 2018</td></tr>
+    <tr><td>Data protection contact</td><td><a href="mailto:hr@pulse-call.com">hr@pulse-call.com</a> — first point of contact for questions, requests, complaints and incidents</td></tr>
+    <tr><td>Data Protection Officer</td><td>Not appointed. Our processing is not large-scale systematic monitoring and does not involve large-scale special category data, so the Article 37 criteria are not met. The assessment is recorded and reviewed with this policy</td></tr>
+  </table>
+  <p>Everyone with access to candidate data is briefed on this policy when they start and whenever it changes materially, and the briefing is recorded.</p>
+
+  <h2 id="d21">21. Review and version history</h2>
+  <p>This policy is reviewed at least annually, and sooner if the law changes, a new processor or channel is introduced, or an incident shows that a procedure needs improving.</p>
+  <table>
+    <tr><th>Version</th><th>Date</th><th>What changed</th></tr>
+    <tr><td>2.0</td><td>19 August 2026</td><td>Updated for the Data (Use and Access) Act 2025 (recognised legitimate interests, Articles 22A–22D, reasonable and proportionate searches and stop-the-clock, the section 103 complaints duty in force since 19 June 2026, and the PECR cookie exemptions in force since 5 February 2026) and for the divergence from the EU position; lawful basis for assessing applications moved from Article 6(1)(b) to Article 6(1)(f) in line with ICO guidance; messaging platforms described accurately as independent controllers rather than processors; processor entries marked as outstanding rather than asserted; cookies section rewritten to match what the Site actually stores; UK adequacy renewal to 27 December 2031 and the AI Act deferral to 2 December 2027 recorded.</td></tr>
+    <tr><td>1.0</td><td>19 August 2026</td><td>First published version.</td></tr>
+  </table>
 
   <div class="foot-nav">
     <a class="back" href="/legal/privacy-policy/">← Privacy Policy</a>
