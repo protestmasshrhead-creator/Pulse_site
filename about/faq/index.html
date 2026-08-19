@@ -5,16 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Вопросы и ответы — Pulse Call</title>
 <meta name="description" content="FAQ Pulse Call: о компании, трудоустройстве, условиях работы, доходе, обучении и этапах отбора.">
-<link rel="canonical" href="https://pulse-call.com/about/faq/">
-<link rel="alternate" hreflang="ru" href="https://pulse-call.com/about/faq/">
-<link rel="alternate" hreflang="en" href="https://pulse-call.com/en/about/faq/">
-<link rel="alternate" hreflang="de" href="https://pulse-call.com/de/about/faq/">
-<link rel="alternate" hreflang="es" href="https://pulse-call.com/es/about/faq/">
-<link rel="alternate" hreflang="cs" href="https://pulse-call.com/cs/about/faq/">
-<link rel="alternate" hreflang="sk" href="https://pulse-call.com/sk/about/faq/">
-<link rel="alternate" hreflang="ro" href="https://pulse-call.com/ro/about/faq/">
-<link rel="alternate" hreflang="hu" href="https://pulse-call.com/hu/about/faq/">
-<link rel="alternate" hreflang="x-default" href="https://pulse-call.com/about/faq/">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@600;700&display=swap" rel="stylesheet">
@@ -172,21 +162,17 @@ footer{border-top:1px solid var(--hair);padding:34px 0;color:var(--muted);font-s
         <a href="/tests/">Тесты</a>
       </nav>
       <span class="nav-sp"></span>
-      <div class="lang-sw" data-lang="ru">
+      <div class="lang-sw">
         <button type="button" class="lang-btn" aria-haspopup="true" aria-expanded="false" aria-label="Выбрать язык">
           <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a15 15 0 0 1 0 18 15 15 0 0 1 0-18z"/></svg>
           <span class="lbl">Русский</span>
           <svg class="car" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg>
         </button>
         <div class="lang-menu" role="menu" hidden>
-          <a href="/about/faq/" data-lang="ru" aria-current="true">Русский<b class="code">RU</b></a>
-          <a href="/en/about/faq/" data-lang="en" hreflang="en">English<b class="code">EN</b></a>
-          <a href="/de/about/faq/" data-lang="de" hreflang="de">Deutsch<b class="code">DE</b></a>
-          <a href="/es/about/faq/" data-lang="es" hreflang="es">Español<b class="code">ES</b></a>
-          <a href="/cs/about/faq/" data-lang="cs" hreflang="cs">Čeština<b class="code">CS</b></a>
-          <a href="/sk/about/faq/" data-lang="sk" hreflang="sk">Slovenčina<b class="code">SK</b></a>
-          <a href="/ro/about/faq/" data-lang="ro" hreflang="ro">Română<b class="code">RO</b></a>
-          <a href="/hu/about/faq/" data-lang="hu" hreflang="hu">Magyar<b class="code">HU</b></a>
+          <a href="#" data-lang="ru" aria-current="true">Русский<b class="code">RU</b></a>
+          <span class="soon">English<span class="tg">скоро</span></span>
+          <span class="soon">Čeština<span class="tg">скоро</span></span>
+          <span class="soon">Română<span class="tg">скоро</span></span>
         </div>
       </div>
       <a class="btn btn-p btn-sm" href="/jobs/operators/#form">Оставить заявку</a>
@@ -291,7 +277,7 @@ footer{border-top:1px solid var(--hair);padding:34px 0;color:var(--muted);font-s
     if(menu.hidden){menu.hidden=false;sw.classList.add('open');btn.setAttribute('aria-expanded','true');}else close();});
   document.addEventListener('click',function(e){if(!sw.contains(e.target))close();});
   document.addEventListener('keydown',function(e){if(e.key==='Escape')close();});
-  menu.addEventListener('click',function(e){var a=e.target.closest('a[data-lang]');if(a){close();}});
+  menu.addEventListener('click',function(e){var a=e.target.closest('a[data-lang]');if(a){e.preventDefault();close();}});
 })();
 </script>
 </body>
