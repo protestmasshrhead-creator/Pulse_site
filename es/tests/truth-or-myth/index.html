@@ -18,135 +18,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@600;700&display=swap" rel="stylesheet">
-<style>
-:root{
-  --deep:#071229;--ink:#0A1A33;--panel:#0E1E3C;--hair:rgba(255,255,255,.14);
-  --blue:#4C8DF6;--orange:#FF7A1A;--muted:#8FA6C4;
-  --ok:#3FD07F;--no:#FF6B6B;
-}
-*{box-sizing:border-box}
-body{
-  margin:0;background:var(--deep);color:#EAF1FB;min-height:100vh;
-  font-family:'Inter',system-ui,sans-serif;font-size:17px;line-height:1.6;
-  -webkit-font-smoothing:antialiased;display:flex;flex-direction:column;
-}
-.wrap{width:100%;max-width:720px;margin:0 auto;padding:0 20px}
-h1,h2,h3{font-family:'Manrope',sans-serif;margin:0;letter-spacing:-.03em;line-height:1.1}
-p{margin:0}
-a{color:inherit}
-.mono{font-family:'JetBrains Mono',ui-monospace,monospace}
-
-header{border-bottom:1px solid var(--hair);padding:15px 0}
-.nav{display:flex;align-items:center;justify-content:space-between;gap:14px}
-.logo{font-family:'Manrope';font-weight:800;font-size:19px;color:#fff;display:flex;align-items:center;gap:9px;text-decoration:none;letter-spacing:-.03em}
-.logo i{width:8px;height:8px;border-radius:50%;background:var(--orange)}
-.nav a.back{color:#8FA6C4;font-size:14px;text-decoration:none}
-.nav a.back:hover{color:#fff}
-
-main{flex:1;display:flex;align-items:center;padding:38px 0 54px}
-.stage{width:100%}
-.screen{display:none}
-.screen.on{display:block;animation:in .3s ease both}
-@keyframes in{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
-
-.btn{
-  display:inline-flex;align-items:center;justify-content:center;gap:9px;border:0;cursor:pointer;
-  font-family:'Inter',sans-serif;font-weight:600;font-size:16.5px;padding:16px 32px;border-radius:999px;
-  text-decoration:none;transition:.18s;
-}
-.btn-p{background:var(--orange);color:#12203A;box-shadow:0 10px 26px rgba(255,122,26,.26)}
-.btn-p:hover{background:#EE6C0D;transform:translateY(-2px)}
-.btn-g{background:transparent;color:#EAF1FB;border:1.5px solid var(--hair)}
-.btn-g:hover{border-color:var(--blue);color:#fff}
-
-.kicker{
-  display:inline-flex;align-items:center;gap:8px;font-family:'Manrope';font-weight:700;font-size:12px;
-  letter-spacing:.16em;text-transform:uppercase;color:var(--blue);
-  border:1px solid var(--hair);padding:7px 14px;border-radius:999px;margin-bottom:22px;
-}
-.start h1{font-size:clamp(32px,5.6vw,50px);font-weight:800;max-width:15ch}
-.start h1 em{font-style:normal;color:var(--orange)}
-.start .sub{margin-top:18px;font-size:18px;color:#B7C7DD;max-width:46ch}
-.start .go{margin-top:30px;display:flex;flex-wrap:wrap;gap:12px;align-items:center}
-.tiny{font-size:13.5px;color:var(--muted)}
-
-/* прогресс точками — колода карт */
-.dots{display:flex;gap:7px;margin-bottom:24px}
-.dots i{height:4px;flex:1;border-radius:999px;background:rgba(255,255,255,.14);transition:background .25s}
-.dots i.done{background:var(--blue)}
-.dots i.now{background:var(--orange)}
-
-.count{font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--muted);letter-spacing:.06em;margin-bottom:14px}
-
-/* карта с утверждением */
-.card{
-  background:linear-gradient(150deg,#12295A 0%,#0C1F3F 60%,#0A1A33 100%);
-  border:1px solid var(--hair);border-radius:22px;padding:38px 34px;position:relative;overflow:hidden;
-  box-shadow:0 20px 50px rgba(0,0,0,.30);
-}
-.card::before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--blue)}
-.card q{font-family:'Manrope',sans-serif;font-weight:800;font-size:clamp(21px,3.4vw,29px);
-  letter-spacing:-.02em;line-height:1.24;display:block;quotes:"«" "»"}
-
-.choose{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:22px}
-@media(max-width:520px){.choose{grid-template-columns:1fr}}
-.pick{
-  cursor:pointer;border:1.5px solid var(--hair);background:rgba(255,255,255,.04);color:#EAF1FB;
-  font-family:'Manrope',sans-serif;font-weight:800;font-size:18px;letter-spacing:-.01em;
-  padding:20px;border-radius:16px;transition:.16s;
-}
-.pick:hover{border-color:var(--blue);background:rgba(76,141,246,.12);transform:translateY(-2px)}
-.pick.t:hover{border-color:var(--ok);background:rgba(63,208,127,.12)}
-.pick.f:hover{border-color:var(--no);background:rgba(255,107,107,.12)}
-
-/* разбор */
-.rev{margin-top:18px;border-radius:18px;padding:24px 26px;border:1px solid var(--hair);background:var(--panel)}
-.verdict{display:flex;align-items:center;gap:11px;font-family:'Manrope';font-weight:800;font-size:17px;margin-bottom:10px}
-.verdict .b{
-  font-size:12px;letter-spacing:.14em;text-transform:uppercase;padding:5px 11px;border-radius:999px;
-}
-.verdict.win .b{background:rgba(63,208,127,.18);color:var(--ok);border:1px solid rgba(63,208,127,.4)}
-.verdict.lose .b{background:rgba(255,107,107,.15);color:var(--no);border:1px solid rgba(255,107,107,.38)}
-.rev p{color:#C4D3E7;font-size:16px}
-.rev .next{margin-top:20px;display:flex;justify-content:flex-end}
-
-/* итог */
-.res{text-align:center}
-.score{font-family:'Manrope';font-weight:800;font-size:clamp(52px,12vw,86px);letter-spacing:-.04em;line-height:1}
-.score span{color:var(--orange)}
-.score small{display:block;font-family:'Inter';font-weight:400;font-size:15px;color:var(--muted);letter-spacing:0;margin-top:8px}
-.res h2{font-size:clamp(23px,3.4vw,30px);font-weight:800;margin-top:26px}
-.res .lead{color:#B7C7DD;margin-top:12px;max-width:48ch;margin-inline:auto}
-.cta{margin-top:30px;display:flex;flex-wrap:wrap;gap:12px;justify-content:center}
-
-footer{border-top:1px solid var(--hair);padding:26px 0;color:var(--muted);font-size:13.5px}
-.foot{display:flex;flex-wrap:wrap;gap:8px 18px;justify-content:space-between}
-.foot a{color:var(--muted);text-decoration:none}
-.foot a:hover{color:#fff}
-
-*:focus-visible{outline:2px solid var(--orange);outline-offset:3px;border-radius:8px}
-@media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
-@media(max-width:560px){.btn{width:100%}.start .go{flex-direction:column;align-items:stretch}.card{padding:30px 24px}}
-
-.lang-sw{position:relative;flex:none;margin-left:auto}
-.lang-btn{display:inline-flex;align-items:center;gap:8px;cursor:pointer;
-  background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.22);color:#EAF1FB;
-  font:inherit;font-size:14px;font-weight:600;padding:8px 12px;border-radius:999px;transition:.16s;line-height:1}
-.lang-btn:hover{border-color:rgba(255,122,26,.7)}
-.lang-btn svg{width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:2}
-.lang-btn .car{width:10px;height:10px;opacity:.75;transition:transform .18s}
-.lang-sw.open .lang-btn .car{transform:rotate(180deg)}
-.lang-menu{position:absolute;top:calc(100% + 8px);right:0;min-width:200px;z-index:80;
-  background:#0E1E3C;border:1px solid rgba(255,255,255,.2);border-radius:14px;padding:6px;
-  box-shadow:0 18px 44px rgba(0,0,0,.45)}
-.lang-menu[hidden]{display:none}
-.lang-menu a{display:flex;align-items:center;justify-content:space-between;gap:10px;
-  padding:10px 12px;border-radius:10px;text-decoration:none;color:#DCE7F6;font-size:14px;transition:.14s}
-.lang-menu a:hover{background:rgba(76,141,246,.18);color:#fff}
-.lang-menu a[aria-current="true"]{background:rgba(255,122,26,.16);color:#fff}
-.lang-menu b.code{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.1em;font-weight:700}
-@media(max-width:600px){.lang-btn span.lbl{display:none}}
-</style>
+<link rel="stylesheet" href="/assets/css/09f3aae0d4.css">
 </head>
 <body>
 
@@ -213,7 +85,7 @@ footer{border-top:1px solid var(--hair);padding:26px 0;color:var(--muted);font-s
     <a href="/es/tests/">Todos los tests</a> ·
     <a href="/es/about/">Sobre la empresa</a> ·
     <a href="/es/jobs/operators/">Vacante</a> ·
-    <a href="/es/legal/privacy-policy/">Política de datos</a>
+    <a href="/legal/privacy-policy/">Política de datos</a>
   </span>
 </div></footer>
 
@@ -332,17 +204,6 @@ footer{border-top:1px solid var(--hair);padding:26px 0;color:var(--muted);font-s
 </script>
 
 
-<script>
-(function(){
-  var sw=document.querySelector('.lang-sw'); if(!sw) return;
-  var btn=sw.querySelector('.lang-btn'), menu=sw.querySelector('.lang-menu');
-  function close(){menu.hidden=true;sw.classList.remove('open');btn.setAttribute('aria-expanded','false');}
-  btn.addEventListener('click',function(e){e.stopPropagation();
-    if(menu.hidden){menu.hidden=false;sw.classList.add('open');btn.setAttribute('aria-expanded','true');}else close();});
-  document.addEventListener('click',function(e){if(!sw.contains(e.target))close();});
-  document.addEventListener('keydown',function(e){if(e.key==='Escape')close();});
-  menu.addEventListener('click',function(e){var a=e.target.closest('a[data-lang]');if(a){close();}});
-})();
-</script>
+<script src="/assets/js/lang.js" defer></script>
 </body>
 </html>

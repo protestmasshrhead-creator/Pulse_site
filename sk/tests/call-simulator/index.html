@@ -18,101 +18,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@600;700&display=swap" rel="stylesheet">
-<style>
-:root{--deep:#071229;--panel:#0E1E3C;--hair:rgba(255,255,255,.14);
-  --blue:#4C8DF6;--orange:#FF7A1A;--muted:#8FA6C4;--ok:#3FD07F;--no:#FF6B6B}
-*{box-sizing:border-box}
-body{margin:0;background:var(--deep);color:#EAF1FB;min-height:100vh;
-  font-family:'Inter',system-ui,sans-serif;font-size:17px;line-height:1.6;
-  -webkit-font-smoothing:antialiased;display:flex;flex-direction:column}
-.wrap{width:100%;max-width:760px;margin:0 auto;padding:0 20px}
-h1,h2,h3{font-family:'Manrope',sans-serif;margin:0;letter-spacing:-.03em;line-height:1.1}
-p{margin:0} a{color:inherit}
-header{border-bottom:1px solid var(--hair);padding:15px 0}
-.nav{display:flex;align-items:center;justify-content:space-between;gap:14px}
-.logo{font-family:'Manrope';font-weight:800;font-size:19px;color:#fff;display:flex;align-items:center;gap:9px;text-decoration:none;letter-spacing:-.03em}
-.logo i{width:8px;height:8px;border-radius:50%;background:var(--orange)}
-.nav a.back{color:#8FA6C4;font-size:14px;text-decoration:none}
-.nav a.back:hover{color:#fff}
-main{flex:1;display:flex;align-items:center;padding:40px 0 56px}
-.stage{width:100%}
-.screen{display:none}.screen.on{display:block;animation:in .3s ease both}
-@keyframes in{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;border:0;cursor:pointer;
-  font-family:'Inter',sans-serif;font-weight:600;font-size:16.5px;padding:16px 32px;border-radius:999px;
-  text-decoration:none;transition:.18s}
-.btn-p{background:var(--orange);color:#12203A;box-shadow:0 10px 26px rgba(255,122,26,.26)}
-.btn-p:hover{background:#EE6C0D;transform:translateY(-2px)}
-.btn-g{background:transparent;color:#EAF1FB;border:1.5px solid var(--hair)}
-.btn-g:hover{border-color:var(--blue);color:#fff}
-.kicker{display:inline-flex;gap:8px;font-family:'Manrope';font-weight:700;font-size:12px;
-  letter-spacing:.16em;text-transform:uppercase;color:var(--blue);
-  border:1px solid var(--hair);padding:7px 14px;border-radius:999px;margin-bottom:22px}
-.start h1{font-size:clamp(32px,5.6vw,50px);font-weight:800;max-width:15ch}
-.start h1 em{font-style:normal;color:var(--orange)}
-.start .sub{margin-top:18px;font-size:18px;color:#B7C7DD;max-width:46ch}
-.start .go{margin-top:30px;display:flex;flex-wrap:wrap;gap:12px;align-items:center}
-.tiny{font-size:13.5px;color:var(--muted)}
-
-/* индикатор настроя */
-.mood{display:flex;align-items:center;gap:14px;margin-bottom:22px}
-.mood .lbl{font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.1em;
-  text-transform:uppercase;color:var(--muted);white-space:nowrap}
-.bar{flex:1;height:8px;background:rgba(255,255,255,.12);border-radius:999px;overflow:hidden}
-.bar i{display:block;height:100%;width:50%;border-radius:999px;
-  background:linear-gradient(90deg,#FF6B6B,#FFC24B 45%,#3FD07F);transition:width .5s cubic-bezier(.2,.8,.2,1)}
-.mood .val{font-family:'JetBrains Mono',monospace;font-weight:700;font-size:14px;min-width:42px;text-align:right}
-
-/* диалог */
-.talk{display:grid;gap:12px;margin-bottom:22px}
-.msg{max-width:86%;padding:15px 18px;border-radius:16px;font-size:16px;line-height:1.5;animation:in .28s ease both}
-.msg.them{background:var(--panel);border:1px solid var(--hair);border-bottom-left-radius:5px}
-.msg.me{margin-left:auto;background:rgba(76,141,246,.16);border:1px solid rgba(76,141,246,.4);border-bottom-right-radius:5px}
-.who{display:block;font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.12em;
-  text-transform:uppercase;color:var(--muted);margin-bottom:6px}
-.opts{display:grid;gap:10px}
-.opt{cursor:pointer;text-align:left;background:rgba(255,255,255,.04);border:1.5px solid var(--hair);
-  border-radius:14px;padding:16px 18px;font:inherit;color:#EAF1FB;transition:.16s}
-.opt:hover{border-color:var(--blue);background:rgba(76,141,246,.12);transform:translateX(3px)}
-.fb{margin-top:14px;border-radius:14px;padding:18px 20px;border:1px solid var(--hair);background:var(--panel)}
-.fb b{display:block;font-family:'Manrope';font-weight:800;font-size:14.5px;margin-bottom:7px}
-.fb.good b{color:var(--ok)} .fb.bad b{color:var(--no)} .fb.mid b{color:#FFC24B}
-.fb p{color:#C4D3E7;font-size:15.5px}
-.fb .next{margin-top:16px;display:flex;justify-content:flex-end}
-
-.res{text-align:center}
-.res .big{font-family:'Manrope';font-weight:800;font-size:clamp(40px,10vw,72px);letter-spacing:-.04em;line-height:1}
-.res h2{font-size:clamp(23px,3.4vw,30px);font-weight:800;margin-top:22px}
-.res .lead{color:#B7C7DD;margin-top:12px;max-width:48ch;margin-inline:auto}
-.res .hint{margin-top:22px;background:var(--panel);border:1px solid var(--hair);border-radius:16px;
-  padding:19px 21px;font-size:15.5px;color:#C4D3E7;text-align:left}
-.cta{margin-top:28px;display:flex;flex-wrap:wrap;gap:12px;justify-content:center}
-footer{border-top:1px solid var(--hair);padding:26px 0;color:var(--muted);font-size:13.5px}
-.foot{display:flex;flex-wrap:wrap;gap:8px 18px;justify-content:space-between}
-.foot a{color:var(--muted);text-decoration:none}.foot a:hover{color:#fff}
-*:focus-visible{outline:2px solid var(--orange);outline-offset:3px;border-radius:8px}
-@media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
-@media(max-width:560px){.btn{width:100%}.start .go{flex-direction:column;align-items:stretch}.msg{max-width:94%}}
-
-.lang-sw{position:relative;flex:none;margin-left:auto}
-.lang-btn{display:inline-flex;align-items:center;gap:8px;cursor:pointer;
-  background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.22);color:#EAF1FB;
-  font:inherit;font-size:14px;font-weight:600;padding:8px 12px;border-radius:999px;transition:.16s;line-height:1}
-.lang-btn:hover{border-color:rgba(255,122,26,.7)}
-.lang-btn svg{width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:2}
-.lang-btn .car{width:10px;height:10px;opacity:.75;transition:transform .18s}
-.lang-sw.open .lang-btn .car{transform:rotate(180deg)}
-.lang-menu{position:absolute;top:calc(100% + 8px);right:0;min-width:200px;z-index:80;
-  background:#0E1E3C;border:1px solid rgba(255,255,255,.2);border-radius:14px;padding:6px;
-  box-shadow:0 18px 44px rgba(0,0,0,.45)}
-.lang-menu[hidden]{display:none}
-.lang-menu a{display:flex;align-items:center;justify-content:space-between;gap:10px;
-  padding:10px 12px;border-radius:10px;text-decoration:none;color:#DCE7F6;font-size:14px;transition:.14s}
-.lang-menu a:hover{background:rgba(76,141,246,.18);color:#fff}
-.lang-menu a[aria-current="true"]{background:rgba(255,122,26,.16);color:#fff}
-.lang-menu b.code{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.1em;font-weight:700}
-@media(max-width:600px){.lang-btn span.lbl{display:none}}
-</style>
+<link rel="stylesheet" href="/assets/css/e36fba0ff3.css">
 </head>
 <body>
 
@@ -180,7 +86,7 @@ footer{border-top:1px solid var(--hair);padding:26px 0;color:var(--muted);font-s
     <a href="/sk/tests/">Všetky testy</a> ·
     <a href="/sk/about/">O spoločnosti</a> ·
     <a href="/sk/jobs/operators/">Pozícia</a> ·
-    <a href="/sk/legal/privacy-policy/">Zásady ochrany údajov</a>
+    <a href="/legal/privacy-policy/">Zásady ochrany údajov</a>
   </span>
 </div></footer>
 
@@ -321,17 +227,6 @@ footer{border-top:1px solid var(--hair);padding:26px 0;color:var(--muted);font-s
 </script>
 
 
-<script>
-(function(){
-  var sw=document.querySelector('.lang-sw'); if(!sw) return;
-  var btn=sw.querySelector('.lang-btn'), menu=sw.querySelector('.lang-menu');
-  function close(){menu.hidden=true;sw.classList.remove('open');btn.setAttribute('aria-expanded','false');}
-  btn.addEventListener('click',function(e){e.stopPropagation();
-    if(menu.hidden){menu.hidden=false;sw.classList.add('open');btn.setAttribute('aria-expanded','true');}else close();});
-  document.addEventListener('click',function(e){if(!sw.contains(e.target))close();});
-  document.addEventListener('keydown',function(e){if(e.key==='Escape')close();});
-  menu.addEventListener('click',function(e){var a=e.target.closest('a[data-lang]');if(a){close();}});
-})();
-</script>
+<script src="/assets/js/lang.js" defer></script>
 </body>
 </html>

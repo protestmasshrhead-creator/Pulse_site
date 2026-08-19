@@ -1,4 +1,4 @@
-import json,os,re,sys
+import json,os,re,sys,hashlib
 sys.path.insert(0,os.path.dirname(os.path.abspath(__file__)))
 from extract import run
 
@@ -106,8 +106,30 @@ def translate(src, segs, attrs, tr):
         if k in tr: src=src.replace(f'{a["attr"]}="{a["text"]}"', f'{a["attr"]}="{tr[k]}"')
     return src
 
+
+def externalise(src, page):
+    """выносит <style> и скрипт переключателя в общие файлы /assets/"""
+    depth='../'*len(os.path.dirname(page).split('/')) if os.path.dirname(page) else ''
+    m=re.search(r'<style>(.*?)</style>', src, re.S)
+    if m:
+        css=m.group(1)
+        h=hashlib.md5(css.encode()).hexdigest()[:10]
+        os.makedirs('assets/css', exist_ok=True)
+        path=f'assets/css/{h}.css'
+        if not os.path.exists(path): open(path,'w',encoding='utf-8').write(css.strip()+'\n')
+        src=src[:m.start()]+f'<link rel="stylesheet" href="/{path}">'+src[m.end():]
+    # скрипт переключателя языков одинаков во всех языках и на всех страницах
+    for mm in list(re.finditer(r'<script>(.*?)</script>', src, re.S))[::-1]:
+        js=mm.group(1)
+        if '.lang-sw' not in js: continue
+        os.makedirs('assets/js', exist_ok=True)
+        if not os.path.exists('assets/js/lang.js'):
+            open('assets/js/lang.js','w',encoding='utf-8').write(js.strip()+'\n')
+        src=src[:mm.start()]+'<script src="/assets/js/lang.js" defer></script>'+src[mm.end():]
+    return src
+
 def build(lang):
-    tr={} if lang=='ru' else json.load(open(f'{SP}/{lang}.json'))
+    tr={} if lang=='ru' else json.load(open(f'{SP}/dict/{lang}.json'))
     pages=[]
     for root,dirs,files in os.walk(SRC):
         rel=os.path.relpath(root,SRC)
@@ -122,7 +144,9 @@ def build(lang):
         if lang!='ru': src=translate(src,segs,attrs,tr)
         src=re.sub(r'<html lang="ru"', f'<html lang="{lang}"', src, count=1)
         if lang!='ru':
-            src=re.sub(r'href="/(?!/)', f'href="/{lang}/', src)
+            # юридические документы существуют только на английском в корне —
+            # языковой префикс к ним не добавляем
+            src=re.sub(r'href="/(?!/|legal/|assets/)', f'href="/{lang}/', src)
         # переключатель языков
         b=find_block(src, r'[ \t]*<div class="lang-sw"[^>]*>')
         if b:
@@ -143,6 +167,7 @@ def build(lang):
         src=src.replace("    var a=e.target.closest('a[data-lang]'); if(!a) return;\n    e.preventDefault();\n",
                         "    var a=e.target.closest('a[data-lang]'); if(!a) return;\n")
         src=src.replace("curLang()==='en'", "false")
+        src=externalise(src, page)
         out = page if lang=='ru' else os.path.join(lang,page)
         os.makedirs(os.path.dirname(out) or '.', exist_ok=True)
         open(out,'w',encoding='utf-8').write(src); n+=1

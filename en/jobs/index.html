@@ -18,175 +18,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@600;700&display=swap" rel="stylesheet">
-<style>
-:root{
-  --deep:#071229;--ink:#0A1A33;--panel:#0E1E3C;--sheet:#F7FAFF;
-  --blue:#4C8DF6;--orange:#FF7A1A;--muted:#8FA6C4;--hair:rgba(255,255,255,.14);
-}
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{margin:0;background:var(--deep);color:#EAF1FB;
-  font-family:'Inter',system-ui,sans-serif;font-size:17px;line-height:1.65;
-  -webkit-font-smoothing:antialiased;display:flex;flex-direction:column;min-height:100vh}
-.wrap{width:100%;max-width:1060px;margin:0 auto;padding:0 24px}
-.measure{max-width:62ch}
-h1,h2,h3{font-family:'Manrope',sans-serif;margin:0;letter-spacing:-.03em;line-height:1.08}
-p{margin:0} a{color:inherit} svg{display:block}
-.mono{font-family:'JetBrains Mono',ui-monospace,monospace}
-
-header{position:sticky;top:0;z-index:60;background:rgba(7,18,41,.93);backdrop-filter:blur(8px);border-bottom:1px solid var(--hair)}
-.nav{display:flex;align-items:center;gap:18px;height:66px}
-.logo{font-family:'Manrope';font-weight:800;font-size:20px;letter-spacing:-.03em;display:flex;align-items:center;gap:9px;color:#fff;text-decoration:none;flex:none}
-.logo i{width:8px;height:8px;border-radius:50%;background:var(--orange)}
-.nav-links{display:flex;gap:24px;font-size:14.5px;margin-left:8px}
-.nav-links a{color:#8FA6C4;text-decoration:none;transition:color .15s;white-space:nowrap}
-.nav-links a:hover,.nav-links a[aria-current="page"]{color:#fff}
-.nav-sp{margin-left:auto}
-@media(max-width:900px){.nav-links{display:none}}
-
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;border:0;cursor:pointer;
-  font-family:'Inter',sans-serif;font-weight:600;font-size:15.5px;padding:13px 26px;border-radius:999px;
-  text-decoration:none;transition:.18s;white-space:nowrap}
-.btn-p{background:var(--orange);color:#12203A;box-shadow:0 10px 26px rgba(255,122,26,.24)}
-.btn-p:hover{background:#EE6C0D;transform:translateY(-2px)}
-.btn-g{background:transparent;color:#EAF1FB;border:1.5px solid var(--hair)}
-.btn-g:hover{border-color:var(--blue);color:#fff}
-.btn-sm{padding:11px 22px;font-size:14.5px}
-.btn-lg{padding:16px 32px;font-size:16.5px}
-
-main{flex:1}
-.sec{padding:84px 0;border-top:1px solid var(--hair)}
-.sec.first{border-top:0;padding-top:70px}
-.tag{font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--blue);display:block;margin-bottom:16px}
-h1{font-size:clamp(33px,5.6vw,56px);font-weight:800;max-width:17ch}
-h1 em{font-style:normal;color:var(--orange)}
-h2{font-size:clamp(25px,3.6vw,38px);font-weight:800;max-width:22ch}
-h3{font-size:18px;font-weight:800}
-.lead{margin-top:20px;font-size:18.5px;color:#B7C7DD;max-width:54ch}
-.dim{color:#B7C7DD}
-.sec p+p{margin-top:13px}
-
-.cta-row{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
-.note{border-left:2px solid var(--blue);padding:3px 0 3px 18px;margin:24px 0;color:#CBD8EA}
-.note b{color:#fff}
-
-/* цифры */
-.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:46px;
-  border-top:1px solid var(--hair);border-bottom:1px solid var(--hair)}
-.stat{padding:24px 20px;border-right:1px solid var(--hair);text-align:center;display:flex;flex-direction:column;justify-content:center}
-.stat:last-child{border-right:0}
-.stat b{font-family:'Manrope';font-weight:800;font-size:clamp(21px,3vw,28px);letter-spacing:-.02em;display:block}
-.stat span{font-size:13.5px;color:var(--muted);margin-top:6px;display:block}
-@media(max-width:820px){.stats{grid-template-columns:repeat(2,1fr)}.stat{border-bottom:1px solid var(--hair)}.stat:nth-child(2n){border-right:0}.stat:nth-last-child(-n+2){border-bottom:0}}
-@media(max-width:460px){.stats{grid-template-columns:1fr}.stat{border-right:0}}
-
-/* карточки-переходы */
-.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:40px}
-@media(max-width:860px){.cards{grid-template-columns:1fr}}
-.card{position:relative;display:flex;flex-direction:column;text-decoration:none;color:#EAF1FB;
-  background:var(--panel);border:1px solid var(--hair);border-radius:18px;padding:26px;
-  transition:transform .18s ease,border-color .18s ease,box-shadow .18s ease}
-.card:hover{transform:translateY(-4px);border-color:rgba(255,122,26,.55);box-shadow:0 20px 44px rgba(0,0,0,.32)}
-.card .ic{width:42px;height:42px;border-radius:12px;display:grid;place-items:center;margin-bottom:16px;border:1px solid var(--hair)}
-.card .ic svg{width:21px;height:21px;fill:none;stroke:currentColor;stroke-width:1.9}
-.card h3{font-size:19px;margin-bottom:8px}
-.card p{font-size:15.5px;color:#AFC0D8;flex:1}
-.card .go{margin-top:18px;font-weight:600;font-size:14.5px;color:var(--orange);display:inline-flex;gap:8px;transition:gap .18s}
-.card:hover .go{gap:13px}
-
-/* список-таблица */
-.rows{margin-top:36px;border:1px solid var(--hair);border-radius:16px;overflow:hidden}
-.row{display:grid;grid-template-columns:210px 1fr;gap:22px;padding:22px 24px;border-bottom:1px solid var(--hair);align-items:baseline}
-.row:last-child{border-bottom:0}
-@media(max-width:700px){.row{grid-template-columns:1fr;gap:6px}}
-.row b{font-family:'Manrope';font-size:17px;font-weight:800}
-.row span{color:#AFC0D8;font-size:15.5px}
-
-/* чек-лист */
-.checks{list-style:none;padding:0;margin:26px 0 0;display:grid;gap:11px}
-.checks li{display:flex;gap:12px;align-items:flex-start;font-size:16px;color:#CBD8EA}
-.checks li svg{flex:none;width:19px;height:19px;margin-top:3px;stroke:#3FD07F;fill:none;stroke-width:2.6}
-
-/* FAQ */
-details{border-bottom:1px solid var(--hair)}
-details summary{cursor:pointer;list-style:none;padding:20px 42px 20px 0;position:relative;
-  font-family:'Manrope',sans-serif;font-weight:800;font-size:17.5px;letter-spacing:-.01em}
-details summary::-webkit-details-marker{display:none}
-details summary::after{content:"";position:absolute;right:8px;top:26px;width:9px;height:9px;
-  border-right:2px solid var(--muted);border-bottom:2px solid var(--muted);transform:rotate(45deg);transition:transform .2s}
-details[open] summary::after{transform:rotate(-135deg)}
-details .a{padding:0 0 22px;color:#B7C7DD;font-size:16px;max-width:70ch}
-details summary:hover{color:#fff}
-
-/* финал */
-.end{position:relative;overflow:hidden;border-radius:22px;padding:56px 44px;margin-top:8px;text-align:center;
-  background:radial-gradient(680px 300px at 50% -10%, rgba(255,122,26,.20), transparent 70%),
-             linear-gradient(150deg,#12336E 0%,#0D2247 45%,#091933 100%);
-  border:1px solid rgba(255,255,255,.16)}
-.end::before{content:"";position:absolute;top:0;left:12%;right:12%;height:1px;
-  background:linear-gradient(90deg,transparent,rgba(255,122,26,.85),transparent)}
-.end h2{margin:0 auto;max-width:18ch}
-.end p{color:#B7C7DD;font-size:17.5px;margin:16px auto 28px;max-width:50ch}
-@media(max-width:600px){.end{padding:40px 22px}}
-
-footer{border-top:1px solid var(--hair);padding:34px 0;color:var(--muted);font-size:14px}
-.foot{display:flex;flex-wrap:wrap;gap:12px 24px;justify-content:space-between}
-.foot a{color:var(--muted);text-decoration:none}
-.foot a:hover{color:#fff}
-
-/* переключатель языка */
-.lang-sw{position:relative;flex:none}
-.lang-btn{display:inline-flex;align-items:center;gap:8px;cursor:pointer;
-  background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.22);color:#EAF1FB;
-  font:inherit;font-size:14.5px;font-weight:600;padding:9px 14px;border-radius:999px;transition:.16s;line-height:1}
-.lang-btn:hover{border-color:rgba(255,122,26,.7)}
-.lang-btn svg{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:2}
-.lang-btn .car{width:11px;height:11px;opacity:.75;transition:transform .18s}
-.lang-sw.open .lang-btn .car{transform:rotate(180deg)}
-.lang-menu{position:absolute;top:calc(100% + 8px);right:0;min-width:206px;z-index:80;
-  background:#0E1E3C;border:1px solid rgba(255,255,255,.2);border-radius:14px;padding:6px;
-  box-shadow:0 18px 44px rgba(0,0,0,.45)}
-.lang-menu[hidden]{display:none}
-.lang-menu a,.lang-menu span.soon{display:flex;align-items:center;justify-content:space-between;gap:10px;
-  padding:11px 13px;border-radius:10px;text-decoration:none;color:#DCE7F6;font-size:14.5px;transition:.14s}
-.lang-menu a:hover{background:rgba(76,141,246,.18);color:#fff}
-.lang-menu a[aria-current="true"]{background:rgba(255,122,26,.16);color:#fff}
-.lang-menu span.soon{color:#6C819E;cursor:default}
-.lang-menu b.code{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.1em;font-weight:700}
-.lang-menu .tg{font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;
-  border:1px solid rgba(255,255,255,.18);border-radius:999px;padding:3px 8px;color:#7E93B2}
-@media(max-width:600px){.lang-btn span.lbl{display:none}}
-
-*:focus-visible{outline:2px solid var(--orange);outline-offset:3px;border-radius:8px}
-@media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important;scroll-behavior:auto}}
-
-.vac{display:block;text-decoration:none;color:#EAF1FB;background:var(--panel);
-  border:1px solid var(--hair);border-radius:18px;padding:26px 28px;margin-bottom:14px;
-  transition:transform .18s,border-color .18s,box-shadow .18s;position:relative;overflow:hidden}
-.vac::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--orange)}
-.vac:hover{transform:translateY(-3px);border-color:rgba(255,122,26,.55);box-shadow:0 18px 40px rgba(0,0,0,.3)}
-.vac .top{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
-.vac h3{font-size:20px}
-.vac .lvl{font-family:'JetBrains Mono',monospace;font-size:12px;color:#CFE0FA;
-  background:rgba(76,141,246,.2);border:1px solid rgba(76,141,246,.42);padding:4px 10px;border-radius:999px}
-.vac p{margin-top:9px;color:#AFC0D8;font-size:15.5px}
-.vac .facts{display:flex;flex-wrap:wrap;gap:8px 26px;margin-top:16px}
-.vac .facts span{font-size:14px;color:var(--muted)}
-.vac .facts b{color:#fff;font-family:'Manrope';font-weight:800}
-.vac .go{margin-top:16px;display:inline-flex;gap:8px;color:var(--orange);font-weight:600;font-size:15px;transition:gap .18s}
-.vac:hover .go{gap:13px}
-.empty{background:var(--panel);border:1px dashed rgba(255,255,255,.22);border-radius:18px;padding:30px 28px;margin-top:18px}
-.empty b{display:block;font-family:'Manrope';font-weight:800;font-size:18px;margin-bottom:8px}
-.empty p{color:#AFC0D8;font-size:15.5px}
-.cat{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:36px}
-@media(max-width:760px){.cat{grid-template-columns:1fr}}
-.cat a{display:flex;justify-content:space-between;align-items:center;gap:14px;text-decoration:none;color:#EAF1FB;
-  background:var(--panel);border:1px solid var(--hair);border-radius:15px;padding:19px 22px;transition:.18s}
-.cat a:hover{border-color:var(--blue);transform:translateX(3px)}
-.cat b{font-family:'Manrope';font-weight:800;font-size:16.5px}
-.cat .n{font-family:'JetBrains Mono',monospace;font-size:12.5px;color:var(--muted);
-  border:1px solid var(--hair);border-radius:999px;padding:4px 11px;white-space:nowrap}
-</style>
+<link rel="stylesheet" href="/assets/css/bffe90e0fe.css">
 </head>
 <body>
 
@@ -224,49 +56,20 @@ footer{border-top:1px solid var(--hair);padding:34px 0;color:var(--muted);font-s
 <section class="sec first">
   <div class="wrap">
     <span class="tag">Jobs</span>
-    <h1>Open positions <em>right now</em></h1>
-    <p class="lead">We are hiring operators for four language divisions. All positions are remote, training is from scratch, and sales experience is not required.</p>
+    <h1>Open vacancy <em>right now</em></h1>
+    <p class="lead">We are currently hiring operators with Czech. The position is remote, training is from scratch, and sales experience is not required.</p>
 
     <div style="margin-top:40px">
-      <a class="vac" href="/en/jobs/operators/#form">
+      <a class="vac" href="/en/jobs/operators/">
         <span class="top"><h3>Call centre operator · Czech</h3><span class="lvl">B2+</span></span>
-        <p>Remote, Czechia and other countries. Calls from a ready base, training from scratch.</p>
+        <p>Remote work from anywhere. Calls from a ready client base, work from scripts, training from scratch — no sales experience required.</p>
         <span class="facts">
           <span>Income <b>up to €2000</b></span>
           <span>Schedule <b>2/2</b></span>
           <span>Payouts <b>every 10 days</b></span>
+          <span>Training <b>3–7 days</b></span>
         </span>
-        <span class="go">Apply →</span>
-      </a>
-      <a class="vac" href="/en/jobs/operators/#form">
-        <span class="top"><h3>Call centre operator · Slovak</h3><span class="lvl">B2+</span></span>
-        <p>Remote, Slovakia and other countries. Calls from a ready base, training from scratch.</p>
-        <span class="facts">
-          <span>Income <b>up to €2000</b></span>
-          <span>Schedule <b>2/2</b></span>
-          <span>Payouts <b>every 10 days</b></span>
-        </span>
-        <span class="go">Apply →</span>
-      </a>
-      <a class="vac" href="/en/jobs/operators/#form">
-        <span class="top"><h3>Call centre operator · Hungarian</h3><span class="lvl">B2+</span></span>
-        <p>Remote, Hungary and other countries. Calls from a ready base, training from scratch.</p>
-        <span class="facts">
-          <span>Income <b>up to €2000</b></span>
-          <span>Schedule <b>2/2</b></span>
-          <span>Payouts <b>every 10 days</b></span>
-        </span>
-        <span class="go">Apply →</span>
-      </a>
-      <a class="vac" href="/en/jobs/operators/#form">
-        <span class="top"><h3>Call centre operator · Romanian</h3><span class="lvl">B2+</span></span>
-        <p>Remote, Romania and other countries. Calls from a ready base, training from scratch.</p>
-        <span class="facts">
-          <span>Income <b>up to €2000</b></span>
-          <span>Schedule <b>2/2</b></span>
-          <span>Payouts <b>every 10 days</b></span>
-        </span>
-        <span class="go">Apply →</span>
+        <span class="go">View the vacancy and apply →</span>
       </a>
     </div>
   </div>
@@ -277,12 +80,12 @@ footer{border-top:1px solid var(--hair);padding:34px 0;color:var(--muted);font-s
     <span class="tag">Categories</span>
     <h2>All hiring divisions</h2>
     <div class="cat">
-      <a href="/en/jobs/operators/"><b>Call centre operators</b><span class="n">4 positions</span></a>
+      <a href="/en/jobs/operators/"><b>Call centre operators</b><span class="n">1 position</span></a>
       <a href="/en/jobs/supervisors/"><b>Supervisors</b><span class="n">none open</span></a>
       <a href="/en/jobs/quality-control/"><b>Quality control</b><span class="n">none open</span></a>
       <a href="/en/jobs/other/"><b>Other jobs</b><span class="n">none open</span></a>
     </div>
-    <p class="dim" style="margin-top:24px;font-size:15.5px">Supervisor and quality control positions are filled mainly from within — by operators who have worked for several months. It is the most common career path on the team.</p>
+    <p class="dim" style="margin-top:24px;font-size:15.5px">The other language divisions — Slovak, Hungarian and Romanian — will open later. Supervisor and quality control positions are filled mainly from within, by operators who have worked for several months. It is the most common career path on the team.</p>
   </div>
 </section>
 
@@ -304,22 +107,11 @@ footer{border-top:1px solid var(--hair);padding:34px 0;color:var(--muted);font-s
     <a href="/en/about/">About</a> ·
     <a href="/en/jobs/">Jobs</a> ·
     <a href="/en/tests/">Tests</a> ·
-    <a href="/en/legal/">Documents</a> ·
+    <a href="/legal/">Documents</a> ·
     <a href="mailto:hr@pulse-call.com">hr@pulse-call.com</a>
   </span>
 </div></footer>
 
-<script>
-(function(){
-  var sw=document.querySelector('.lang-sw'); if(!sw) return;
-  var btn=sw.querySelector('.lang-btn'), menu=sw.querySelector('.lang-menu');
-  function close(){menu.hidden=true;sw.classList.remove('open');btn.setAttribute('aria-expanded','false');}
-  btn.addEventListener('click',function(e){e.stopPropagation();
-    if(menu.hidden){menu.hidden=false;sw.classList.add('open');btn.setAttribute('aria-expanded','true');}else close();});
-  document.addEventListener('click',function(e){if(!sw.contains(e.target))close();});
-  document.addEventListener('keydown',function(e){if(e.key==='Escape')close();});
-  menu.addEventListener('click',function(e){var a=e.target.closest('a[data-lang]');if(a){close();}});
-})();
-</script>
+<script src="/assets/js/lang.js" defer></script>
 </body>
 </html>
