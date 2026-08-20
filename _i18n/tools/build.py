@@ -129,14 +129,14 @@ def externalise(src, page):
     return src
 
 def build(lang):
-    tr={} if lang=='ru' else json.load(open(f'{SP}/dict/{lang}.json'))
+    tr={} if lang=='ru' else json.load(open(f'{SP}/dict/{lang}.json', encoding='utf-8'))
     pages=[]
     for root,dirs,files in os.walk(SRC):
         rel=os.path.relpath(root,SRC)
         if rel.startswith('legal'): continue
         for f in files:
             if f.endswith('.html'):
-                pages.append(os.path.normpath(os.path.join(rel,f)) if rel!='.' else f)
+                pages.append((os.path.join(rel,f) if rel!='.' else f).replace(os.sep,'/'))
     n=0
     for page in sorted(pages):
         srcpath=os.path.join(SRC,page)
